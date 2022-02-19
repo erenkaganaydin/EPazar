@@ -1,0 +1,105 @@
+﻿@using EPazar.Business.Business
+@using EPazar.Entity.SanalEntity
+@using Microsoft.AspNetCore.Http.Extensions
+@model UrunlerEntity
+
+@{
+    var UrunListesi = Model.UrunListesi;
+}
+    <link rel="stylesheet" href="~/css/Urunler.css?Id=2">
+       <div class="urunler-main">
+                <div class="filtre-div">
+                    <div>
+                        <div class="filter-kategori">
+                            <div class="filtre-header">İlgili Kategoriler</div>
+                            <div class="filtre-kategori">
+                                <a href="#">Kategori </a>
+                                <a href="#">Kategori </a>
+                                <a href="#">deneme</a>
+                                <a href="#">deneme</a>
+                                <a href="#">deneme</a>
+                                <a href="#">deneme</a>
+                                <a href="#">deneme</a>
+                                <a href="#">deneme</a>
+                                <a href="#">deneme</a>
+                                <a href="#">deneme</a>
+                                <a href="#">deneme</a>
+                                <a href="#">deneme</a>
+                                <a href="#">deneme</a>
+                                <a href="#">deneme</a>
+                                <a href="#">deneme</a>
+                                <a href="#">deneme</a>
+                                <a href="#">deneme</a>
+                                <a href="#">deneme</a>
+                                <a href="#">deneme</a>
+                                <a href="#">deneme</a>
+                                <a href="#">deneme</a>
+                                <a href="#">deneme</a>
+                            </div>
+                            <div class="filtre-daha">DAHA FAZLA GÖSTER</div>
+                            <hr class="filtre-hr">
+                        </div>
+                        <div class="filter-kategori">
+                            <div class="filtre-header">Beden</div>
+                            <div class="filtre-kategori">
+                                @await Component.InvokeAsync("UrunlerFilter")
+                            </div>
+                            <div class="filtre-daha">DAHA FAZLA GÖSTER</div>
+                            <hr class="filtre-hr">
+                        </div>
+                    </div>
+                </div>
+                <div class="urunler-list">
+                    <div class="urunler-flex">
+                       @foreach (var item in UrunListesi)
+            {
+                <div class="urun-detay">
+                    <div class="urun-child">
+                        <a href="~/UrunDetay/@item.Id" >
+                            <div class="urun-detay-img">
+                                <div class="image-overlay">
+                                    <div class="image-overlay-header">
+                                        <div class="overlay-kargo-durum">
+                                            <div class="kargo-durum-metin">KARGO BEDAVA</div>
+                                        </div>
+                                        <div class="overlay-favori-ekle">
+                                            <i class="far fa-heart overlay-favori-ekle-metin"></i>
+                                        </div>
+                                    </div>
+                                    <div class="image-overlay-body"></div>
+                                    <div class="image-overlay-footer"></div>
+                                </div>
+
+                                @{
+                                    var UrunResimi = item.UrunResimleri.FirstOrDefault();
+                                    if (UrunResimi == null)
+                                        UrunResimi.ResimLink = "https://UrunResmiYok.com";
+                                }
+                                        <div>
+                                            <img class="urun-detay-resim" src="@UrunResimi.ResimLink" alt="">
+                                        </div>
+
+                                    </div>
+                                    <div class="urun-detay-aciklama">
+                                        <div class="urun-detay-aciklama-baslik">
+                                            <span class="urun-detay-aciklama-baslik-span">Marka</span>
+                                            <span class="urun-detay-aciklama-baslik-span-acikalama">
+                                                @item.Adi
+                                            </span>
+                                        </div>
+                                        <div class="urun-detay-fiyat">
+                                            <div class="fiyat-wrap">
+                                                <div class="fiyat-old">@item.EskiFiyat₺</div>
+                                                <div class="fiyat-gecerli">@item.Fiyat₺</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                      }
+                        
+
+                    </div>
+                </div>
+            </div>

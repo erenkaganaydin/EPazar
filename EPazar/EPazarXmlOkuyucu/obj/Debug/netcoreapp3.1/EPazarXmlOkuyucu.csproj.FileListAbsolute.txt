@@ -1,0 +1,14 @@
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazarXmlOkuyucu\bin\Debug\netcoreapp3.1\EPazarXmlOkuyucu.exe
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazarXmlOkuyucu\bin\Debug\netcoreapp3.1\EPazarXmlOkuyucu.deps.json
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazarXmlOkuyucu\bin\Debug\netcoreapp3.1\EPazarXmlOkuyucu.runtimeconfig.json
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazarXmlOkuyucu\bin\Debug\netcoreapp3.1\EPazarXmlOkuyucu.runtimeconfig.dev.json
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazarXmlOkuyucu\bin\Debug\netcoreapp3.1\EPazarXmlOkuyucu.dll
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazarXmlOkuyucu\bin\Debug\netcoreapp3.1\EPazarXmlOkuyucu.pdb
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazarXmlOkuyucu\obj\Debug\netcoreapp3.1\EPazarXmlOkuyucu.csproj.AssemblyReference.cache
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazarXmlOkuyucu\obj\Debug\netcoreapp3.1\EPazarXmlOkuyucu.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazarXmlOkuyucu\obj\Debug\netcoreapp3.1\EPazarXmlOkuyucu.AssemblyInfoInputs.cache
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazarXmlOkuyucu\obj\Debug\netcoreapp3.1\EPazarXmlOkuyucu.AssemblyInfo.cs
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazarXmlOkuyucu\obj\Debug\netcoreapp3.1\EPazarXmlOkuyucu.csproj.CoreCompileInputs.cache
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazarXmlOkuyucu\obj\Debug\netcoreapp3.1\EPazarXmlOkuyucu.dll
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazarXmlOkuyucu\obj\Debug\netcoreapp3.1\EPazarXmlOkuyucu.pdb
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazarXmlOkuyucu\obj\Debug\netcoreapp3.1\EPazarXmlOkuyucu.genruntimeconfig.cache

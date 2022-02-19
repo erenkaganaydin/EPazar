@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "XMLOkuyucu": {
+      "commandName": "Project"
+    },
+    "1 Profili": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Users\\eaydin\\Documents\\GitHub\\EPazar\\EPazar\\EPazar\\bin\\Debug\\net5.0\\EPazar.exe"
+    }
+  }
+}

@@ -1,0 +1,41 @@
+﻿@using EPazar.Entity.Entity
+
+@model List<KategoriListesiTopBanner>
+
+     <script src="~/js/glider.min.js"></script>
+            <link rel="stylesheet" href="~/css/glider.min.css">
+
+
+            <div class="glider-contain" style="margin: auto;text-align: center;position: relative">
+                  <div class="glider" style="margin: auto;height:145px">
+                    @foreach(var item in Model)
+                    {
+                        <div> 
+                            <div onclick='window.location.href = "@item.Link";' style="width: 68px;height: 68px;border-radius: 50%;background-color: darkorange;background-image:url('@item.Image');margin: auto;margin-bottom: 13px;margin-top: 15px">
+                            </div>
+                            <span>@item.Aciklama</span>
+                        </div>
+                    }
+                   </div>
+                <button aria-label="Previous" class="glider-prev">«</button>
+                <button aria-label="Next" class="glider-next">»</button>
+                <div role="tablist" class="dots"></div>
+            </div>
+            <script>
+                window.addEventListener('load', function(){
+                    new Glider(document.querySelector('.glider'), {
+                        slidesToScroll: 1,
+                        slidesToShow: 'auto',
+                        dots: '.dots',
+                        arrows: {
+                            prev: '.glider-prev',
+                            next: '.glider-next'
+                        },
+                        draggable: true,
+                        slidesToScroll: 1,
+                });
+                });
+
+            </script>
+
+   

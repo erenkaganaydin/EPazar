@@ -1,0 +1,190 @@
+﻿@using  EPazar.Entity.SanalEntity;
+@using System.Globalization
+@model SiparisBilgisiEntityleri
+
+@{
+    var Siparisler = Model.Siparis;
+    var SiparisDetaylari = Model.ViewSiparisDetay;
+}
+   
+    <link rel="stylesheet" href="~/css/SiparisDetay.css">
+
+    <div class="alc-hesap-container">
+                <div class="l-sol-hesabim-nav">
+                    <div class="block">
+                        <div class="alc-hesap-yerlesim-container block">
+                            <div class="lw-yerlesim-wrap">
+
+                                <h2>Hesabım</h2>
+                                <a class="text-decore-x yerlesim-item yerlesim-aktif" href="#">
+                                    <i class="fa fa-box item-i"></i>
+                                    <span>Siparişlerim</span>
+                                </a>
+                                <a class="text-decore-x yerlesim-item" href="#">
+                                    <i class="fa fa-user item-i"></i>
+                                    <span>Hesap Bilgileri</span>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="r-sag-div">
+
+                    <div class="block">
+
+                        <div class="oc-block">
+
+                            <div class="hb-header">
+                                <h1>Sipariş Detay</h1>
+                            </div>
+
+                            <div class="block">
+                                <div class="odc-siparis-detay-icerigi">
+
+                                    <div class="ods-siparis-detay-urunler">
+                                        <div class="h-siparis-detay-header">
+                                            <div class="si-kargo-bilgi">
+                                                <div class="ss-siparis-numarasi">
+                                                    <div class="siw-icon-wrap"><i class="fa fa-box"></i></div>
+                                                    <div class="si-kargo-bilgi-text">
+                                                        <span><b>Kargo No</b></span>
+                                                        <span>1491326289</span>
+                                                    </div>
+
+                                                </div>
+                                                <div class="sc-kargo-bilgisi">
+                                                    <span>Kargo Firması</span>
+                                                    <span>MNG Kargo</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="scs-urun-detay-satici">
+                                            <div class=" scs-urun-detay-satici-header">
+                                                <span class="ssst-gonderen">Gönderen :</span>
+                                                <div class="tih-satici-adi">
+                                                    <a style="color: #4d84e2" class="text-decore-x" href="#">Bigatu</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ss-cont">
+                                            <div class="scsw-kargo-durum-wrap">
+                                                <div class="scs-kargo-durumu">
+                                                    <div class="scsd-durum-detay">
+                                                        <i class="fa fa-check i-right"></i>
+                                                        <span>Kargoya Verildi</span>
+                                                    </div>
+                                                    <div class="scsi-kargo-bilgi">
+                                                        <span>1 Ürün Kargoya Verildi</span>
+                                                    </div>
+                                                    <div>
+                                                        <button class="takip-info">Kargo Durumu</button>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="scp-kargo-urunleri">
+
+                                                <div class="scpb-kargo-urun-kutu">
+                                                    <div class="pbiw-urun-kutu-resim">
+                                                        <img src="https://cdn.dsmcdn.com/ty83/product/media/images/20210312/16/70957571/70078929/1/1_org_zoom.jpg" class="product-box-image">
+                                                    </div>
+                                                    <div class="pbi-urun-kutu-bilgi">
+                                                        <a class="text-decore-x" href="#">
+                                                            <p class="pn-urun-adi">
+                                                                Fakir REmatix Dikey Elektrik Süpürge
+                                                            </p>
+                                                            <div class="ps-urun-toplam">
+                                                                <span>Beden: Tek Ebat - 1 Adet</span>
+                                                                <span class="pbip-urun-kutu-tutar">
+                                                                    307,10₺
+                                                                </span>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="scpb-kargo-urun-kutu">
+                                                    <div class="pbiw-urun-kutu-resim">
+                                                        <img src="https://cdn.dsmcdn.com/ty83/product/media/images/20210312/16/70957571/70078929/1/1_org_zoom.jpg" class="product-box-image">
+                                                    </div>
+                                                    <div class="pbi-urun-kutu-bilgi">
+                                                        <a class="text-decore-x" href="#">
+                                                            <p class="pn-urun-adi">
+                                                                Fakir REmatix Dikey Elektrik Süpürge
+                                                            </p>
+                                                            <div class="ps-urun-toplam">
+                                                                <span>Beden: Tek Ebat - 1 Adet</span>
+                                                                <span class="pbip-urun-kutu-tutar">
+                                                                    307,10₺
+                                                                </span>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="scpb-kargo-urun-kutu">
+                                                    <div class="pbiw-urun-kutu-resim">
+                                                        <img src="https://cdn.dsmcdn.com/ty83/product/media/images/20210312/16/70957571/70078929/1/1_org_zoom.jpg" class="product-box-image">
+                                                    </div>
+                                                    <div class="pbi-urun-kutu-bilgi">
+                                                        <a class="text-decore-x" href="#">
+                                                            <p class="pn-urun-adi">
+                                                                Fakir REmatix Dikey Elektrik Süpürge
+                                                            </p>
+                                                            <div class="ps-urun-toplam">
+                                                                <span>Beden: Tek Ebat - 1 Adet</span>
+                                                                <span class="pbip-urun-kutu-tutar">
+                                                                    307,10₺
+                                                                </span>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ods-siparis-toplam">
+                                        <div class="asb-adres-bilgisi">
+                                            <div style="height: 42px " class="h-siparis-detay-header">
+                                                <span>Fatura ve Teslimat Bilgisi</span>
+                                            </div>
+                                            <div class="c-icerik">
+                                                <span>Eren Kağan Aydın</span>
+                                                <span>Yedi Eylül Mah Yedi Eylül, Celal Umur Cd. No:8, 35860 Torbalı/İzmir - TTL Tütün (Ekoten'in hemen yanındaki arada ileride güvenlik kulubesi var giriş kapısının) </span>
+                                                <span>Torbalı 35000 / İzmir</span>
+                                            </div>
+                                        </div>
+                                        <div class="asb-adres-bilgisi">
+                                            <div style="height: 42px " class="h-siparis-detay-header">
+                                                <span>Fatura ve Teslimat Bilgisi</span>
+                                            </div>
+                                            <div class="c-icerik">
+                                                <div class="pi-tutar-bilgi">
+                                                    <span class="tit">Ürün Toplamı</span>
+                                                    <span class="price-text">747,67 ₺</span>
+                                                </div>
+                                                <hr class="pih-tutar-hr">
+                                                <div class="pi-tutar-bilgi">
+                                                    <span class="tit">Kargo Toplamı</span>
+                                                    <span class="price-text">14,00 ₺</span>
+                                                </div>
+                                                <hr class="pih-tutar-hr">
+                                                <div class="pi-tutar-bilgi">
+                                                    <span class="tit-top"><b>Toplam</b></span>
+                                                    <span class="price-text orange">759,63 ₺</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+    </div>

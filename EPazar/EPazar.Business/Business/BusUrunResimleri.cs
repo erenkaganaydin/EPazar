@@ -45,6 +45,7 @@ namespace EPazar.Business.Business
             var Result = Query.GetAll().Where(x => x.UrunId == entity.UrunId).FirstOrDefault();
             return Result;
         }
+   
 
         public async Task<UrunResimleri> FirstOrDefaultAsync(long urunId)
         {

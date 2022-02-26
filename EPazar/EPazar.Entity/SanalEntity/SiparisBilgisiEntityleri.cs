@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace EPazar.Entity.SanalEntity
 {
-    public class HesabimEntityleri
+    public class SiparisBilgisiEntityleri
     {
-        public List<Siparis> Siparisler { get; set; }
+        public Siparis Siparis { get; set; }
         public List<ViewSiparisDetay> ViewSiparisDetay { get; set; }
     }
 }

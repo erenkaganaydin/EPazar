@@ -106,3 +106,4 @@ C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar\obj\Debug\net5.0\refint\EP
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar\obj\Debug\net5.0\Razor\Views\Shared\_DesktopFooter.cshtml.g.cs
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar\obj\Debug\net5.0\Razor\Views\Odeme\OdemeBilgileri.cshtml.g.cs
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar\obj\Debug\net5.0\Razor\Views\Hesabim\Siparislerim.cshtml.g.cs
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar\obj\Debug\net5.0\Razor\Views\Hesabim\SiparisBilgisi.cshtml.g.cs

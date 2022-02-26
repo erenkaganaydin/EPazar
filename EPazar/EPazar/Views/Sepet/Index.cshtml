@@ -11,7 +11,7 @@
     {
         var Mesaj = Hata.First();
         <script>
-            alert("@Mesaj");
+           alert("@(Html.Raw(@Mesaj))");
         </script>
     }
 }

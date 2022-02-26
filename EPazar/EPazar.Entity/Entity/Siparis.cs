@@ -11,6 +11,10 @@ namespace EPazar.Entity.Entity
     public class Siparis : BaseEntity.BaseEntity
     {
 		public long Id { get; set; }
+
+		[ForeignKey(nameof(SiparisDurum))]
+		public int SiparisDurumId { get; set; }
+
 		public string SiparisNumarasi { get; set; }
 		public int UyeId { get; set; }
 
@@ -21,6 +25,7 @@ namespace EPazar.Entity.Entity
 
         public ICollection<SiparisDetay> SiparisDetay { get; set; }
         public KullaniciAdresleri KullaniciAdresleri { get; set; }
+        public SiparisDurum SiparisDurum { get; set; }
         public Siparis()
         {
 			OdemeDurumId = 1;

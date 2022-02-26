@@ -65,7 +65,7 @@ namespace EPazar.Business.Business
 
         public async Task<List<Siparis>> PredicateIncludeAsync(Siparis entity)
         {
-            var Result = await Query.GetAll().Where(x => x.OdemeDurumId >= 2 && x.UyeId == entity.UyeId).Include(x=> x.SiparisDetay).Include(x=> x.KullaniciAdresleri).ToListAsync();
+            var Result = await Query.GetAll().Where(x => x.OdemeDurumId >= 2 && x.UyeId == entity.UyeId).Include(x=> x.SiparisDetay).Include(x=> x.KullaniciAdresleri).Include(x=> x.SiparisDurum).ToListAsync();
             return Result;
         }
 

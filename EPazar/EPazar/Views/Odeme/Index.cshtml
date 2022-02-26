@@ -28,7 +28,7 @@
     {
         var Mesaj = Hata.First();
         <script>
-            alert("@Mesaj");
+            alert("@(Html.Raw(@Mesaj))");
         </script>
     }
 }
@@ -123,6 +123,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="p-ab-v-2-adres">
+                                                            <p>@adres.Sehir / @adres.Ilce</p>
                                                             <p>@adres.Adres</p>
                                                         </div>
                                                     </div>
@@ -142,7 +143,7 @@
                                     <div class="sepet-siparis-ozet">
                                         <h1>Sepet Bilgileri</h1>
                                         <ul class="sepet-bilgileri-ozet-tutar">
-                                            <li><span>Ürün Toplamı</span> <strong>@ViewSepet.Sum(x=> x.Fiyat)</strong></li>
+                                            <li><span>Ürün Toplamı</span> <strong>@Math.Round(@ViewSepet.Sum(x=> x.Fiyat), 2)₺</strong></li>
                                             @{
                                                 var ToplamKargo = TedarikciList.Count()*14.99;
                                             }

@@ -39,6 +39,12 @@ namespace EPazar.Controllers
         public KullaniciAdresleri KullaniciAdresleri { get; set; }
         public BusKullaniciAdresleri BusKullaniciAdresleri { get; set; }
 
+        public ViewSiparisTedarikciToplam ViewSiparisTedarikciToplam { get; set; }
+        public BusViewSiparisTedarikciToplam BusViewSiparisTedarikciToplam { get; set; }
+
+        public SiparisKargoBilgisi SiparisKargoBilgisi { get; set; }
+        public BusSiparisKargoBilgisi BusSiparisKargoBilgisi { get; set; }
+
 
         private static Random random = new Random();
         #endregion
@@ -66,6 +72,11 @@ namespace EPazar.Controllers
 
             KullaniciAdresleri = new KullaniciAdresleri();
             BusKullaniciAdresleri = new BusKullaniciAdresleri();
+
+            ViewSiparisTedarikciToplam = new ViewSiparisTedarikciToplam();
+            BusViewSiparisTedarikciToplam = new BusViewSiparisTedarikciToplam();
+
+            BusSiparisKargoBilgisi = new BusSiparisKargoBilgisi();
         }
         #endregion
 
@@ -79,6 +90,34 @@ namespace EPazar.Controllers
             var SiparisDetayIslemSonucu = await SiparisDetayIslemleri();
             if (!SiparisIslemSonucu)
                 return BadRequest("Siparis Detay İslem Sonucu Olumsuz Döndü");
+
+            Kullanicilar.EMail = HttpContext.User.FindFirstValue(ClaimTypes.Email) != null ? HttpContext.User.FindFirstValue(ClaimTypes.Email) : null;
+            var EmailKontrol = await BusKullanicilar.FirstOrDefaultEmailAsync(Kullanicilar);
+            if (EmailKontrol != null)
+            {
+                Siparis.UyeId = EmailKontrol.Id;
+            }
+            var UyeSiparis = await BusSiparis.FirstOrDefaultUyeIdAsync(Siparis);
+            if (UyeSiparis == null)
+                return BadRequest("Siparis Bulunmuyor");
+            Siparis = UyeSiparis;
+            ViewSiparisTedarikciToplam.SiparisId = Siparis.Id;
+            var SiparisToplam = await BusViewSiparisTedarikciToplam.PredicateAsync(ViewSiparisTedarikciToplam);
+
+            foreach(var item in SiparisToplam)
+            {
+                SiparisKargoBilgisi = new SiparisKargoBilgisi();
+                SiparisKargoBilgisi.SiparisId = item.SiparisId;
+                SiparisKargoBilgisi.SiparisDetayId = 0;
+                SiparisKargoBilgisi.KargoFirmaId = 1;
+                SiparisKargoBilgisi.KargoTakipKodu = "Oluşturulmamış";
+                SiparisKargoBilgisi.KargoTutari = 0;
+                if (item.Toplam < 60)
+                {
+                    SiparisKargoBilgisi.KargoTutari = 14.99;
+                }
+                var Ekle = await BusSiparisKargoBilgisi.InsertAsync(SiparisKargoBilgisi, false);
+            }
 
             return RedirectToAction("Index", "Odeme");
         } 
@@ -187,7 +226,7 @@ namespace EPazar.Controllers
         }
 
         #region SiparisDetayIslemleri
-            private async Task<bool> SiparisDetayIslemleri()
+        private async Task<bool> SiparisDetayIslemleri()
         {
             ViewSepet.SepetToken = HttpContext.Request.Cookies["SepetToken"];
             var ViewSepets = await BusViewSepet.PredicateAsync(ViewSepet);

@@ -5,6 +5,7 @@
 
 @{
     var Siparisler = Model.Siparisler;
+    var SiparisDetaylari = Model.ViewSiparisDetay;
 }
     <link rel="stylesheet" href="~/css/Siparislerim.css">
 
@@ -41,6 +42,10 @@
                             <div class="block">
 
                                 @foreach(var siparis in Siparisler){
+                                    var SiparisinDetaylari = SiparisDetaylari.Where(x=> x.SiparisId == siparis.Id).ToList();
+                                    var SiparisMagazaSayisi = SiparisinDetaylari.GroupBy(x=> x.TedarikciAdi).Select(x=> x.Key).ToList().Count();
+                                    var SiparisUrunAdet = SiparisinDetaylari.GroupBy(x => new { x.UrunId, x.Adet }).ToList().Sum(x => x.Key.Adet);
+
                                     var day = siparis.CreateTime.Day;
                                     var month = siparis.CreateTime.Month;
                                     var AyAdi = CultureInfo.CreateSpecificCulture("tr-TR").DateTimeFormat.GetAbbreviatedMonthName(month);
@@ -48,6 +53,8 @@
                                     var hour = siparis.CreateTime.Hour;
                                     var minute = siparis.CreateTime.Minute;
                                     
+                                    var SonGuncellemeGunu  = siparis.UpdateTime.Day;
+                                    var SonGuncellemeAyi = CultureInfo.CreateSpecificCulture("tr-TR").DateTimeFormat.GetAbbreviatedMonthName(month);
 
                                     <div class="block o-siparis">
                                         <div class="oh-siparis-baslik">
@@ -57,17 +64,17 @@
                                             </div>
                                             <div class="ohi-siparis-baslik-bilgi">
                                                 <span class="h-b">Sipariş İçeriği</span>
-                                                <span class="h-t">1 Mağaza, 3 Ürün</span>
+                                                <span class="h-t">@SiparisMagazaSayisi Mağaza, @SiparisUrunAdet Ürün</span>
                                             </div>
                                             <div class="ohi-siparis-baslik-bilgi">
                                                 <span class="h-b">Alıcı Bilgisi</span>
-                                                <span class="h-t">Şevval Çelik</span>
+                                                <span class="h-t">@siparis.KullaniciAdresleri.AdSoyad</span>
                                             </div>
                                             <div class="ohi-siparis-baslik-bilgi">
                                                 <span class="h-b">Toplam Tutar</span>
-                                                <span class="h-t">216,87₺</span>
+                                                <span class="h-t">@siparis.ToplamTutar ₺</span>
                                             </div>
-                                            <a href="#">
+                                            <a href="/SiparisBilgisi/@siparis.Id">
                                                 <button class="siparis-detay-button">Sipariş Bilgisi</button>
                                             </a>
                                         </div>
@@ -79,13 +86,17 @@
                                                         <p>Kargoya Verildi</p>
                                                     </span>
                                                     <span class="d-durum-text">
-                                                        <b> 26 Şubat Tarihinde Teslim Edilmiştir.</b>
+                                                        <b> @SonGuncellemeGunu @SonGuncellemeAyi Tarihi itibariyle @siparis.SiparisDurum.Ad .</b>
                                                     </span>
                                                 </div>
                                                 <div class="oii-siparis-resim">
-                                                    <a class="iw-siparis-resim-wrap" href="#">
-                                                        <img src="https://cdn.dsmcdn.com/ty83/product/media/images/20210312/16/70957571/70078929/1/1_org.jpg" alt="">
-                                                    </a>
+                                                        @foreach (var item in SiparisinDetaylari)
+                                                        {
+                                                            <a class="iw-siparis-resim-wrap" href="/UrunDetay/@item.UrunId/@item.UrunAdi">
+                                                                <img src="@item.ResimLink" alt="@item.UrunAdi">
+                                                            </a>
+                                                        }
+
                                                 </div>
                                             </div>
                                         </div>

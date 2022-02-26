@@ -19,5 +19,12 @@ namespace EPazar.Entity.Entity
 		public string Adres { get; set; }
 		public string AdresBasligi { get; set; }
 
+		public string? AdSoyad
+		{
+			get
+			{
+				return $"{ Ad + " " + Soyad}";
+			}
+		}
 	}
 }

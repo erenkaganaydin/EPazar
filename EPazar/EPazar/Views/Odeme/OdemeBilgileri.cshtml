@@ -19,7 +19,7 @@
         /**************           GEREKLİ  PARAMETRELER       ********************/
         String clientId = "102139631";   //Banka tarafından verilen işyeri numarası     
         String amount = "0.01";          //İşlem tutarı
-        String oid = "9999";                 //Sipariş Numarası
+        String oid = Siparis.SiparisNumarasi;                 //Sipariş Numarası
         String okUrl = "https://localhost:44325/DenemeYanit?Oldu";     //İşlem başarılıysa dönülecek sayfa
         String failUrl = "https://localhost:44325/DenemeYanit?Bum";   //İşlem başarısızsa dönülecek sayfa
         String rnd = DateTime.Now.ToString();  //Kontrol ve güvenlik amaçlı sürekli değişen bir değer tarih gibi
@@ -317,7 +317,7 @@
                 
                 <input type="hidden" name="lang" value="tr">
 				<input type="hidden" name="currency" value="949">
-                <input type="hidden" name="firmaadi" value="Benim Firmam">
+                <input type="hidden" name="firmaadi" value="Bigtarz">
                 
                 <input type="hidden" name="Fismi" value="is">
                 <input type="hidden" name="faturaFirma" value="faturaFirma">
@@ -330,7 +330,7 @@
                 <input type="hidden" name="tel" value="XXX">
                 <input type="hidden" name="fulkekod" value="tr">
                 
-                <input type="hidden" name="nakliyeFirma" value="na fi">
+                <input type="hidden" name="nakliyeFirma" value="MNG Kargo">
                 <input type="hidden" name="tismi" value="XXX">
                 <input type="hidden" name="tadres" value="XXX">
                 <input type="hidden" name="tadres2" value="XXX">

@@ -1,11 +1,14 @@
-﻿using EPazar.Business.Business;
+﻿using ePayment;
+using EPazar.Business.Business;
 using EPazar.Entity.Entity;
 using EPazar.Entity.View;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -27,6 +30,10 @@ namespace EPazar.Controllers
         public ViewUrunOzellikleriAciklamali ViewUrunOzellikleriAciklamali { get; set; }
         public BusViewUrunOzellikleriAciklamali BusViewUrunOzellikleriAciklamali { get; set; }
 
+        public Kullanicilar Kullanicilar { get; set; }
+        public BusKullanicilar BusKullanicilar { get; set; }
+
+
         public SepetController()
         {
             BusUrunResimleri = new BusUrunResimleri();
@@ -43,6 +50,9 @@ namespace EPazar.Controllers
 
             ViewUrunOzellikleriAciklamali = new ViewUrunOzellikleriAciklamali();
             BusViewUrunOzellikleriAciklamali = new BusViewUrunOzellikleriAciklamali();
+
+            Kullanicilar = new Kullanicilar();
+            BusKullanicilar = new BusKullanicilar();
         }
 
         public async Task<IActionResult> Index()
@@ -93,7 +103,20 @@ namespace EPazar.Controllers
             Sepet.OzellikId = UrunOzellikDetay==null ? null : UrunOzellikDetay.Id;
 
             Sepet.UrunId = SepeteEklenecekUrun.Id;
-            Sepet.UyeId = Convert.ToInt64(HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier)) == 0 ? null : Convert.ToInt64(HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
+
+
+            //(HttpContext.User.FindFirstValue(ClaimTypes.Email) == 0 ? null : HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            Kullanicilar.EMail = HttpContext.User.FindFirstValue(ClaimTypes.Email) != null ? HttpContext.User.FindFirstValue(ClaimTypes.Email) : null;
+
+            var EmailKontrol = await BusKullanicilar.FirstOrDefaultEmailAsync(Kullanicilar);
+
+            if (EmailKontrol != null)
+            {
+                Sepet.UyeId = EmailKontrol.Id;
+
+            }
+
 
             var Islem = await BusSepet.InsertAsync(Sepet,false);
 
@@ -158,12 +181,25 @@ namespace EPazar.Controllers
             {
                 return Redirect("/Sepet?Hata=Adet 1 den az olamaz");
             }
-            var EklenecekUrun = EklenecekUrunler.FirstOrDefault();
+            var KaldirilacakUrun = EklenecekUrunler.FirstOrDefault();
 
-            EklenecekUrun.Id = 0;
-            var Islem = await BusSepet.InsertAsync(EklenecekUrun, false);
+            var Islem = await BusSepet.DeleteAsync(KaldirilacakUrun);
 
             return RedirectToAction("Index");
         }
+
+
+        [Route("/Deneme")]
+        public async Task<ActionResult> Deneme()
+        {
+            return View();
+        }
+
+        [Route("/DenemeYanit")]
+        public async Task<ActionResult> DenemeYanit()
+        {
+            return View();
+        }
+
     }
 }

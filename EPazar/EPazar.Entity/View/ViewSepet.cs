@@ -16,6 +16,7 @@ namespace EPazar.Entity.View
         public string UrunAdi { get; set; }
         public double? EskiFiyat { get; set; }
         public double Fiyat { get; set; }
+        public double KDV { get; set; }
         public long? OzellikId { get; set; }
         public string? OzellikTuru { get; set; }
         public string? OzellikAdi { get; set; }

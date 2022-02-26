@@ -26,7 +26,7 @@
         <div class="wrapper">
             <div class="header">
                 <div class="header-logo">
-                    <a href="index.html"><img class="logo-img" src="~/img/BigtarzLogo.svg" alt="Bigtarz Logo"></a>
+                    <a href="~/"><img class="logo-img" src="~/img/BigtarzLogo.svg" alt="Bigtarz Logo"></a>
                 </div>
                 <div class="Arama">
                     <div class="search-box-container"><input class="search-box" type="text" tabindex="1" placeholder="Kategori, ürün veya markayı yazınız" maxlength="50" autocomplete="off" value=""><i class="search-icon"></i></div>
@@ -34,8 +34,8 @@
                 <div class="header-top-navigator">
                     <div class="header-top-navigator-block">
                         <div class="top-navigator-wrap">
-                            <div class="top-navigator-item user-nav"><i class="far fa-user"></i></i><div>Hesabım</div></div>
-                            <div class="top-navigator-item"><i class="fas fa-shopping-basket"></i><a class="nodecor" href="#">Sepetim</a></div>
+                            <div class="top-navigator-item user-nav"> <a style="display:flex;" class="nodecor" href="~/Hesabim">   <i class="far fa-user"></i></i><div>Hesabım</div> </a> </div>
+                            <div class="top-navigator-item"><i class="fas fa-shopping-basket"></i><a class="nodecor" href="~/Sepet">Sepetim</a></div>
                             <div class="top-navigator-item"><i class="far fa-heart"></i><a class="nodecor" href="#">Favoriler</a></div>
                         </div>
                     </div>
@@ -54,79 +54,7 @@
     <i class="fas fa-arrow-up"></i><span>Yukarı Çık</span>
 </div>
 
-<div class="footer">
-    <div class="footer-wrap">
+ @await Html.PartialAsync("_DesktopFooter")
 
-        <div>
-            <a href="#"><h4>Bigtarz</h4></a>
-            <ul>
-                <li><a href="#">Hakkımızda</a></li>
-                <li><a href="#">Ekibimize Katıl</a></li>
-                <li><a href="#">İletişim</a></li>
-            </ul>
-            <div>
-                <div>
-                    <ul>
-                        <li><p class="footer-title">Güvenle Kullanın</p></li>
-                        <div id="guvenle-kullanin" class="guvenle-kullanin">
-                            <div id="troy" class="troy"></div>
-                            <div id="master-card" class="master-card"></div>
-                            <div id="visa"></div>
-                        </div>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div>
-            <ul>
-                <a href="#"><h4>Hakkımızda</h4></a>
-                <li>Biz Kimiz</li>
-                <li>Kariyer</li>
-                <li>Whatsapp</li>
-            </ul>
-        </div>
-
-        <div>
-            <ul>
-                <li>
-                    <p class="footer-title">Mobil Uygulamalar</p>
-                </li>
-                <li>
-                    <div>
-                        <h5>YAKINDA...</h5>
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-        <div>
-            <ul>
-                <a href="#"><h4>Sosyal Medya</h4></a>
-                <div id="social" class="social">
-                    <a href="#" class="facebook-image"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/1024px-Instagram_icon.png" alt=""></a>
-                    <a href="#" class="facebook-image"><img src="https://icons-for-free.com/iconfiles/png/512/tube+video+you+youtube+icon-1320185153402885670.png" alt=""></a>
-                </div>
-            </ul>
-        </div>
-    </div>
-</div>
-
-<div class="footer-info">
-    <div class="footer-info-wrap">
-        <div class="footer-info-left-text">
-            ©2022 SRK YILMAZ LIMITED SIRKET ÜRÜNÜDÜR.
-        </div>
-        <div class="footer-info-ul">
-            <ul>
-                <li><a class="footer-info-ul-li-item" href="#">GİZLİLİK POLİTİKASI</a></li>
-                <li><a class="footer-info-ul-li-item" href="#">SRK YILMAZ LIMITED</a></li>
-                <li><a class="footer-info-ul-li-item" href="#">VERİ GİZLİLİĞİ</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-<!--#region container-->
-
-</body>
+ </body>
 </html>

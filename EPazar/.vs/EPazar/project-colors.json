@@ -70,7 +70,12 @@
       "ProjectGuid": "bb9325a3-89b7-4273-8d8a-f9318a28833a",
       "DisplayName": "EPazar.Control",
       "ColorIndex": 12
+    },
+    "57a7ae1d-1f8d-4c50-af07-9c1c6c1dc8aa": {
+      "ProjectGuid": "57a7ae1d-1f8d-4c50-af07-9c1c6c1dc8aa",
+      "DisplayName": "SanalPos",
+      "ColorIndex": 13
     }
   },
-  "NextColorIndex": 13
+  "NextColorIndex": 14
 }

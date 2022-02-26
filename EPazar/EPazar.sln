@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XMLOkuyucu", "XMLOkuyucu\XM
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EPazarAPI", "EPazarAPI\EPazarAPI.csproj", "{F4E86B3D-DE00-43B5-AF27-5E4D5A9E76D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPazar.APIController", "EPazar.APIController\EPazar.APIController.csproj", "{38AD5D41-5708-4223-8900-075E5E1CE712}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EPazar.APIController", "EPazar.APIController\EPazar.APIController.csproj", "{38AD5D41-5708-4223-8900-075E5E1CE712}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

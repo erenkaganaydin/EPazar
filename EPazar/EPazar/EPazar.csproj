@@ -13,4 +13,10 @@
     <ProjectReference Include="..\EPazar.Entity\EPazar.Entity.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="ePayment">
+      <HintPath>..\ePayment.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

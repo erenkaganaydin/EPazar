@@ -1,0 +1,104 @@
+﻿
+@using  EPazar.Entity.SanalEntity;
+@using System.Globalization
+@model HesabimEntityleri
+
+@{
+    var Siparisler = Model.Siparisler;
+}
+    <link rel="stylesheet" href="~/css/Siparislerim.css">
+
+    <div class="alc-hesap-container">
+            <div class="l-sol-hesabim-nav">
+                    <div class="block">
+                        <div class="alc-hesap-yerlesim-container block">
+                            <div class="lw-yerlesim-wrap">
+
+                                <h2>Hesabım</h2>
+                                <a class="text-decore-x yerlesim-item yerlesim-aktif" href="#">
+                                    <i class="fa fa-box item-i"></i>
+                                    <span>Siparişlerim</span>
+                                </a>
+                                <a class="text-decore-x yerlesim-item" href="#">
+                                    <i class="fa fa-user item-i"></i>
+                                    <span>Hesap Bilgileri</span>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="r-sag-div">
+
+                    <div class="block">
+
+                        <div class="oc-block">
+
+                            <div class="hb-header">
+                                <h1>Siparişlerim</h1>
+                            </div>
+
+                            <div class="block">
+
+                                @foreach(var siparis in Siparisler){
+                                    var day = siparis.CreateTime.Day;
+                                    var month = siparis.CreateTime.Month;
+                                    var AyAdi = CultureInfo.CreateSpecificCulture("tr-TR").DateTimeFormat.GetAbbreviatedMonthName(month);
+                                    var year = siparis.CreateTime.Year;
+                                    var hour = siparis.CreateTime.Hour;
+                                    var minute = siparis.CreateTime.Minute;
+                                    
+
+                                    <div class="block o-siparis">
+                                        <div class="oh-siparis-baslik">
+                                            <div class="ohi-siparis-baslik-bilgi">
+                                                <span class="h-b">Sipariş Tarihi</span>
+                                                <span class="h-t">@day @AyAdi @year - @hour:@minute</span>
+                                            </div>
+                                            <div class="ohi-siparis-baslik-bilgi">
+                                                <span class="h-b">Sipariş İçeriği</span>
+                                                <span class="h-t">1 Mağaza, 3 Ürün</span>
+                                            </div>
+                                            <div class="ohi-siparis-baslik-bilgi">
+                                                <span class="h-b">Alıcı Bilgisi</span>
+                                                <span class="h-t">Şevval Çelik</span>
+                                            </div>
+                                            <div class="ohi-siparis-baslik-bilgi">
+                                                <span class="h-b">Toplam Tutar</span>
+                                                <span class="h-t">216,87₺</span>
+                                            </div>
+                                            <a href="#">
+                                                <button class="siparis-detay-button">Sipariş Bilgisi</button>
+                                            </a>
+                                        </div>
+                                        <div class="ol-siparis-listesi">
+                                            <div class="oi-siparis-item">
+                                                <div class="ois-siparis-durumu">
+                                                    <span class="td-durum-div">
+                                                        <i class="fa fa-check fa-sip"></i> 
+                                                        <p>Kargoya Verildi</p>
+                                                    </span>
+                                                    <span class="d-durum-text">
+                                                        <b> 26 Şubat Tarihinde Teslim Edilmiştir.</b>
+                                                    </span>
+                                                </div>
+                                                <div class="oii-siparis-resim">
+                                                    <a class="iw-siparis-resim-wrap" href="#">
+                                                        <img src="https://cdn.dsmcdn.com/ty83/product/media/images/20210312/16/70957571/70078929/1/1_org.jpg" alt="">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
+                              
+
+                            </div>
+                        </div>
+
+                    </div>
+
+        </div>
+
+    </div>

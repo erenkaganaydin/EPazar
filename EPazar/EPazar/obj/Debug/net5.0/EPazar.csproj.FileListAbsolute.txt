@@ -5,7 +5,6 @@ C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar\bin\Debug\net5.0\EPazar.de
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar\bin\Debug\net5.0\EPazar.runtimeconfig.json
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar\bin\Debug\net5.0\EPazar.runtimeconfig.dev.json
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar\bin\Debug\net5.0\EPazar.dll
-C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar\bin\Debug\net5.0\ref\EPazar.dll
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar\bin\Debug\net5.0\EPazar.pdb
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar\bin\Debug\net5.0\EPazar.Views.dll
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar\bin\Debug\net5.0\EPazar.Views.pdb
@@ -98,3 +97,12 @@ C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar\obj\Debug\net5.0\Razor\Vie
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar\obj\Debug\net5.0\Razor\Views\UrunDetay\Index.cshtml.g.cs
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar\obj\Debug\net5.0\Razor\Views\Shared\Components\UrunDetayOneriUrunler\Default.cshtml.g.cs
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar\obj\Debug\net5.0\Razor\Views\Sepet\Index.cshtml.g.cs
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar\bin\Debug\net5.0\ePayment.dll
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar\obj\Debug\net5.0\Razor\Views\Sepet\Deneme.cshtml.g.cs
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar\obj\Debug\net5.0\Razor\Views\Sepet\DenemeYanit.cshtml.g.cs
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar\obj\Debug\net5.0\Razor\Views\Hesabim\Index.cshtml.g.cs
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar\obj\Debug\net5.0\Razor\Views\Odeme\Index.cshtml.g.cs
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar\obj\Debug\net5.0\refint\EPazar.dll
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar\obj\Debug\net5.0\Razor\Views\Shared\_DesktopFooter.cshtml.g.cs
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar\obj\Debug\net5.0\Razor\Views\Odeme\OdemeBilgileri.cshtml.g.cs
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar\obj\Debug\net5.0\Razor\Views\Hesabim\Siparislerim.cshtml.g.cs

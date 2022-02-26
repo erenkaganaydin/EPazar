@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="ePayment">
+      <HintPath>..\ePayment.dll</HintPath>
+    </Reference>
+    <Reference Include="PosnetDotNetModule">
+      <HintPath>..\PosnetDotNetModule.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

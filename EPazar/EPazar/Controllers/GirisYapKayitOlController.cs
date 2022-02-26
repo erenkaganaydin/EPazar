@@ -25,7 +25,7 @@ namespace EPazar.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return RedirectToAction("OturumAc", "GirisYapKayitOl");
         }
 
         [HttpGet]
@@ -40,14 +40,49 @@ namespace EPazar.Controllers
 
             if (KullaniciBilgileri != null)
             {
+                var Claims = new List<Claim> {new Claim(ClaimTypes.Email, KullaniciBilgileri.EMail), new Claim(ClaimTypes.Name, KullaniciBilgileri.Ad), new Claim(ClaimTypes.Surname, KullaniciBilgileri.Soyad) };
+                var UserIdentity = new ClaimsIdentity(Claims, "Login");
+                ClaimsPrincipal Principal = new ClaimsPrincipal(UserIdentity);
+                await HttpContext.SignInAsync(Principal);
+
+                var ReturnUrl = HttpContext.Request.Query["ReturnUrl"];
+                if (!string.IsNullOrEmpty(ReturnUrl))
+                {
+                    return Redirect(ReturnUrl);
+                }
+                return RedirectToAction("Index","Home");
+            }
+
+            return Redirect("/GirisYapKayitOl/OturumAc?Hata=Bilgilerinizi Kontrol Edin!.");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> KayitOl(Kullanicilar entity)
+        {
+            var EmailKontrol = await BusKullanicilar.FirstOrDefaultEmailAsync(entity);
+            if (EmailKontrol != null)
+            {
+                return Redirect("/GirisYapKayitOl/OturumAc?Hata=Bu Email Sisteme Kayıtlı!");
+            }
+
+            var KullaniciEkle = await BusKullanicilar.InsertAsync(entity, false);
+            if (!KullaniciEkle)
+            {
+                return Redirect("/GirisYapKayitOl/OturumAc?Hata=Hesap Oluşturulamadı");
+            }
+
+            var KullaniciBilgileri = await BusKullanicilar.FirstOrDefaultAsync(entity);
+
+            if (KullaniciBilgileri != null)
+            {
                 var Claims = new List<Claim> { new Claim(ClaimTypes.Email, KullaniciBilgileri.EMail), new Claim(ClaimTypes.Name, KullaniciBilgileri.Ad), new Claim(ClaimTypes.Surname, KullaniciBilgileri.Soyad) };
                 var UserIdentity = new ClaimsIdentity(Claims, "Login");
                 ClaimsPrincipal Principal = new ClaimsPrincipal(UserIdentity);
                 await HttpContext.SignInAsync(Principal);
-                return RedirectToAction("Index","Home");
+                return RedirectToAction("Index", "Home");
             }
 
-            return View();
+            return RedirectToAction("OturumAc", "GirisYapKayitOl");
         }
 
     }

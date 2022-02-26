@@ -36,6 +36,7 @@
           "EPazar.Business": "1.0.0",
           "EPazar.Entity": "1.0.0",
           "System.Net.Primitives": "4.3.1",
+          "ePayment": "1.0.3699.20291",
           "Microsoft.AspNetCore.Antiforgery": "5.0.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "5.0.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "5.0.0.0",
@@ -1803,6 +1804,17 @@
         },
         "compile": {
           "EPazar.Entity.dll": {}
+        }
+      },
+      "ePayment/1.0.3699.20291": {
+        "runtime": {
+          "ePayment.dll": {
+            "assemblyVersion": "1.0.3699.20291",
+            "fileVersion": "1.0.3699.20291"
+          }
+        },
+        "compile": {
+          "ePayment.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery/5.0.0.0": {
@@ -4490,6 +4502,11 @@
     },
     "EPazar.Entity/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ePayment/1.0.3699.20291": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     },

@@ -33,6 +33,12 @@ namespace EPazar.Business.Business
             return Result;
         }
 
+        public async Task<Kullanicilar> FirstOrDefaultEmailAsync(Kullanicilar entity)
+        {
+            var Result = await Query.GetAll().Where(x => x.EMail == entity.EMail ).FirstOrDefaultAsync();
+            return Result;
+        }
+
         public Task<List<Kullanicilar>> GetAllAsync()
         {
             throw new NotImplementedException();
@@ -40,6 +46,7 @@ namespace EPazar.Business.Business
 
         public async Task<bool> InsertAsync(Kullanicilar entity, bool setIdentity)
         {
+            entity.Id = 0;
             var Result = await Query.InsertAsync(entity, setIdentity);
             return Result;
         }

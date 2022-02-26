@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "NO2DZFWRePkTBBC6Y8fC4SG+zeot8AcgAakwRzjruI4uRxT7ctG38sv3XTZgl5vemoEXJ7VNQWhK2Gy7eL65fA==",
+  "dgSpecHash": "oFDWwYdCWACI1zEgwF90yiZjErAdX0hUiwUMczu7zBfdVn+qnvuJdEC1HRFb0azdLV947XDHXW0FaNK7x4ci5g==",
   "success": true,
   "projectFilePath": "C:\\Users\\eaydin\\Documents\\GitHub\\EPazar\\EPazar\\EPazar\\EPazar.csproj",
   "expectedPackageFiles": [
@@ -143,7 +143,8 @@
     "C:\\Users\\eaydin\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\eaydin\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\eaydin\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\eaydin\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    "C:\\Users\\eaydin\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
+    "C:\\Users\\eaydin\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.14\\microsoft.netcore.app.host.win-x64.5.0.14.nupkg.sha512"
   ],
   "logs": []
 }

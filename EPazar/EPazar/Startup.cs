@@ -28,7 +28,7 @@ namespace EPazar
             services.AddControllersWithViews();
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
             {
-                options.LoginPath = "/GirisYapKayitOl/OturumAc?Hatali";
+                options.LoginPath = "/GirisYapKayitOl/OturumAc";
             });
         }
 

@@ -58,6 +58,10 @@ namespace EPazar.Data
             modelBuilder.Entity<UrunKategorileri> ().HasQueryFilter(x=> !x.Deleted);
             modelBuilder.Entity<Kullanicilar> ().HasQueryFilter(x=> !x.Deleted);
             modelBuilder.Entity<Sepet> ().HasQueryFilter(x=> !x.Deleted);
+            modelBuilder.Entity<Siparis> ().HasQueryFilter(x=> !x.Deleted);
+            modelBuilder.Entity<SiparisDetay> ().HasQueryFilter(x=> !x.Deleted);
+            modelBuilder.Entity<KullaniciAdresleri> ().HasQueryFilter(x=> !x.Deleted);
+
             modelBuilder.Entity<ViewSepet> ().HasKey(x=> x.UrunId);
 
 
@@ -87,5 +91,8 @@ namespace EPazar.Data
         public virtual DbSet<ViewUrunOzellikleriAciklamali> ViewUrunOzellikleriAciklamali { get; set; }
         public virtual DbSet<Sepet> Sepet { get; set; }
         public virtual DbSet<ViewSepet> ViewSepet { get; set; }
+        public virtual DbSet<Siparis> Siparis { get; set; }
+        public virtual DbSet<SiparisDetay> SiparisDetay { get; set; }
+        public virtual DbSet<KullaniciAdresleri> KullaniciAdresleri { get; set; }
     }
 }

@@ -5,7 +5,6 @@ C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Data\obj\Debug\net5.0\EPaz
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Data\obj\Debug\net5.0\EPazar.Data.csproj.CoreCompileInputs.cache
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Data\bin\Debug\net5.0\EPazar.Data.deps.json
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Data\bin\Debug\net5.0\EPazar.Data.dll
-C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Data\bin\Debug\net5.0\ref\EPazar.Data.dll
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Data\bin\Debug\net5.0\EPazar.Data.pdb
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Data\bin\Debug\net5.0\EPazar.Entity.dll
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Data\bin\Debug\net5.0\EPazar.Entity.pdb
@@ -13,3 +12,4 @@ C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Data\obj\Debug\net5.0\EPaz
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Data\obj\Debug\net5.0\EPazar.Data.dll
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Data\obj\Debug\net5.0\ref\EPazar.Data.dll
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Data\obj\Debug\net5.0\EPazar.Data.pdb
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Data\obj\Debug\net5.0\refint\EPazar.Data.dll

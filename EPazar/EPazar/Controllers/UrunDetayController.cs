@@ -67,7 +67,5 @@ namespace EPazar.Controllers
 
             return View(UrunDetay);
         }
-
-     
     }
 }

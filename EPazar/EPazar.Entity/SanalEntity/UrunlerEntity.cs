@@ -10,5 +10,6 @@ namespace EPazar.Entity.SanalEntity
     public class UrunlerEntity 
     {
         public List<Urunler> UrunListesi { get; set; }
+        public List<object> Kategori { get; set; }
     }
 }

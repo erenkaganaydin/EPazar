@@ -1,0 +1,35 @@
+﻿
+@using EPazar.Entity.SanalEntity
+
+@model IndexEntityleri
+@{
+    ViewData["Title"] = "Tarzınıza Uygun Ürünler | Bigtarz'da";
+
+    var AnasayfaBannerlari = Model.AnasayfaBannerList;
+    var AnasayfaTopBannerlari = Model.AnasayfaTopBannerList;
+    var AnasayfaSagBannerlar = Model.AnasayfaSagBannerList;
+    var AnasayfaMiniBannerlar = Model.AnasayfaMiniBannerList;
+}
+
+<div class="main-wrap">
+
+            <div class="top-banner">
+                    @await Html.PartialAsync("_KategoriListesiTopBanner",AnasayfaTopBannerlari)
+            </div>
+
+            <div class="main-banner-show">
+                <div class="banner-wrap">
+                    <div class="component-list">
+                        @await Html.PartialAsync("_AnasayfaBanner",AnasayfaBannerlari)
+                    </div>
+
+                    <div class="component-banner-list">
+                        @await Html.PartialAsync("_AnasayfaSagBanner",AnasayfaSagBannerlar)
+                    </div>
+                </div>
+            </div>
+
+            <div class="banner-min">
+                @await Html.PartialAsync("_AnasayfaMiniBanner",AnasayfaMiniBannerlar)
+            </div>
+        </div>

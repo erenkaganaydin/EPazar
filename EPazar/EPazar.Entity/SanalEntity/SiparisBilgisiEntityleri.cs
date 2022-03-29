@@ -12,5 +12,6 @@ namespace EPazar.Entity.SanalEntity
     {
         public Siparis Siparis { get; set; }
         public List<ViewSiparisDetay> ViewSiparisDetay { get; set; }
+        public List<SiparisKargoBilgisi> SiparisKargoBilgisi { get; set; }
     }
 }

@@ -21,7 +21,7 @@ namespace EPazar.APIController.Controls
 
         public async Task<HipatuAnaKategoriEsitleme> ApiPostTek(string baseUrl, HipatuAnaKategoriEsitleme Entity)
         {
-            var stringPayload = JsonConvert.SerializeObject(Entity);
+            var stringPayload = JsonConvert.SerializeObject(Entity, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
             var Content = HttpContent(stringPayload);
             var response = await ResponseAsync(baseUrl, Content);
             HttpClient = Starter();

@@ -46,6 +46,13 @@ namespace EPazar.Business.Business
             return Result;
         }
 
+        public async Task<List<AltKategoriler>> GetAllOrtaKatIdAsync(AltKategoriler entity)
+        {
+            var Result = await Query.GetAll().Where(x=> x.KategoriId == entity.KategoriId).OrderBy(x => x.Sira).ToListAsync().ConfigureAwait(true);
+
+            return Result;
+        }
+
         public Task<bool> InsertAsync(AltKategoriler entity, bool setIdentity)
         {
             throw new NotImplementedException();

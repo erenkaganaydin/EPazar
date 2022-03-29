@@ -19,6 +19,7 @@ using System.Xml;
 using APIControls.APIControlBase;
 using EPazar.APIController.Controls;
 using EPazar.Entity.SanalEntity;
+using System.Globalization;
 
 namespace XMLOkuyucu
 {
@@ -47,6 +48,7 @@ namespace XMLOkuyucu
             HipatuAnaKategoriEsitleme = new HipatuAnaKategoriEsitleme();
             ConHipatuAnaKategoriEsitleme = new ConHipatuAnaKategoriEsitleme();
             Urun = new Urun();
+            Urun.TedarikciId = 1;
             Urun.Resimler = new List<string> { };
             Urun.Ozellik = new List<Ozellik> { };
 
@@ -58,7 +60,7 @@ namespace XMLOkuyucu
            
 
             //Buradaki adres kısmını istersek bir Web URL olarak da verebiliriz. Tercih tamamen sizin...
-            string xmlAddress = "https://pamukcucicekcilik.xmlbankasi.com/image/data/xml/hipatu.xml";
+            string xmlAddress = "https://cdn1.xmlbankasi.com/p1/pamukcucicekcilik/image/data/xml/hipatu.xml";
 
             //Xml tanımlama işlemimizi yapıyoruz. Bundan sonra tüm işimiz XmlTextReader ile olacak...
             XmlTextReader XMLDosyam = new XmlTextReader(xmlAddress);
@@ -72,6 +74,7 @@ namespace XMLOkuyucu
                     {
                         OzellikOkuyor = true;
                         Ozellik = new Ozellik();
+
                         Urun.Ozellik = new List<Ozellik>();
                     }
                     //Node Element'imizin adını kontrol ediyoruz. (Örn: &amp;lt;author&amp;gt; için "author" kullanıyoruz...)
@@ -94,7 +97,7 @@ namespace XMLOkuyucu
                             case "Name":
                                 XMLDosyam.Read();
                                 Urun.Adi = XMLDosyam.Value;
-                                if (Urun.Adi == "Brad Jeans")
+                                if (Urun.Adi == "Hipatu Openet Skınny Likralı Taşlanmış Kot Pantolon - Buz Mavi")
                                 {
                                     var dur="da";
                                 }
@@ -186,15 +189,18 @@ namespace XMLOkuyucu
                         switch (XMLDosyam.Name)
                         {
                             case "spec":
-                                if(XMLDosyam.GetAttribute("name").ToUpper() == "RENK")
+                                if(XMLDosyam.GetAttribute("name")== "RENK")
                                 {
+                                    TextInfo formatter = new CultureInfo("en-US", false).TextInfo;
                                     XMLDosyam.Read();
-                                    Ozellik.TedarikciOzellikRengi = XMLDosyam.Value;
+                                    Ozellik.TedarikciOzellikRengi = formatter.ToTitleCase(formatter.ToLower(XMLDosyam.Value.Trim()));
                                 }
-                                else { 
-                                    Ozellik.TedarikciOzellikTuru = XMLDosyam.GetAttribute("name");
+                                else {
+                                    TextInfo formatter = new CultureInfo("en-US", false).TextInfo;
+
+                                    Ozellik.TedarikciOzellikTuru = XMLDosyam.GetAttribute("name").ToUpper();
                                     XMLDosyam.Read();
-                                    Ozellik.TedarikciOzellikAdi = XMLDosyam.Value.Replace('/', '-').ToUpper();
+                                    Ozellik.TedarikciOzellikAdi = formatter.ToTitleCase(formatter.ToLower(XMLDosyam.Value.Trim().Replace('/', '-')));
                                 }
                                 break;
 
@@ -243,13 +249,17 @@ namespace XMLOkuyucu
                             UrunList.Add(Urun);
 
                             Urun = new Urun();
+                            Urun.TedarikciId = 1;
                             Urun.Resimler = new List<string> { };
 
                             break;
 
-                        case "variants":
+                        case "variant":
                             Urun.Ozellik.Add(Ozellik);
-                            OzellikOkuyor = false;                                                                  
+                            Ozellik = new Ozellik();
+                            break;
+                        case "variants":
+                            OzellikOkuyor = false;
                             break;
                         default:
                             break;
@@ -280,12 +290,14 @@ namespace XMLOkuyucu
 
         private async void OnYollaClick(object sender, RoutedEventArgs e)
         {
+            buttonYolla.IsEnabled = false;
             var response = await ConUrun.ApiPostList(ConApiUrl.UrlUrunleriGuncelle, UrunList);
 
             if (response != null)
             {
                 _  = MessageBox.Show("İşlem Tamam","Güncelleme Bitti");
             }
+            buttonYolla.IsEnabled = true;
         }
 
         private async void OnAnaKategoriKarsiligiEkleAsync(object sender, RoutedEventArgs e)

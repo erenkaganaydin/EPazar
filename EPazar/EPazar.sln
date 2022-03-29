@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.0.31912.275
+VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EPazar", "EPazar\EPazar.csproj", "{E962B6B2-1645-40F9-A57F-74C87D3F09E6}"
 EndProject
@@ -22,6 +22,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EPazarAPI", "EPazarAPI\EPazarAPI.csproj", "{F4E86B3D-DE00-43B5-AF27-5E4D5A9E76D6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EPazar.APIController", "EPazar.APIController\EPazar.APIController.csproj", "{38AD5D41-5708-4223-8900-075E5E1CE712}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bigtarz", "Deneme\Bigtarz.csproj", "{F2458D54-B43B-469D-942D-D2D5010AC70F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPazar.Mobil", "EPazar.Mobil\EPazar.Mobil.csproj", "{A93CFC5B-CC1F-4A1A-83E1-CBC2057E587A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +73,14 @@ Global
 		{38AD5D41-5708-4223-8900-075E5E1CE712}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38AD5D41-5708-4223-8900-075E5E1CE712}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38AD5D41-5708-4223-8900-075E5E1CE712}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2458D54-B43B-469D-942D-D2D5010AC70F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2458D54-B43B-469D-942D-D2D5010AC70F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2458D54-B43B-469D-942D-D2D5010AC70F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2458D54-B43B-469D-942D-D2D5010AC70F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A93CFC5B-CC1F-4A1A-83E1-CBC2057E587A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A93CFC5B-CC1F-4A1A-83E1-CBC2057E587A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A93CFC5B-CC1F-4A1A-83E1-CBC2057E587A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A93CFC5B-CC1F-4A1A-83E1-CBC2057E587A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -38,9 +38,11 @@ namespace EPazar.Business.Business
             return Result;
         }
 
+      
+
         public async Task<List<string>> UrunOzellikAdlari()
         {
-            var Result = await Query.GetAll().Where(x=> x.OzellikTurId == 2 || x.OzellikTurId ==3 ).GroupBy(x=>x.OzellikAdi).Select(x=> x.Key).ToListAsync();
+            var Result = await Query.GetAll().Where(x=> x.OzellikTurId == 1 || x.OzellikTurId == 2 || x.OzellikTurId ==3 ).GroupBy(x=>x.OzellikAdi).Select(x=> x.Key).ToListAsync();
 
             return Result;
         }

@@ -1,0 +1,68 @@
+﻿<!doctype html>
+<html lang="tr">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="~/css/index.css?Id=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>@ViewData["Title"]</title>
+    <meta name="description" content="@ViewData["MetaDesc"]">
+</head>
+<body>
+<!--#region container-->
+<div class="container">
+    <!--#region TopHeader-->
+    <div class="top-header">
+        <ul>
+            <li><a class="nodecor" href="#">Hakkımızda</a></li>
+            <li><a class="nodecor" href="#">Kampanyalar</a></li>
+        </ul>
+    </div>
+    <!--#region TopHeader-->
+    <div class="sticky-header">
+        <div class="wrapper">
+            <div class="header">
+                <div class="header-logo">
+                    <a href="~/"><img class="logo-img" src="~/img/Bigtarz.png" alt="Bigtarz Logo"></a>
+                </div>
+                <div class="Arama">
+                    <form method="get" action="/Urunler/Liste/?Tumu=1&">
+                            @{
+                                string Aranan = "";
+                                var Arama = Context.Request.Query["Arama"];
+                                if (Arama.Count > 0)
+                                    Aranan = Arama.First();
+                            }
+                        <div class="search-box-container"><input name="Arama" class="search-box" type="text" tabindex="1" placeholder="Kategori, ürün veya markayı yazınız" maxlength="50" autocomplete="off" value="@Aranan"><i class="search-icon"></i></div>
+                    </form>
+                </div>
+                <div class="header-top-navigator">
+                    <div class="header-top-navigator-block">
+                        <div class="top-navigator-wrap">
+                            <div class="top-navigator-item user-nav"> <a style="display:flex;" class="nodecor" href="~/Hesabim">   <i class="far fa-user"></i></i><div>Hesabım</div> </a> </div>
+                            <div class="top-navigator-item"><a class="nodecor" href="~/Sepet"><i class="fas fa-shopping-basket"></i>Sepetim</a></div>
+                            <div class="top-navigator-item"><a class="nodecor" href="~/Hesabim/Favorilerim"><i class="far fa-heart"></i>Favoriler</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @await Component.InvokeAsync("DesktopNavbar")
+
+    <div class="body-main">
+            @RenderBody()
+       </div>
+</div>
+
+<div class="yukari-cik">
+    <i class="fas fa-arrow-up"></i><span>Yukarı Çık</span>
+</div>
+
+ @await Html.PartialAsync("_DesktopFooter")
+
+ </body>
+</html>

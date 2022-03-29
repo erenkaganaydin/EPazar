@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +26,9 @@ namespace EPazar.Entity.XMLEntity
         public string Marka { get; set; }
         public List<string> Resimler { get; set; }
         public string Aciklama { get; set; }
+
+        [NotMapped]
+        public int TedarikciId { get; set; }
 
         public List<Ozellik> Ozellik { get; set; }
 

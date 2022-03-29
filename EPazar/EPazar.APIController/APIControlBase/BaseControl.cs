@@ -29,6 +29,7 @@ namespace EPazar.APIControls.APIControlBase
             HttpClientHandler handler = new HttpClientHandler();
             handler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
             HttpClient = new HttpClient(handler);
+            HttpClient.Timeout = TimeSpan.FromMinutes(20);
 
             return HttpClient;
         }

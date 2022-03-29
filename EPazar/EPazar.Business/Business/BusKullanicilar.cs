@@ -61,9 +61,10 @@ namespace EPazar.Business.Business
             throw new NotImplementedException();
         }
 
-        public Task<bool> UpdateAsync(Kullanicilar entity)
+        public async Task<bool> UpdateAsync(Kullanicilar entity)
         {
-            throw new NotImplementedException();
+            var Result = await Query.UpdateAsync(entity);
+            return Result;
         }
     }
 }

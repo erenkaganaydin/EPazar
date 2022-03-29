@@ -1,0 +1,46 @@
+﻿@using EPazar.Entity.SanalEntity
+
+@model UrunComponent
+@{
+    var Urun = Model.Urun;
+    var UrunResimleri = Model.UrunResimleri;
+}
+                        <div class="urun-detay">
+                            <div class="urun-child">
+                                <a href="#">
+                            <div class="urun-detay-img">
+                                <div class="image-overlay">
+                                    <div class="image-overlay-header">
+                                        <div class="overlay-kargo-durum">
+                                            <div class="kargo-durum-metin">KARGO BEDAVA</div>
+                                        </div>
+                                        <div class="overlay-favori-ekle">
+                                            <i class="far fa-heart overlay-favori-ekle-metin"></i>
+                                        </div>
+                                    </div>
+                                    <div class="image-overlay-body"></div>
+                                    <div class="image-overlay-footer"></div>
+                                </div>
+                              
+                                        <div>
+                                            <img class="urun-detay-resim" src="@UrunResimleri.ResimLink" alt="@Urun.Adi">
+                                        </div>
+
+                                    </div>
+                                    <div class="urun-detay-aciklama">
+                                        <div class="urun-detay-aciklama-baslik">
+                                            <span class="urun-detay-aciklama-baslik-span">Marka</span>
+                                            <span class="urun-detay-aciklama-baslik-span-acikalama">
+                                                @Urun.Adi
+                                            </span>
+                                        </div>
+                                        <div class="urun-detay-fiyat">
+                                            <div class="fiyat-wrap">
+                                                <div class="fiyat-old">@Urun.EskiFiyat</div>
+                                                <div class="fiyat-gecerli">@Urun.Fiyat</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>

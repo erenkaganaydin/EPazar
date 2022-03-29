@@ -1,0 +1,102 @@
+﻿@using EPazar.Entity.Entity
+
+@model List<Favoriler>
+
+    <link rel="stylesheet" href="~/css/Favoriler.css">
+    
+    <div class="alc-hesap-container">
+                <div class="l-sol-hesabim-nav">
+                    <div class="block">
+                        <div class="alc-hesap-yerlesim-container block">
+                            <div class="lw-yerlesim-wrap">
+
+                                <h2>Hesabım</h2>
+                                <a class="text-decore-x yerlesim-item " href="/Hesabim/Siparislerim">
+                                    <i class="fa fa-box item-i"></i>
+                                    <span>Siparişlerim</span>
+                                </a>
+                                <a class="text-decore-x yerlesim-item " href="/Hesabim/HesapBilgileri">
+                                    <i class="fa fa-user item-i"></i>
+                                    <span>Hesap Bilgileri</span>
+                                </a>
+
+                                <a class="text-decore-x yerlesim-item yerlesim-aktif" href="/Hesabim/Favorilerim">
+                                    <i class="fa fa-heart item-i"></i>
+                                    <span>Favorilerim</span>
+                                </a>
+                                  <a class="text-decore-x yerlesim-item " href="/Hesabim/CikisYap">
+                                    <i class="fa fa-sign-out item-i"></i>
+                                    <span>Çıkış Yap</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="r-sag-div">
+
+                    <div class="block">
+
+                        <div class="oc-block">
+
+                            <div class="hb-header">
+                                <h1> <i class="fa fa-heart item-i"></i> Favoriler</h1>
+                            </div>
+
+                            <div class="block" style="width: 100%;">
+                                <script>
+                                    function FavoriKaldir(UrunId){
+                                        window.location.href='/Hesabim/Favorilerim/FavoriKaldir/'+UrunId;
+                                    }
+                                    function UruneGit(UrunId){
+                                        window.location.href='/UrunDetay/'+UrunId;
+                                    }
+                                    //
+                                </script>
+                                <div class="favori-block-wrap">
+                                    @foreach(var item in Model){
+                                         <div class="onerilen-urun-kart-wrap">
+                                        <a href="/UrunDetay/@item.UrunId"  class="onerilen-urun-item">
+                                            <div class="img-wrap">
+                                                <img class="o-item-img" src="@item.ResimLink" alt="@item.Urunler.Adi">
+                                            </div>
+                                            <div>
+                                                <div class="o-shipp-wrap">
+                                                    <div class="o-kargo-bedava">KARGO BEDAVA</div>
+                                                </div>
+
+                                               
+                                            </div>
+                                            <div class="o-urun-desc-center-wrap">
+                                                <div class="o-urun-desc-center">
+                                                    <div class="o-urun-desc-title">
+                                                        <span class="o-urun-desc-marka"></span>
+                                                        <span class="o-urun-desc-aciklama"> @item.Urunler.Adi</span>
+                                                    </div>
+                                                </div>
+                                                <div class="o-urun-fiyat">
+                                                    <div class="prd-bx">
+                                                        <div class="prd-bx-na">
+                                                            <div class="urun-box-eski">@item.Urunler.EskiFiyat ₺ </div>
+                                                            <div class="urun-box-yeni-f">@item.Urunler.Fiyat ₺</div>
+                                                        </div>
+                                                         
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <div onclick="FavoriKaldir(@item.UrunId)" class="o-del-wrap">
+                                            <div class="o-del"> <i style="margin-left: 9px;" class="fa-regular fa-trash-can"></i> </div>
+                                         </div>
+                                    </div>
+                                    }
+                                   
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>

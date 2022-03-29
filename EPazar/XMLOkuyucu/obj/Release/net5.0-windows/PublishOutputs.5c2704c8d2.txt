@@ -1,0 +1,10 @@
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\XMLOkuyucu\bin\Release\net5.0-windows\s\XMLOkuyucu.exe
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\XMLOkuyucu\bin\Release\net5.0-windows\s\XMLOkuyucu.dll
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\XMLOkuyucu\bin\Release\net5.0-windows\s\XMLOkuyucu.deps.json
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\XMLOkuyucu\bin\Release\net5.0-windows\s\XMLOkuyucu.runtimeconfig.json
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\XMLOkuyucu\bin\Release\net5.0-windows\s\XMLOkuyucu.pdb
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\XMLOkuyucu\bin\Release\net5.0-windows\s\Newtonsoft.Json.dll
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\XMLOkuyucu\bin\Release\net5.0-windows\s\EPazar.APIController.dll
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\XMLOkuyucu\bin\Release\net5.0-windows\s\EPazar.Entity.dll
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\XMLOkuyucu\bin\Release\net5.0-windows\s\EPazar.APIController.pdb
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\XMLOkuyucu\bin\Release\net5.0-windows\s\EPazar.Entity.pdb

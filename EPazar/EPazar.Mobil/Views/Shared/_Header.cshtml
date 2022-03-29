@@ -1,0 +1,58 @@
+﻿
+<!--#region container-->
+
+
+<nav class="w3-sidenav w3-white w3-animate-left" style="display:none;">
+    <div class="sidenav-logo">
+        <a href="/Home">
+            <img class="sidenav-logo-img" src="https://www.bigtarz.com/img/Bigtarz.png" alt="Bigtarz Logo">
+        </a>
+    </div>
+    <div class="sidenav-list">
+        <a href="#">
+            <i class="fa fa-person-dress"></i>
+          KADIN
+        </a>
+        <a href="#">
+            <i class="fa fa-person-dress"></i>
+          ERKEK
+        </a>
+        <a href="#">
+            <i class="fa fa-person-dress"></i>
+            ÇOCUK
+        </a>
+        <a href="#">
+            <i class="fa fa-person-dress"></i>
+            EV
+        </a>
+        <a href="#">
+            <i class="fa fa-person-dress"></i>
+            YAŞAM
+        </a>
+
+    </div>
+    <hr>
+</nav>
+
+
+
+<div class="w3-overlay w3-animate-opacity" onclick="w3_close()" style="cursor:pointer"></div>
+
+<div class="w3-container">
+    <span class="w3-opennav w3-xxlarge" onclick="w3_open()">&#9776;</span>
+
+    <span><a href="mobilindex.html"><img class="logo-img" src="https://www.bigtarz.com/img/Bigtarz.png" alt="Bigtarz Logo"></a></span>
+
+    <span class="kullanici"><a href="/Hesabim"><i class="far fa-user fa-2x"></i></a></span>
+    <span class="favori"><a href="/Hesabim/Favorilerim"><i class="fa-regular fa-heart fa-2x"></i></a></span>
+    <span class="sepet"><a href="/Sepet"><i class="fa fa-light fa-cart-shopping fa-2x"></i></span>
+    <div class="Arama">
+
+        <div class="search-box-container">
+            <input class="search-box" type="text" tabindex="1" placeholder="Kategori, ürün veya markayı yazınız" maxlength="50" autocomplete="off" value="">
+        </div>
+    </div>
+
+
+</div>
+@await Component.InvokeAsync("DesktopNavbar")

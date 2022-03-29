@@ -1,0 +1,204 @@
+﻿
+@{
+    Layout = null;
+}
+
+@using EPazar.Entity.SanalEntity
+
+@model OdemeEntityleri
+@{
+    var ViewSepet = Model.ViewSepet;
+    var Siparis = Model.Siparis;
+    var KullaniciAdresleri = Model.KullaniciAdresleri;
+    var SeciliKullaniciAdresi = Model.SeciliKullaniciAdresi;
+}
+
+<!doctype html>
+<html lang="tr">
+<head>
+
+
+    <link rel="stylesheet" href="~/css/OdemeAdres.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js" integrity="sha512-yFjZbTYRCJodnuyGlsKamNE/LlEaEAxSUDe5+u61mV8zzqJVFOH7TnULE2/PP/l5vKWpUNnF4VGVkXh3MjgLsg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    </head>
+<body>
+@{
+    var Hata = Context.Request.Query["Hata"];
+    if(Hata.Count>0)
+    {
+        var Mesaj = Hata.First();
+        <script>
+            alert("@(Html.Raw(@Mesaj))");
+        </script>
+    }
+}
+
+<!--#region container-->
+<div class="container">
+
+    <div class="body-main">
+        <div class="main-wrap">
+
+            <main class="payment">
+                        <div class="header-pay">
+                            <a class="sepet-href" href="/Sepet">
+                                <img class="logo-img"  src="~/img/BigtarzLogo.svg" alt="Bigtarz Logo">
+                            </a>
+                            <div class="p-header-guven">
+                                <i class="fa-brands fa-expeditedssl i-ssl"></i>
+                                <span class="ssl-text">SSL secured |</span>
+                                <span> Güvenle öde, güvenle al.</span>
+                            </div>
+
+                        </div>
+                        <div class="p-main">
+                            <div class="p-cont">
+                                <div class="p-nav">
+                                    <section class="p-nav-sect">
+                                        <div class="p-adres-secili">
+                                            <p class="p-adres-secili-title">Adres Bilgisi</p>
+                                            <div class="secili-kargo-bilgileri">
+                                                    @{
+                                                        var Adres = "";
+                                                        var AdresBasligi = "";
+                                                        if(SeciliKullaniciAdresi != null){
+                                                            Adres= SeciliKullaniciAdresi.Adres;
+                                                            AdresBasligi = SeciliKullaniciAdresi.AdresBasligi;
+                                                        }
+                                                    }
+                                                <p class="secili-kargo-adi">@AdresBasligi</p>
+                                          
+                                                <p>@Adres</p>
+                                            </div>
+                                        </div>
+                                        <div class="p-ayrac"></div>
+                                        <div class="p-odeme-sekme">
+                                            <p class="p-odeme-title">Ödeme Seçimi</p>
+                                            <p class="odeme-seicmleri-aciklama">Ödemelerinizi Tüm Kartlarla yapabilirsiniz. Akbank kartlarınızda 12'taksite kadar taksitlendirebilirsiniz...</p>
+                                        </div>
+                                    </section>
+                                    <div class="secili-nav"></div>
+                                </div>
+                                <div class="p-lay-tab-conte">
+                                    <div class="p-layout-wrap">
+                                        <div class="p-adreses">
+                                            <div class="p-ship-adres">
+                                                <p class="p-adres-title">Teslimat Adresi</p>
+                                                <div onclick="Git('/Hesabim/AdresEkle?ReturnUrl=/Odeme')"  class="p-add-adress-box">
+                                                    <i class="fa-solid fa-plus p-i"></i>
+                                                    <span>Yeni Adres</span>
+                                                </div>
+
+                                                <script>
+                                                    function Git(link){
+                                                         window.location.href = link;
+                                                    }
+                                                    function AdresGuncelle(Adres){
+                                                        window.location.href = "/Odeme/AdresGuncelle/"+Adres;
+                                                    }
+                                                </script>
+
+                                                @foreach(var adres in KullaniciAdresleri)
+                                                {
+                                                    var Secili = "";
+                                                    var SeciliBool = false;
+                                                    if(adres.Id == Siparis.AdresId){
+                                                        Secili = "secili-adres";
+                                                        SeciliBool = true;
+                                                    }
+
+                                                <div onclick="AdresGuncelle(@adres.Id)"  class="p-adres-box-v">
+                                                    <div class="p-abv-header">
+                                                        <div class="p-abv-radio-button">
+                                                           <input checked="@SeciliBool" type="radio" style="margin-right:3px;"> <span>@adres.AdresBasligi </span>      
+                                                        </div>
+                                                        <a style="z-index:99;" href="/AdresBilgileri"><span>Düzenle</span></a>
+                                                    </div>
+                                                    <div class="p-ab-v-2 @Secili">
+                                                        <div class="p-ab-v-2-header">
+                                                            <div class="p-ab-v-header-class">
+                                                                <i class="fas fa-user c-o"></i>
+                                                                <span>@adres.Ad @adres.Soyad</span>
+                                                            </div>
+                                                            <div class=p-ab-header-tel>
+                                                                <i class="fa-solid fa-phone c-o"></i>
+                                                                <span>@adres.Telefon</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="p-ab-v-2-adres">
+                                                            <p>@adres.Sehir / @adres.Ilce</p>
+                                                            <p>@adres.Adres</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                }
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                              @{
+                                        var TedarikciList = ViewSepet.GroupBy(x=>x.TedarikciAdi).Select(x=> x.Key);
+                                    }
+                                 <aside class="sepet-yapiskan" >
+                                <div class="sepet-navigation">
+                                    <div class="sepet-siparis-ozet">
+                                        <h1>Sepet Bilgileri</h1>
+                                        <ul class="sepet-bilgileri-ozet-tutar">
+                                            <li><span>Ürün Toplamı</span> <strong>@Math.Round(@ViewSepet.Sum(x=> x.Fiyat), 2)₺</strong></li>
+                                            @{
+                                                var ToplamKargo = TedarikciList.Count()*14.99;
+                                            }
+                                            <li><span>Kargo Toplamı(@TedarikciList.Count())</span> <strong>@ToplamKargo₺</strong></li>
+                                            @foreach (var item in TedarikciList)
+                                            {
+                                                var TedarikciUrunleri = ViewSepet.Where(x => x.TedarikciAdi == item).ToList();
+                                                var FiyatToplam = TedarikciUrunleri.Sum(x=> x.Fiyat);
+                                                if(FiyatToplam >=60)
+                                                {
+                                                    <li>
+                                                        <div title="60₺ üzeri kargo indirimi"><span>60₺ üzeri kargo indirimi</span></div> <strong class="kampanya-strong">14.99₺</strong>
+                                                    </li>
+                                                }
+                                            }
+                                    
+                                        </ul>
+                                    <hr />
+                          
+                                    <div class="sepet-toplam">
+                                        @{
+                                           var Toplam= @ViewSepet.Sum(x=> x.Fiyat);
+                                            foreach (var item in TedarikciList)
+                                            {
+                                                var TedarikciUrunleri = ViewSepet.Where(x => x.TedarikciAdi == item).ToList();
+                                                var FiyatToplam = TedarikciUrunleri.Sum(x=> x.Fiyat);
+                                                if(FiyatToplam >=60)
+                                                {
+                                           
+                                                }
+                                                else{
+                                                    Toplam += 14.99;
+                                                }
+                                            }
+                                        }
+                                        @Math.Round(Toplam, 2)₺
+                                    </div>
+                                    </div>
+                                    <div class="sepet-onayla">
+                                        <a href="~/Odeme/OdemeBilgileri" class="sepet-onayla-href">
+                                            <i class="fas fa-lock sepet-i-rm" aria-hidden="true"></i><span>Ödeme Bilgilerini Gir</span><i class="fas fa-check-circle sepet-i"></i></a>
+                                    </div>
+                                </div>
+                            </aside>
+                        </div>
+            </main>
+
+        </div>
+    </div>
+</div>
+ @await Html.PartialAsync("_DesktopFooter")
+
+
+ </body>
+</html>

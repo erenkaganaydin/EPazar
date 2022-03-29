@@ -11,6 +11,6 @@ namespace EPazar.Entity.Entity
         public int Id { get; set; }
         public string Ad { get; set; }
 
-        public Siparis Siparis { get; set; }
+        public ICollection<Siparis> Siparis { get; set; }
     }
 }

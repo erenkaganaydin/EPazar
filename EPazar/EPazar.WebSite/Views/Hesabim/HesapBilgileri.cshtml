@@ -1,0 +1,151 @@
+﻿@using EPazar.Entity.Entity
+
+@model Kullanicilar
+@{
+    var Cinisyetler = new List<string>(){ "Belirtmek İstemiyorum" ,"Kadın","Erkek"};
+}
+    <link rel="stylesheet" href="~/css/KullaniciBilgileri.css">
+
+    <div class="alc-hesap-container">
+                <div class="l-sol-hesabim-nav">
+                    <div class="block">
+                        <div class="alc-hesap-yerlesim-container block">
+                            <div class="lw-yerlesim-wrap">
+
+                                <h2>Hesabım</h2>
+                                <a class="text-decore-x yerlesim-item " href="/Hesabim/Siparislerim">
+                                    <i class="fa fa-box item-i"></i>
+                                    <span>Siparişlerim</span>
+                                </a>
+                                <a class="text-decore-x yerlesim-item yerlesim-aktif" href="/Hesabim/HesapBilgileri">
+                                    <i class="fa fa-user item-i"></i>
+                                    <span>Hesap Bilgileri</span>
+                                </a>
+
+                                 <a class="text-decore-x yerlesim-item " href="/Hesabim/Favorilerim">
+                                    <i class="fa fa-heart item-i"></i>
+                                    <span>Favorilerim</span>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="r-sag-div">
+
+                    <div class="block">
+
+                        <div class="oc-block">
+
+                            <div class="hb-header">
+                                <h1> <i class="fa fa-user item-i"></i> Bilgileriniz</h1>
+                            </div>
+
+                            <div class="block" style="width: 100%;">
+
+                               <div class="fs-form-secim">
+                                   <div class="block" style="width: 100%;">
+                                    <h1 class="tttcotfgfwb-form-header">
+                                        Hesap Bilgileriniz
+                                    </h1>
+                                    <form class="tfuif-form-kullanici-bilgileri" action="#" method="post">
+                                        <div class="tdftfrf">
+                                            <div class="tdf-flex">
+                                                <div class="tdftcb-grup-grup">
+                                                    <label >Ad</label>
+                                                    <input name="Ad" value="@Model.Ad" class="tbbty-input" type="text">
+                                                </div>
+                                                <div class="tdftcb-grup-grup">
+                                                    <label >Soyad</label>
+                                                    <input name="Soyad" class="tbbty-input" type="text" value="@Model.Soyad">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tdftfrf">
+                                            <div class="tdf-flex">
+                                                <div class="tdftcb-grup-grup wid100">
+                                                    <label >E-Mail</label>
+                                                    <input name="EMail" class="tbbty-input" type="text" value="@Model.EMail">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tdftfrf">
+                                            <div class="tdf-flex">
+                                                <div class="tdftcb-grup-grup">
+                                                    <label >Cep Telefonu</label>
+                                                    <input name="Telefon" class="tbbty-input" type="text" value="@Model.Telefon">
+                                                </div>
+                                                <div class="tdftcb-grup-grup">
+                                                    <label >Cinsiyetiniz</label>
+                                                    <select name="Cinsiyet" id="Cinsiyet" class="tbbty-input" >
+                                                        <option disabled>Cinsiyet</option>
+
+                                                        @foreach(var item in Cinisyetler){
+                                                            if(item == Model.Cinsiyet){
+                                                                <option selected value="@item" >@item</option>
+                                                            }
+                                                            <option selected value="@item" >@item</option>
+
+                                                        }
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tdftfrf wid100">
+                                            <div class="tdf-flex">
+                                                <div class="tdftcb-grup-grup wid30">
+                                                    <label >Doğum Gününüz</label>
+                                                    <select  name="DogumGunu" id="gun" class="tbbty-input" >
+                                                        @for(int i = 0 ; i<= 30 ; i++){
+                                                            if(i == Model.DogumGunu){
+                                                                <option selected value="@i" >@i</option>
+                                                            }
+                                                            <option value="@i" >@i</option>
+                                                        }
+                                                    </select>
+                                                </div>
+                                                <div class="tdftcb-grup-grup wid30">
+                                                    <label >Doğum Ayınız</label>
+                                                    <select  name="DogumAyi" id="ay" class="tbbty-input" >
+                                                        @for(int i = 1 ; i<= 12 ; i++){
+                                                            if(i == Model.DogumAyi)
+                                                            {
+                                                                <option selected value="@i" >@i</option>
+                                                            }
+                                                            <option value="@i" >@i</option>
+                                                        }
+                                                    </select>
+                                                </div>
+                                                <div class="tdftcb-grup-grup wid30">
+                                                    <label>Doğum Yılınız</label>
+                                                    <select name="DogumYili" id="yil" class="tbbty-input" >
+                                                       @for(int i = 1930 ; i<= 2019 ; i++){
+                                                            if(i == Model.DogumYili)
+                                                            {   
+                                                                <option selected value="@i" >@i</option>
+                                                            }
+                                                            <option  value="@i" >@i</option>
+                                                        }
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tdftfrf">
+                                            <div class="tdf-flex">
+
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="tfwsbtb-kaydet-button">KAYDET</button>
+
+                                    </form>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>

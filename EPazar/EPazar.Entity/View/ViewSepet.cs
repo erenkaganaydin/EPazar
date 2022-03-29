@@ -11,6 +11,8 @@ namespace EPazar.Entity.View
     public class ViewSepet
     {
         public string SepetToken { get; set; }
+        [ForeignKey(nameof(Tedarikciler))]
+        public int TedarikciId { get; set; }
         public string TedarikciAdi { get; set; }
         public long UrunId { get; set; }
         public string UrunAdi { get; set; }
@@ -21,6 +23,8 @@ namespace EPazar.Entity.View
         public string? OzellikTuru { get; set; }
         public string? OzellikAdi { get; set; }
         public int Adet { get; set; }
+
+        public Tedarikciler Tedarikciler { get; set; }
 
         [NotMapped]
         public string UrunResmi { get; set; }

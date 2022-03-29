@@ -3,9 +3,11 @@ C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\XMLOkuyucu\bin\Debug\net5.0-windo
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\XMLOkuyucu\bin\Debug\net5.0-windows\XMLOkuyucu.runtimeconfig.json
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\XMLOkuyucu\bin\Debug\net5.0-windows\XMLOkuyucu.runtimeconfig.dev.json
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\XMLOkuyucu\bin\Debug\net5.0-windows\XMLOkuyucu.dll
-C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\XMLOkuyucu\bin\Debug\net5.0-windows\ref\XMLOkuyucu.dll
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\XMLOkuyucu\bin\Debug\net5.0-windows\XMLOkuyucu.pdb
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\XMLOkuyucu\bin\Debug\net5.0-windows\Newtonsoft.Json.dll
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\XMLOkuyucu\bin\Debug\net5.0-windows\EPazar.APIController.dll
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\XMLOkuyucu\bin\Debug\net5.0-windows\EPazar.Entity.dll
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\XMLOkuyucu\bin\Debug\net5.0-windows\EPazar.APIController.pdb
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\XMLOkuyucu\bin\Debug\net5.0-windows\EPazar.Entity.pdb
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\XMLOkuyucu\obj\Debug\net5.0-windows\XMLOkuyucu.csproj.AssemblyReference.cache
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\XMLOkuyucu\obj\Debug\net5.0-windows\MainWindow.g.cs
@@ -20,9 +22,9 @@ C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\XMLOkuyucu\obj\Debug\net5.0-windo
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\XMLOkuyucu\obj\Debug\net5.0-windows\XMLOkuyucu.csproj.CoreCompileInputs.cache
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\XMLOkuyucu\obj\Debug\net5.0-windows\XMLOkuyucu.csproj.CopyComplete
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\XMLOkuyucu\obj\Debug\net5.0-windows\XMLOkuyucu.dll
-C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\XMLOkuyucu\obj\Debug\net5.0-windows\ref\XMLOkuyucu.dll
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\XMLOkuyucu\obj\Debug\net5.0-windows\refint\XMLOkuyucu.dll
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\XMLOkuyucu\obj\Debug\net5.0-windows\XMLOkuyucu.pdb
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\XMLOkuyucu\obj\Debug\net5.0-windows\XMLOkuyucu.genruntimeconfig.cache
-C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\XMLOkuyucu\bin\Debug\net5.0-windows\Newtonsoft.Json.dll
-C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\XMLOkuyucu\bin\Debug\net5.0-windows\EPazar.APIController.dll
-C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\XMLOkuyucu\bin\Debug\net5.0-windows\EPazar.APIController.pdb
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\XMLOkuyucu\obj\Debug\net5.0-windows\ref\XMLOkuyucu.dll
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\XMLOkuyucu\obj\Debug\net5.0-windows\AktifBebek.g.cs
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\XMLOkuyucu\obj\Debug\net5.0-windows\AktifBebek.baml

@@ -1,6 +1,5 @@
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Control\bin\Debug\net5.0\EPazar.Control.deps.json
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Control\bin\Debug\net5.0\EPazar.Control.dll
-C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Control\bin\Debug\net5.0\ref\EPazar.Control.dll
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Control\bin\Debug\net5.0\EPazar.Control.pdb
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Control\obj\Debug\net5.0\EPazar.Control.csproj.AssemblyReference.cache
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Control\obj\Debug\net5.0\EPazar.Control.GeneratedMSBuildEditorConfig.editorconfig
@@ -10,3 +9,4 @@ C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Control\obj\Debug\net5.0\E
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Control\obj\Debug\net5.0\EPazar.Control.dll
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Control\obj\Debug\net5.0\ref\EPazar.Control.dll
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Control\obj\Debug\net5.0\EPazar.Control.pdb
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Control\obj\Debug\net5.0\refint\EPazar.Control.dll

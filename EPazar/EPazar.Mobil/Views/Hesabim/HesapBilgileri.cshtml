@@ -1,0 +1,110 @@
+﻿@using EPazar.Entity.Entity
+
+@model Kullanicilar
+@{
+    var Cinisyetler = new List<string>(){ "Belirtmek İstemiyorum" ,"Kadın","Erkek"};
+}
+    <link rel="stylesheet" href="~/css/mobilkullanicibilgileri.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+<div class="container-fluid filtreler-container">
+    <div class="row-title row">
+        <div class="col-2">
+
+        </div>
+        <div class="col-8">Kullanıcı Bilgileri</div>
+
+    </div>
+</div>
+<div class="orders">
+    <form  action="#" method="post">
+        <div class="row adresEkle">
+
+            <div class="col-6 bigrow">
+                <p class="formKucukBaslik">Ad</p>
+                <input class="input-st" value="@Model.Ad" type="text" name="Ad">
+
+            </div>
+            <div class="col-6 bigrow">
+                <p class="formKucukBaslik">Soyad</p>
+                <input class="input-st" value="@Model.Soyad" type="text" name="Soyad">
+            </div>
+            <div class="col-12 bigrow">
+                <p class="formKucukBaslik">E-Posta Adresi</p>
+                <input class="input-st" readonly type="email" value="@Model.EMail" name="EMail">
+            </div>
+            <div class="col-12 bigrow">
+                <p class="formKucukBaslik">Cep Telefonu</p>
+                <input class="input-st" id="phone-input" type="tel" value="@Model.Telefon" name="Telefon"
+                       aria-label="Telefon numaranızı girin" placeholder="örn. 0(500)-000-0000">
+            </div>
+            <div class="col-4 bigrow">
+                <p class="formKucukBaslik">Doğum Günü</p>
+                <select class="input-st" name="DogumGunu" id="iller">
+                @for(int i = 0 ; i<= 30 ; i++){
+                        if(i == Model.DogumGunu){
+                            <option selected value="@i" >@i</option>
+                        }
+                        <option value="@i" >@i</option>
+                }
+                </select>
+            </div>
+            <div class="col-4 bigrow">
+                <p class="formKucukBaslik">Ay</p>
+                <select class="input-st" name="DogumAyi" id="ilceler">
+                @for(int i = 1 ; i<= 12 ; i++){
+                    if(i == Model.DogumAyi)
+                    {
+                        <option selected value="@i" >@i</option>
+                    }
+                    <option value="@i" >@i</option>
+                }
+                </select>
+            </div>
+            <div class="col-4 bigrow">
+                <p class="formKucukBaslik">Yıl</p>
+                <select class="input-st" name="DogumYili" id="mahalleler">
+                    @for(int i = 1930 ; i<= 2019 ; i++){
+                        if(i == Model.DogumYili)
+                        {   
+                            <option selected value="@i" >@i</option>
+                        }
+                        <option  value="@i" >@i</option>
+                    }
+                </select>
+            </div>
+            <div class="col-12 bigrow">
+                <p class="formKucukBaslik">Cinsiyet</p>
+            </div>
+            <div class="col-6">
+                <select name="Cinsiyet" id="Cinsiyet"  class="input-st" >
+                    <option disabled>Cinsiyet</option>
+                    @foreach(var item in Cinisyetler){
+                        if (item == Model.Cinsiyet)
+                        {
+                            <option selected value="@item" >@item</option>
+                        }
+                        else
+                        {
+                            <option value="@item" >@item</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+        <center style="margin: 10px">
+            <button class="btn_kaydet" type="submit" style="margin-bottom: 20px"><span>Güncelle</span></button>
+            @*<i class="formKucukAciklama"><a href="#">Hesabımı Kapat</a></i>*@
+        </center>
+    </form>
+</div>
+
+<script>
+    function phoneMask() {
+        var num = $(this).val().replace(/\D/g,'');
+        $(this).val(num.substring(0,1) + '(' + num.substring(1,4) + ')' + num.substring(4,7) + '-' + num.substring(7,11));
+    }
+    $('[type="tel"]').keyup(phoneMask);
+</script>

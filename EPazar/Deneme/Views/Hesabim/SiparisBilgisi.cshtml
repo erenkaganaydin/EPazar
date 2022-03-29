@@ -1,0 +1,187 @@
+﻿@using  EPazar.Entity.SanalEntity;
+@using System.Globalization
+@model SiparisBilgisiEntityleri
+
+@{
+    var Siparisler = Model.Siparis;
+    var SiparisDetaylari = Model.ViewSiparisDetay;
+    var SiparisKargoBilgisi = Model.SiparisKargoBilgisi;
+
+    var ToplamTutar = Math.Round(SiparisDetaylari.Sum(x => x.Toplam), 2);
+}
+   
+    <link rel="stylesheet" href="~/css/SiparisDetay.css">
+
+    <div class="alc-hesap-container">
+                <div class="l-sol-hesabim-nav">
+                    <div class="block">
+                        <div class="alc-hesap-yerlesim-container block">
+                            <div class="lw-yerlesim-wrap">
+
+                                <h2>Hesabım</h2>
+                                <a class="text-decore-x yerlesim-item yerlesim-aktif" href="/Hesabim/Siparislerim">
+                                    <i class="fa fa-box item-i"></i>
+                                    <span>Siparişlerim</span>
+                                </a>
+                                <a class="text-decore-x yerlesim-item" href="/Hesabim/HesapBilgileri">
+                                    <i class="fa fa-user item-i"></i>
+                                    <span>Hesap Bilgileri</span>
+                                </a>
+                                 <a class="text-decore-x yerlesim-item " href="/Hesabim/Favorilerim">
+                                    <i class="fa fa-heart item-i"></i>
+                                    <span>Favorilerim</span>
+                                </a>
+                                  <a class="text-decore-x yerlesim-item " href="/Hesabim/CikisYap">
+                                    <i class="fa fa-sign-out item-i"></i>
+                                    <span>Çıkış Yap</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="r-sag-div">
+
+                    <div class="block">
+
+                        <div class="oc-block">
+
+                            <div class="hb-header">
+                                <h1>Sipariş Detay</h1>
+                            </div>
+
+                            <div class="block">
+                                <div class="odc-siparis-detay-icerigi">
+                                    @{
+                                        var Tedarikciler = SiparisDetaylari.GroupBy(x=> x.TedarikciAdi).Select(x=> x.Key).ToList();
+                                    }
+                                    @foreach(var tedarikci in Tedarikciler){
+                                        var TedarikciUrunleri = SiparisDetaylari.Where(x=> x.TedarikciAdi == tedarikci).ToList(); 
+                                        <div class="ods-siparis-detay-urunler">
+                                            <div class="h-siparis-detay-header">
+                                                @foreach(var item in SiparisKargoBilgisi){
+                                                        <div class="si-kargo-bilgi">
+                                                    <div class="ss-siparis-numarasi">
+                                                        <div class="siw-icon-wrap"><i class="fa fa-box"></i></div>
+                                                        <div class="si-kargo-bilgi-text">
+                                                            <span><b>Kargo No</b></span>
+                                                            <span>@item.KargoTakipKodu</span>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="sc-kargo-bilgisi">
+                                                        <span>Kargo Firması</span>
+                                                        <span>@item.KargoFirmalari.Ad</span>
+                                                    </div>
+                                                </div>
+                                                }
+                                        
+
+                                            </div>
+
+                                            <div class="scs-urun-detay-satici">
+                                                <div class=" scs-urun-detay-satici-header">
+                                                    <span class="ssst-gonderen">Gönderen :</span>
+                                                    <div class="tih-satici-adi">
+                                                        <a style="color: #4d84e2" class="text-decore-x" href="#">@tedarikci</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="ss-cont">
+                                                <div class="scsw-kargo-durum-wrap">
+                                                    <div class="scs-kargo-durumu">
+                                                        <div class="scsd-durum-detay">
+                                                            <i class="fa fa-check i-right"></i>
+                                                            <span>@Siparisler.SiparisDurum.Ad</span>
+                                                        </div>
+                                                        <div class="scsi-kargo-bilgi">
+                                                            <span>@TedarikciUrunleri.Sum(x=>x.Adet) Ürün Kargoya Verildi</span>
+                                                        </div>
+                                                        <div>
+                                                            <button class="takip-info">Kargo Durumu</button>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="scp-kargo-urunleri">
+
+                                                    @foreach(var urun in TedarikciUrunleri){
+                                                        <div class="scpb-kargo-urun-kutu">
+                                                            <div class="pbiw-urun-kutu-resim">
+                                                                <img src="@urun.ResimLink" alt="@urun.UrunAdi" class="product-box-image">
+                                                            </div>
+                                                            <div class="pbi-urun-kutu-bilgi">
+                                                                <a class="text-decore-x" href="#">
+                                                                    <p class="pn-urun-adi">
+                                                                        @urun.UrunAdi
+                                                                    </p>
+                                                                    <div class="ps-urun-toplam">
+                                                                        <span>Beden: Tek Ebat - @urun.Adet Adet</span>
+                                                                        <span class="pbip-urun-kutu-tutar">
+                                                                            @urun.Toplam
+                                                                        </span>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                  
+
+                                                  
+
+                                                   
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    }
+                                  
+
+                                    <div class="ods-siparis-toplam">
+                                        <div class="asb-adres-bilgisi">
+                                            <div style="height: 42px " class="h-siparis-detay-header">
+                                                <span>Fatura ve Teslimat Bilgisi</span>
+                                            </div>
+                                            <div class="c-icerik">
+                                                <span>@Siparisler.KullaniciAdresleri.AdSoyad</span>
+                                                <span>@Siparisler.KullaniciAdresleri.Adres </span>
+                                                <span>@Siparisler.KullaniciAdresleri.Ilce / @Siparisler.KullaniciAdresleri.Sehir</span>
+                                            </div>
+                                        </div>
+                                        <div class="asb-adres-bilgisi">
+                                            <div style="height: 42px " class="h-siparis-detay-header">
+                                                <span>Fatura ve Teslimat Bilgisi</span>
+                                            </div>
+                                            <div class="c-icerik">
+                                                <div class="pi-tutar-bilgi">
+                                                    <span class="tit">Ürün Toplamı</span>
+                                                    <span class="price-text">@ToplamTutar ₺</span>
+                                                </div>
+                                                <hr class="pih-tutar-hr">
+                                                <div class="pi-tutar-bilgi">
+                                                    <span class="tit">Kargo Toplamı</span>
+                                                    @foreach (var kargo in SiparisKargoBilgisi)
+                                                    {
+                                                        ToplamTutar+= kargo.KargoTutari;
+
+                                                       <span class="price-text">@kargo.KargoTutari ₺</span>
+                                                    }
+                                                </div>
+                                                <hr class="pih-tutar-hr">
+                                                <div class="pi-tutar-bilgi">
+                                                    <span class="tit-top"><b>Toplam</b></span>
+                                                    <span class="price-text orange">@ToplamTutar ₺</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+    </div>

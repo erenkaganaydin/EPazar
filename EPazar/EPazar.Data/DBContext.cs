@@ -62,6 +62,9 @@ namespace EPazar.Data
             modelBuilder.Entity<SiparisDetay> ().HasQueryFilter(x=> !x.Deleted);
             modelBuilder.Entity<KullaniciAdresleri> ().HasQueryFilter(x=> !x.Deleted);
             modelBuilder.Entity<SiparisKargoBilgisi> ().HasQueryFilter(x=> !x.Deleted);
+            modelBuilder.Entity<KargoFirmalari> ().HasQueryFilter(x=> !x.Deleted);
+            modelBuilder.Entity<Favoriler> ().HasQueryFilter(x=> !x.Deleted);
+            modelBuilder.Entity<Tedarikciler> ().HasQueryFilter(x=> !x.Deleted);
 
             modelBuilder.Entity<ViewSepet> ().HasKey(x=> x.UrunId);
             modelBuilder.Entity<ViewSiparisDetay> ().HasNoKey();
@@ -100,5 +103,7 @@ namespace EPazar.Data
         public virtual DbSet<ViewSiparisDetay> ViewSiparisDetay { get; set; }
         public virtual DbSet<SiparisKargoBilgisi> SiparisKargoBilgisi { get; set; }
         public virtual DbSet<ViewSiparisTedarikciToplam> ViewSiparisTedarikciToplam { get; set; }
+        public virtual DbSet<KargoFirmalari> KargoFirmalari { get; set; }
+        public virtual DbSet<Favoriler> Favoriler { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using EPazar.Entity.View;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,8 @@ namespace EPazar.Entity.Entity
     public class Urunler : BaseEntity.BaseEntity
     {
         public long Id { get; set; }
+
+        [ForeignKey(nameof(Tedarikciler))]
         public int TedarikciId { get; set; }
         public string TedarikciUrunKod { get; set; }
         public int TedarikciUrunId { get; set; }
@@ -24,5 +27,6 @@ namespace EPazar.Entity.Entity
         public ICollection<UrunResimleri>? UrunResimleri { get; set; }
         public ICollection<UrunOzellikleri>? UrunOzellikleri { get; set; }
         public ICollection<ViewUrunOzellikleriAciklamali>? ViewUrunOzellikleriAciklamali { get; set; }
+        public Tedarikciler Tedarikciler { get; set; }
     }
 }

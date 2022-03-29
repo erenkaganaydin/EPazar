@@ -35,10 +35,17 @@ namespace EPazar.Business.Business
 
         public async Task<Urunler> IdToUrun(Urunler entity)
         {
-            var Result = await Query.GetAll().Where(x => x.Id == entity.Id).Include(x => x.UrunResimleri).Include(x=> x.ViewUrunOzellikleriAciklamali).FirstOrDefaultAsync();
+            var Result = await Query.GetAll().Where(x => x.Id == entity.Id).Include(x => x.UrunResimleri).Include(x=> x.ViewUrunOzellikleriAciklamali).Include(x=> x.Tedarikciler).FirstOrDefaultAsync();
 
             return Result;
         }
+
+        public async Task<IEnumerable<long>> AdIdList(IEnumerable<long> list, string OzellikList)
+        {
+            var Result = await Query.GetAll().Where(x => x.Adi.Contains(OzellikList) && list.Contains(x.Id)).Select(x => x.Id).ToListAsync();
+            return Result;
+        }
+
         public async Task<List<Urunler>> IdToUrunlerveResimler(IEnumerable<long> list)
         {
             var Result = await Query.GetAll().Where(x=> list.Contains(x.Id)).Include(x => x.UrunResimleri).ToListAsync();
@@ -76,6 +83,11 @@ namespace EPazar.Business.Business
         public async Task<List<int>> HipatuTumUrunler()
         {
             var Result = await Query.GetAll().Where(x=> x.TedarikciId == 1).Select(x=> x.TedarikciUrunId).ToListAsync();
+            return Result;
+        }
+        public async Task<List<int>> AkitfBebekTumUrunler()
+        {
+            var Result = await Query.GetAll().Where(x=> x.TedarikciId == 3).Select(x=> x.TedarikciUrunId).ToListAsync();
             return Result;
         }
 

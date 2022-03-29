@@ -48,6 +48,12 @@ namespace EPazar.Business.Business
             return Result;
         }
 
+        public async Task<List<ViewSiparisDetay>> PredicateUyeSiparisAsync(ViewSiparisDetay entity)
+        {
+            var Result = await Query.GetAll().Where(x => x.UyeId == entity.UyeId && x.SiparisId == entity.SiparisId).ToListAsync();
+            return Result;
+        }
+
         public Task<bool> RemoveRangeAsync(ViewSiparisDetay entity)
         {
             throw new NotImplementedException();

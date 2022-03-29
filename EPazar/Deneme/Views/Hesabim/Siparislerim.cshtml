@@ -1,0 +1,102 @@
+﻿
+@using  EPazar.Entity.SanalEntity;
+@using System.Globalization
+@model HesabimEntityleri
+
+@{
+    var Siparisler = Model.Siparisler;
+    var SiparisDetaylari = Model.ViewSiparisDetay;
+}
+    <link rel="stylesheet" href="~/css/Siparislerim.css">
+
+    <div class="alc-hesap-container">
+                <div class="r-sag-div">
+
+                    <div class="block">
+
+                        <div class="oc-block">
+
+                            <div class="hb-header">
+                                <h1>Siparişlerim</h1>
+                            </div>
+
+                            <div class="block">
+                                @if(Siparisler.Count <= 0){
+                                    <div class="block o-siparis">
+                                        <div style="background-color:#ffa5006b" class="oh-siparis-baslik">
+                                            Hiç Siparişiniz Bulunmamaktadır...
+                                        </div>
+                                    </div>
+                                }      
+                                @foreach(var siparis in Siparisler){
+                                    var SiparisinDetaylari = SiparisDetaylari.Where(x=> x.SiparisId == siparis.Id).ToList();
+                                    var SiparisMagazaSayisi = SiparisinDetaylari.GroupBy(x=> x.TedarikciAdi).Select(x=> x.Key).ToList().Count();
+                                    var SiparisUrunAdet = SiparisinDetaylari.GroupBy(x => new { x.UrunId, x.Adet }).ToList().Sum(x => x.Key.Adet);
+
+                                    var day = siparis.CreateTime.Day;
+                                    var month = siparis.CreateTime.Month;
+                                    var AyAdi = CultureInfo.CreateSpecificCulture("tr-TR").DateTimeFormat.GetAbbreviatedMonthName(month);
+                                    var year = siparis.CreateTime.Year;
+                                    var hour = siparis.CreateTime.Hour;
+                                    var minute = siparis.CreateTime.Minute;
+                                    
+                                    var SonGuncellemeGunu  = siparis.UpdateTime.Day;
+                                    var SonGuncellemeAyi = CultureInfo.CreateSpecificCulture("tr-TR").DateTimeFormat.GetAbbreviatedMonthName(month);
+
+                                    <div class="block o-siparis">
+                                        <div class="oh-siparis-baslik">
+                                            <div class="ohi-siparis-baslik-bilgi">
+                                                <span class="h-b">Sipariş Tarihi</span>
+                                                <span class="h-t">@day @AyAdi @year - @hour:@minute</span>
+                                            </div>
+                                            <div class="ohi-siparis-baslik-bilgi">
+                                                <span class="h-b">Sipariş İçeriği</span>
+                                                <span class="h-t">@SiparisMagazaSayisi Mağaza, @SiparisUrunAdet Ürün</span>
+                                            </div>
+                                            <div class="ohi-siparis-baslik-bilgi">
+                                                <span class="h-b">Alıcı Bilgisi</span>
+                                                <span class="h-t">@siparis.KullaniciAdresleri.AdSoyad</span>
+                                            </div>
+                                            <div class="ohi-siparis-baslik-bilgi">
+                                                <span class="h-b">Toplam Tutar</span>
+                                                <span class="h-t">@Math.Round(siparis.ToplamTutar,2) ₺</span>
+                                            </div>
+                                            <a href="/Hesabim/SiparisBilgisi/@siparis.Id">
+                                                <button class="siparis-detay-button">Sipariş Bilgisi</button>
+                                            </a>
+                                        </div>
+                                        <div class="ol-siparis-listesi">
+                                            <div class="oi-siparis-item">
+                                                <div class="ois-siparis-durumu">
+                                                    <span class="td-durum-div">
+                                                        <i class="fa fa-check fa-sip"></i> 
+                                                        <p>Kargoya Verildi</p>
+                                                    </span>
+                                                    <span class="d-durum-text">
+                                                        <b> @SonGuncellemeGunu @SonGuncellemeAyi Tarihi itibariyle @siparis.SiparisDurum.Ad.</b>
+                                                    </span>
+                                                </div>
+                                                <div class="oii-siparis-resim">
+                                                        @foreach (var item in SiparisinDetaylari)
+                                                        {
+                                                            <a class="iw-siparis-resim-wrap" href="/UrunDetay/@item.UrunId/@item.UrunAdi">
+                                                                <img src="@item.ResimLink" alt="@item.UrunAdi">
+                                                            </a>
+                                                        }
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
+                              
+
+                            </div>
+                        </div>
+
+                    </div>
+
+        </div>
+
+    </div>

@@ -1,0 +1,10 @@
+﻿@using EPazar.Entity.Entity
+
+@model List<AnasayfaTopBanner>
+
+    @foreach(var item in Model)
+    {
+        <a class="banner" href="@item.Link">
+            <img src="@item.Image" alt="">
+        </a>
+    }

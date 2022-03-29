@@ -46,7 +46,7 @@ namespace EPazar.Business.Business
 
         public async Task<List<SiparisKargoBilgisi>> PredicateAsync(SiparisKargoBilgisi entity)
         {
-            var Result = await Query.GetAll().Where(x=> x.SiparisId == entity.SiparisId).ToListAsync();
+            var Result = await Query.GetAll().Where(x=> x.SiparisId == entity.SiparisId).Include(x=> x.KargoFirmalari).ToListAsync();
             return Result;
         }
 

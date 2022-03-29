@@ -1,0 +1,45 @@
+﻿@using System.Collections
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title>3D Hosting Ödeme Sayfası</title>
+</head>
+<body>
+    <h1>3D Ödeme Sayfası</h1>
+    
+    
+    <h3> 3D Dönen Parametreler</h3>
+    <table border="1">
+        <tr>
+            <td><b>Parametre İsmi</b></td>
+            <td><b>Parametre Değeri</b></td>
+        </tr>
+        @{
+            
+            String[] odemeparametreleri = new String[] { "AuthCode", "Response", "HostRefNum", "ProcReturnCode", "TransId", "ErrMsg" };
+            IEnumerator e = Context.Request.Form.GetEnumerator();
+            //while (e.MoveNext())
+            //{
+            //    String xkey = (String)e.Current;
+            //    String xval = Context.Request.Form.Get(xkey);
+            //    bool ok = true;
+            //    for (int i = 0; i < odemeparametreleri.Length; i++)
+            //    {
+            //        if (xkey.Equals(odemeparametreleri[i]))
+            //        {
+            //            ok = false;
+            //            break;
+            //        }
+            //    }
+            //    if(ok)
+            //        Context.Request.Write("<tr><td>" +xkey +"</td><td>"+ xval+"</td></tr>");
+            //}
+         }
+        
+        
+        </table>
+         
+</body>
+</html>

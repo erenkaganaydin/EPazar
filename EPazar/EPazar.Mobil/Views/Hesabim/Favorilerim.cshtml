@@ -1,0 +1,57 @@
+﻿@using EPazar.Entity.Entity
+
+@model List<Favoriler>
+
+    <link rel="stylesheet" href="~/css/Favoriler.css">
+    
+    <div class="alc-hesap-container">
+                <div class="r-sag-div">
+
+                    <div class="block">
+
+                        <div class="oc-block">
+
+                            <div class="block" style="width: 100%;">
+
+                                <div class="favori-block-wrap">
+                                    @foreach(var item in Model){
+                                         <div class="onerilen-urun-kart-wrap">
+                                        <a href="~/UrunDetay/@item.UrunId" class="onerilen-urun-item">
+                                            <div class="img-wrap">
+                                                <img class="o-item-img" src="@item.ResimLink" alt="@item.Urunler.Adi">
+                                            </div>
+                                            <div>
+                                                <div class="o-shipp-wrap">
+                                                    <div class="o-kargo-bedava">KARGO BEDAVA</div>
+                                                </div>
+                                            </div>
+                                            <div class="o-urun-desc-center-wrap">
+                                                <div class="o-urun-desc-center">
+                                                    <div class="o-urun-desc-title">
+                                                        <span class="o-urun-desc-marka"></span>
+                                                        <span class="o-urun-desc-aciklama"> @item.Urunler.Adi</span>
+                                                    </div>
+                                                </div>
+                                                <div class="o-urun-fiyat">
+                                                    <div class="prd-bx">
+                                                        <div class="prd-bx-na">
+                                                            <div class="urun-box-eski">@item.Urunler.EskiFiyat ₺ </div>
+                                                            <div class="urun-box-yeni-f">@item.Urunler.Fiyat ₺</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    }
+                                   
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>

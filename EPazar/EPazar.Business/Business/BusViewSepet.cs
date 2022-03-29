@@ -58,6 +58,20 @@ namespace EPazar.Business.Business
             }
         }
 
+        public async Task<List<ViewSepet>> PredicateIncludeAsync(ViewSepet entity)
+        {
+            try
+            {
+                var Result = await Query.GetAll().Where(x => x.SepetToken == entity.SepetToken).Include(x=> x.Tedarikciler).ToListAsync();
+                return Result;
+            }
+            catch (Exception ex)
+            {
+                var x = ex.Message;
+                var Result = await Query.GetAll().Where(x => x.SepetToken == entity.SepetToken).ToListAsync();
+                return Result;
+            }
+        }
         public Task<bool> RemoveRangeAsync(ViewSepet entity)
         {
             throw new NotImplementedException();

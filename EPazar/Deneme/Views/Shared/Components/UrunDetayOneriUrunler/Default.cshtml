@@ -1,0 +1,86 @@
+﻿@using EPazar.Entity.Entity
+
+@model List<Urunler>
+
+
+
+<!------------------->
+
+<div class="urun-onerileri-conainer">
+    <div class="urun-onerileri-title">
+        <h3>Öneri Ürünleri</h3>
+    </div>
+    <script src="~/js/glider.min.js"></script>
+    <link rel="stylesheet" href="~/css/glider.min.css">
+    <div class="glider-contain" style="margin: auto;text-align: center;position: relative">
+        <div class="glider" style="margin: auto;">
+    
+            
+            @foreach( var item in Model)
+            {
+                 <div class="urun-detay">
+                            <div class="urun-child">
+                                <a href="~/UrunDetay/@item.Id">
+                                    <div class="urun-detay-img">
+                                        <div class="image-overlay">
+                                            <div class="image-overlay-header">
+                                                <div class="overlay-kargo-durum">
+                                                    <div class="kargo-durum-metin">KARGO BEDAVA</div>
+                                                </div>
+                                                <div class="overlay-favori-ekle">
+                                                    <i class="far fa-heart overlay-favori-ekle-metin"></i>
+                                                </div>
+                                            </div>
+                                            <div class="image-overlay-body"></div>
+                                            <div class="image-overlay-footer"></div>
+                                        </div>
+                                        <div>
+                                            <img class="urun-detay-resim" src="@item.UrunResimleri.First().ResimLink" alt="Bigtarz-@item.Adi">
+                                        </div>
+
+                                    </div>
+                                    <div class="urun-detay-aciklama">
+                                        <div class="urun-detay-aciklama-baslik">
+                                            <span class="urun-detay-aciklama-baslik-span">Marka</span>
+                                            <span class="urun-detay-aciklama-baslik-span-acikalama">
+                                                @item.Adi
+                                            </span>
+                                        </div>
+                                        <div class="urun-detay-fiyat">
+                                            <div class="fiyat-wrap">
+                                                <div class="fiyat-old">@item.EskiFiyat₺</div>
+                                                <div class="fiyat-gecerli">@item.Fiyat₺</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+            </div>
+            }
+
+           
+       
+        </div>
+
+        <button aria-label="Previous" class="glider-prev">«</button>
+        <button aria-label="Next" class="glider-next">»</button>
+
+        <div role="tablist" class="dots"></div>
+
+    </div>
+    <script>
+                    window.addEventListener('load', function(){
+                        new Glider(document.querySelector('.glider'), {
+                            slidesToScroll: 1,
+                            slidesToShow: 'auto',
+                            dots: '.dots',
+                            arrows: {
+                                prev: '.glider-prev',
+                                next: '.glider-next'
+                            },
+                            draggable: true,
+                            slidesToScroll: 1,
+                        });
+                    });
+    </script>
+</div>

@@ -28,6 +28,7 @@ namespace EPazar.Entity.Entity
         public SiparisDurum SiparisDurum { get; set; }
         public Siparis()
         {
+			SiparisDurumId = 1;
 			OdemeDurumId = 1;
 			Id = 0;
         }

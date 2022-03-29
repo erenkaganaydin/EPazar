@@ -45,11 +45,16 @@ namespace EPazarAPI.Controllers
 
         public UrunKategorileri UrunKategorileri { get; set; }
         public BusUrunKategorileri BusUrunKategorileri { get; set; }
+
+        public Random random;
         #endregion
 
         #region Const
         public HomeController()
         {
+            random = new Random();
+
+
             HipatuAnaKategoriEsitleme = new HipatuAnaKategoriEsitleme();
             BusHipatuAnaKategoriEsitleme = new BusHipatuAnaKategoriEsitleme();
 
@@ -86,15 +91,21 @@ namespace EPazarAPI.Controllers
 
                     Urunler = new Urunler();
 
-                    Urunler.TedarikciId = 1; //Hipatu
+                    Urunler.TedarikciId = urun.TedarikciId; //Hipatu
                     Urunler.TedarikciUrunId = urun.TedarikciUrunId;
                     Urunler.TedarikciUrunKod = urun.TedarikciUrunKod;
                     Urunler.Adi = urun.Adi;
                     Urunler.KDV = urun.KDV;
                     Urunler.Stok = urun.Stok;
                     Urunler.Aciklama = urun.Aciklama;
-                    Urunler.EskiFiyat = urun.TedarikciFiyati;
-                    Urunler.Fiyat = urun.TedarikciFiyati;
+                    Urunler.TedarikciFiyat = urun.TedarikciFiyati;
+
+                    var YeniFiyat = ((urun.TedarikciFiyati * 20) / 100) + urun.TedarikciFiyati;
+                    var ArtiKargo = YeniFiyat + 14.99;
+                    var Yuzde = random.Next(40, 55);
+                    Urunler.EskiFiyat = Math.Round(((ArtiKargo * Yuzde) / 100) + ArtiKargo,2);
+                    Urunler.Fiyat = Math.Round(ArtiKargo,2);
+
 
                     var UrunVarMi = await BusUrunler.FirstOrDefaultAsync(Urunler);
                     if (UrunVarMi == null)
@@ -107,6 +118,8 @@ namespace EPazarAPI.Controllers
                         var Update = await BusUrunler.UpdateAsync(Urunler);
                     }
                     #endregion
+
+                   
 
                     #region Urun Resim İşlemleri
                     try
@@ -306,21 +319,44 @@ namespace EPazarAPI.Controllers
                 var exep = ex;
             }
 
-            var HipatuTumUrunlerId = await BusUrunler.HipatuTumUrunler();
-            var OnlardanGelen = Urun.Select(x => x.TedarikciUrunId);
-            // A listesinde olup B'de olmayanları
-            var BizdeVarOnlardaYok = HipatuTumUrunlerId.Except(OnlardanGelen).ToList(); //Çıktısı 1
-
-            foreach(var item in BizdeVarOnlardaYok)
+            if (Urunler.TedarikciId == 1)
             {
-                Urunler = new Urunler();
+                var HipatuTumUrunlerId = await BusUrunler.HipatuTumUrunler();
+                var OnlardanGelen = Urun.Select(x => x.TedarikciUrunId);
+                // A listesinde olup B'de olmayanları
+                var BizdeVarOnlardaYok = HipatuTumUrunlerId.Except(OnlardanGelen).ToList(); //Çıktısı 1
 
-                Urunler.TedarikciUrunId = item;
-                Urunler.TedarikciId = 1;
+                foreach (var item in BizdeVarOnlardaYok)
+                {
+                    Urunler = new Urunler();
 
-                var UrunSorgu = await BusUrunler.FirstOrDefaultTedarikciAsync(Urunler);
-                UrunSorgu.Stok = 0;
-                var Result = await BusUrunler.UpdateAsync(UrunSorgu); 
+                    Urunler.TedarikciUrunId = item;
+                    Urunler.TedarikciId = 1;
+
+                    var UrunSorgu = await BusUrunler.FirstOrDefaultTedarikciAsync(Urunler);
+                    UrunSorgu.Stok = 0;
+                    var Result = await BusUrunler.UpdateAsync(UrunSorgu);
+                }
+            }
+
+            else 
+            {
+                var HipatuTumUrunlerId = await BusUrunler.AkitfBebekTumUrunler();
+                var OnlardanGelen = Urun.Select(x => x.TedarikciUrunId);
+                // A listesinde olup B'de olmayanları
+                var BizdeVarOnlardaYok = HipatuTumUrunlerId.Except(OnlardanGelen).ToList(); //Çıktısı 1
+
+                foreach (var item in BizdeVarOnlardaYok)
+                {
+                    Urunler = new Urunler();
+
+                    Urunler.TedarikciUrunId = item;
+                    Urunler.TedarikciId = 3;
+
+                    var UrunSorgu = await BusUrunler.FirstOrDefaultTedarikciAsync(Urunler);
+                    UrunSorgu.Stok = 0;
+                    var Result = await BusUrunler.UpdateAsync(UrunSorgu);
+                }
             }
 
             return Ok(Urun);

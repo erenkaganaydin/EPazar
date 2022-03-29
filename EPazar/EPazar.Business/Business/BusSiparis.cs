@@ -34,11 +34,30 @@ namespace EPazar.Business.Business
             return Result;
         }
 
-        public async Task<Siparis> FirstOrDefaultUyeIdAsync(Siparis entity)
+        public async Task<Siparis> FirstOrDefaultUyeIdSiparisIdAsync(Siparis entity)
         {
-            var Result = await Query.GetAll().Where(x => x.UyeId == entity.UyeId && x.OdemeDurumId == 1).OrderByDescending(x=> x.Id).FirstOrDefaultAsync();
+            var Result = await Query.GetAll().Where(x => x.Id == entity.Id && x.UyeId == entity.UyeId && x.OdemeDurumId >= 1).Include(x => x.KullaniciAdresleri).Include(x => x.SiparisDurum).OrderByDescending(x => x.Id).FirstOrDefaultAsync();
             return Result;
         }
+
+        public async Task<Siparis> FirstOrDefaultJustUyeIdAsync(Siparis entity)
+        {
+            var Result = await Query.GetAll().Where(x => x.UyeId == entity.UyeId && x.OdemeDurumId <= 1).Include(x => x.SiparisDurum).OrderByDescending(x => x.Id).FirstOrDefaultAsync();
+            return Result;
+        }
+
+        public async Task<Siparis> FirstOrDefaultUyeIdAsync(Siparis entity)
+        {
+            var Result = await Query.GetAll().Where(x => x.UyeId == entity.UyeId && x.OdemeDurumId >= 1).Include(x=> x.KullaniciAdresleri).Include(x=> x.SiparisDurum).OrderByDescending(x=> x.Id).FirstOrDefaultAsync();
+            return Result;
+        }
+
+        public async Task<Siparis> FirstOrDefaultOdenmediUyeIdAsync(Siparis entity)
+        {
+            var Result = await Query.GetAll().Where(x => x.UyeId == entity.UyeId && x.OdemeDurumId == 1).Include(x => x.SiparisDurum).OrderByDescending(x => x.Id).FirstOrDefaultAsync();
+            return Result;
+        }
+
 
         public async Task<Siparis> FirstOrDefaultSiparisNumarasiAsync(Siparis entity)
         {

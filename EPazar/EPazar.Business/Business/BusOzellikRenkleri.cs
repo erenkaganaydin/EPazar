@@ -34,9 +34,16 @@ namespace EPazar.Business.Business
             return Result;
         }
 
-        public Task<List<OzellikRenkleri>> GetAllAsync()
+        public async Task<List<OzellikRenkleri>> GetAllAsync()
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<List<string>> GetAllAdlarAsync()
+        {
+            var Result = await Query.GetAll().GroupBy(x => x.Ad).Select(x => x.Key).ToListAsync();
+
+            return Result;
         }
 
         public async Task<bool> InsertAsync(OzellikRenkleri entity, bool setIdentity)

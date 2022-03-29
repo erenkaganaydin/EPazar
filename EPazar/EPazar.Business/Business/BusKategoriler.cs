@@ -19,6 +19,13 @@ namespace EPazar.Business.Business
             return Result;
         }
 
+        public async Task<List<Kategoriler>> GetAllUstteAsync(Kategoriler Entity)
+        {
+            var Result = await Query.GetAll().Where(x=> x.AnaKategoriId == Entity.AnaKategoriId).OrderBy(x => x.Sira).OrderBy(x => x.Id).ToListAsync().ConfigureAwait(true);
+
+            return Result;
+        }
+
         public async Task<Kategoriler> AddanId(Kategoriler Entity)
         {
             var Result = await Query.GetAll().Where(x => x.Ad == Entity.Ad && x.AnaKategoriId == Entity.AnaKategoriId).FirstOrDefaultAsync().ConfigureAwait(true);

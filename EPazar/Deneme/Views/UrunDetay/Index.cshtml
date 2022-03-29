@@ -1,0 +1,225 @@
+﻿@using EPazar.Entity.Entity
+@using System.Linq;
+
+
+@model Urunler;
+@{
+    var UrunOzellikRenkleri = Model.ViewUrunOzellikleriAciklamali.GroupBy(x => x.RenkAdi).Select(x=> x.Key);
+
+    var SeciliRenk = Context.Request.RouteValues.FirstOrDefault(x=> x.Key == "SeciliRenk").Value;
+    var SecilenRenk = "";
+    if(SeciliRenk != null)
+        SecilenRenk= SeciliRenk.ToString();
+
+    var SeciliOzellik = Context.Request.RouteValues.FirstOrDefault(x=> x.Key == "SeciliOzellik").Value;
+    var SecilenOzellik = "";
+    if (SeciliOzellik != null)
+        SecilenOzellik = SeciliOzellik.ToString();
+}
+
+ <link rel="stylesheet" href="~/css/UrunDetay.css">
+ <!-- jQuery 1.8 or later, 33 KB -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<!-- Fotorama from CDNJS, 19 KB -->
+<link  href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
+
+            <div class="Urun-Navigation">
+                <a href="#"> Anasayfa </a>
+                <a href="#" class="urun-navigation-arrow"> > </a>
+                <a href="#"> Kadın </a>
+                <a href="#" class="urun-navigation-arrow"> > </a>
+                <a href="#" > Giyim </a>
+                <a href="#" class="urun-navigation-arrow"> > </a>
+                <a href="#"> Jean </a>
+            </div>
+
+            <div class="flex-container">
+                <div class="urun-container">
+                    <div>
+                        <div class="product-images">
+                            <div class="product-image">
+                                <div class="foto">
+                                    <div class="fotorama" data-nav="thumbs" data-allowfullscreen="native">
+                                        @foreach (var item in Model.UrunResimleri)
+                                        {
+                                            <img alt="Bigtarz-@Model.Adi" src="@item.ResimLink">
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-sag">
+                        <div class="product-header">
+                            <div class="flex">
+                                <div class="product-header-item">
+                                    <div>
+                                        <h1 class="product-h1">@Model.Adi</h1>
+                                    </div>
+                                    <div class="product-marka">
+                                        <span>Satıcı:</span><a class="h1-blue" href="#">@Model.Tedarikciler.Ad</a>
+                                    </div>
+                                    <div class="urun-fiyat-container">
+                                        <div class="urun-fiyat-bx">
+                                            <div class="urun-fiyat-dsc">
+                                                <div class="urun-fiyat-dsc-column">
+                                                    <span class="urun-eski-fiyat">@Model.EskiFiyat₺</span>
+                                                </div>
+                                            </div>
+                                            <div class="ayrac"></div>
+                                            <div class="urun-fiyat-dsc">
+                                                <div class="urun-fiyat-dsc-column">
+                                                    <div style="display:flex; ">
+                                                        <span class="urun-son-fiyat">@Model.Fiyat</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ozellik-button-div">
+                        @{
+                            if(Model.ViewUrunOzellikleriAciklamali.Count > 0)
+                            {
+                                <div class="urun-ozellikleri">
+                                    <section class="urun-ozellikleri-section">
+                                        <div class="urun-ozellikleri-renk-title" >
+                                            <h2 class="urun-ozellikleri-renk-h2">Renk</h2>
+                                        </div>
+                                        <div class="urun-renk-liste-div">
+                                            <div class="urun-renk-liste">
+                                                @foreach (var item in UrunOzellikRenkleri){
+                                                    <a class="urun-ozellikleri-renksecenegi  @if(item == SecilenRenk){
+                                                                                                                    @:secili
+                                                                                                                }" href="/UrunDetay/@Model.Id/@Model.Adi/@item">
+                                                        <span class="urun-ozellikleri-renksecenegi-span">
+                                                            @item
+                                                        </span>
+                                                    </a>
+                                                }
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                                    <div class="urun-ozellikleri">
+                                        @{
+                                            var RenkOzellikleri = Model.ViewUrunOzellikleriAciklamali.Where(x => x.RenkAdi == SecilenRenk).Select(x=> new { x.OzellikAdi ,x.OzellikStok });
+                                        }
+                                        <div class="urun-size-title">
+                                            <span class="urun-size-title-text">
+                                                Beden :
+                                                <span class="uurn-size-title-secili-text">@SecilenOzellik</span>
+                                            </span>
+                                        </div>
+                                        <div class="variants">
+                                            @foreach(var ozelikadlari in RenkOzellikleri)
+                                            {
+                                                @if(ozelikadlari.OzellikStok < 1){
+                                                    <div title="Stokta Yok" class="v-item no-stock">L</div>
+                                                }
+                                                else
+                                                {
+                                                    <a href="/UrunDetay/@Model.Id/@Model.Adi/@SecilenRenk/@ozelikadlari.OzellikAdi" 
+                                                        title="Beden Seçmek İçin Tıklayın" class="v-item  
+                                                        @if(ozelikadlari.OzellikAdi == SecilenOzellik){
+                                                            @:secildi
+                                                        }"> @ozelikadlari.OzellikAdi </a>
+                                                }
+                                            }
+                                               
+                                            
+                                        </div>
+                                    </div>
+                            }
+                        }
+                            <div class="urun-buttonlari">
+                          
+                                @{var Url = "";}
+                                @if(SecilenRenk != "")
+                                {
+                                    Url = "/" + SecilenRenk;
+                                    if (SecilenOzellik != "")
+                                        Url = Url + "/" + SecilenOzellik;
+                                }
+                                <a href="/SepeteEkle/@Model.Id/@Model.Adi@Url" class="sepete-ekle">
+                                    <button class="sepete-ekle" type="button" style="color:#fff">Sepete Ekle</button>
+                                </a>
+                                
+                                <a href="/Hesabim/Favorilerim/FavoriEkle/@Model.Id" class="favori-button">
+                                    <button class="favori">
+                                        <!--Favorideyse ==> favoride eklenip , -regular kalakacak-->
+                                        <i class="fa-regular favoride fa-heart kalp-icon"></i>
+                                    </button>
+                                </a>
+                            </div>
+                            <div class="teslimat">
+                                <div>
+                                    <div  class="tahmini-text">Tahmini Kargoya Verilme Tarihi: <span class="tahmini-gun-value">3</span> gün içinde</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="urun-bilgiler">
+                            <div class="urun-bilgiler-title">
+                                Önce Çıkan Bilgiler
+                            </div>
+                            <div class="urun-bilgileri-aciklama">
+                                <ul class="urun-bilgileri-ul">
+                                    <li>15 gün içinde ücretsiz iade yapabilirisniz. Detaylı bilgi için whatsapp üzerinden iletişime geçmeniz yeterlidir.</li>
+                                    <li>Bu Ürün Bigtarz tarafından gönderilecektir.</li>
+                                </ul>
+                                <div class="urun-tedarikci-detayi">
+                                    <a class="tedarikci-detay-button" href="#UrunTedarikciDetayi">Ürün Tedarikçi Detayı İçin Tıklayın.</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="urun-yan">
+                    <div class="panel kampanyalar">
+                        <h1 class="panel-title">Ürün Fırsatları</h1>
+                        <div class="panel-satir">
+                            <a href="#" class="flex">
+                                <i class="i-kampanya fa-solid fa-barcode"></i>
+                                <span class="kampanya-adi">50₺ ve Üzeri Kargo Bedava </span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="panel kampanyalar mt-35">
+                        <h1 class="panel-title"> <i class="i-kampanya fa-solid fa-shop"></i> @Model.Tedarikciler.Unvan</h1>
+                        <div class="panel-satir">
+                            <a href="#" class="flex">
+                                <i class="i-kampanya fa-solid fa-check"></i>
+                                <span class="kampanya-adi">Bu satıcı Bigtarz tarafından önerilyor.</span>
+                            </a>
+                        </div>
+                        <div class="panel-satir">
+                            <a href="#" class="flex">
+                                <i class="i-kampanya fa-solid fa-box"></i>
+                                <span class="kampanya-adi">Bu satıcının tüm ürünleri bigtarz tarafından kontrol edilmektedir.</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+                 @await Component.InvokeAsync("UrunDetayOneriUrunler",@Model)
+
+            
+
+            <div id="UrunTedarikciDetayi" class="UrunTedarikciDetayi">
+                <h2 class="Urun-Detay-Title">Ürün Tedarikci Bilgileri</h2>
+                <div class="urun-tedarikci-detay-container">
+                    <div class="flex-container">
+                        <img class="urun-tedarikci-detay-img" alt="Bigtarz-@Model.Adi" src="@Model.UrunResimleri.First().ResimLink" alt="Bigtarz-@Model.Adi">
+                        <div>
+                            @Model.Aciklama
+                        </div>
+                    </div>
+                </div>
+            </div>

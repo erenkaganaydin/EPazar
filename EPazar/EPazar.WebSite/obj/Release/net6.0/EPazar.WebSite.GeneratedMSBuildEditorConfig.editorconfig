@@ -1,0 +1,164 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = EPazar.WebSite
+build_property.RootNamespace = EPazar.WebSite
+build_property.ProjectDir = C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.WebSite\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.WebSite
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/eaydin/Documents/GitHub/EPazar/EPazar/EPazar.WebSite/Views/GirisYapKayitOl/OturumAc.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2lyaXNZYXBLYXlpdE9sXE90dXJ1bUFjLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eaydin/Documents/GitHub/EPazar/EPazar/EPazar.WebSite/Views/Hesabim/Favorilerim.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGVzYWJpbVxGYXZvcmlsZXJpbS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eaydin/Documents/GitHub/EPazar/EPazar/EPazar.WebSite/Views/Hesabim/HesapBilgileri.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGVzYWJpbVxIZXNhcEJpbGdpbGVyaS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eaydin/Documents/GitHub/EPazar/EPazar/EPazar.WebSite/Views/Hesabim/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGVzYWJpbVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eaydin/Documents/GitHub/EPazar/EPazar/EPazar.WebSite/Views/Hesabim/SiparisBilgisi.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGVzYWJpbVxTaXBhcmlzQmlsZ2lzaS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eaydin/Documents/GitHub/EPazar/EPazar/EPazar.WebSite/Views/Hesabim/Siparislerim.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGVzYWJpbVxTaXBhcmlzbGVyaW0uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eaydin/Documents/GitHub/EPazar/EPazar/EPazar.WebSite/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eaydin/Documents/GitHub/EPazar/EPazar/EPazar.WebSite/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eaydin/Documents/GitHub/EPazar/EPazar/EPazar.WebSite/Views/KategoriListesi/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2F0ZWdvcmlMaXN0ZXNpXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eaydin/Documents/GitHub/EPazar/EPazar/EPazar.WebSite/Views/KategoriListesi/Listele.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2F0ZWdvcmlMaXN0ZXNpXExpc3RlbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eaydin/Documents/GitHub/EPazar/EPazar/EPazar.WebSite/Views/Odeme/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2RlbWVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eaydin/Documents/GitHub/EPazar/EPazar/EPazar.WebSite/Views/Odeme/OdemeBilgileri.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2RlbWVcT2RlbWVCaWxnaWxlcmkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eaydin/Documents/GitHub/EPazar/EPazar/EPazar.WebSite/Views/Sepet/Deneme.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VwZXRcRGVuZW1lLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eaydin/Documents/GitHub/EPazar/EPazar/EPazar.WebSite/Views/Sepet/DenemeYanit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VwZXRcRGVuZW1lWWFuaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eaydin/Documents/GitHub/EPazar/EPazar/EPazar.WebSite/Views/Sepet/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VwZXRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eaydin/Documents/GitHub/EPazar/EPazar/EPazar.WebSite/Views/Shared/Components/DesktopNavbar/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcRGVza3RvcE5hdmJhclxEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eaydin/Documents/GitHub/EPazar/EPazar/EPazar.WebSite/Views/Shared/Components/UrunDetayOneriUrunler/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcVXJ1bkRldGF5T25lcmlVcnVubGVyXERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eaydin/Documents/GitHub/EPazar/EPazar/EPazar.WebSite/Views/Shared/Components/UrunlerFilter/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcVXJ1bmxlckZpbHRlclxEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eaydin/Documents/GitHub/EPazar/EPazar/EPazar.WebSite/Views/Shared/Components/UrunlerKategoriler/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcVXJ1bmxlckthdGVnb3JpbGVyXERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eaydin/Documents/GitHub/EPazar/EPazar/EPazar.WebSite/Views/Shared/Components/UrunlerRenkler/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcVXJ1bmxlclJlbmtsZXJcRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eaydin/Documents/GitHub/EPazar/EPazar/EPazar.WebSite/Views/Shared/Components/Urun/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcVXJ1blxEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eaydin/Documents/GitHub/EPazar/EPazar/EPazar.WebSite/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eaydin/Documents/GitHub/EPazar/EPazar/EPazar.WebSite/Views/Shared/_AnasayfaBanner.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BbmFzYXlmYUJhbm5lci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eaydin/Documents/GitHub/EPazar/EPazar/EPazar.WebSite/Views/Shared/_AnasayfaMiniBanner.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BbmFzYXlmYU1pbmlCYW5uZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eaydin/Documents/GitHub/EPazar/EPazar/EPazar.WebSite/Views/Shared/_AnasayfaSagBanner.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BbmFzYXlmYVNhZ0Jhbm5lci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eaydin/Documents/GitHub/EPazar/EPazar/EPazar.WebSite/Views/Shared/_AnasayfaTopBanner.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BbmFzYXlmYVRvcEJhbm5lci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eaydin/Documents/GitHub/EPazar/EPazar/EPazar.WebSite/Views/Shared/_DesktopFooter.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9EZXNrdG9wRm9vdGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eaydin/Documents/GitHub/EPazar/EPazar/EPazar.WebSite/Views/Shared/_KategoriListesiBanner.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9LYXRlZ29yaUxpc3Rlc2lCYW5uZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eaydin/Documents/GitHub/EPazar/EPazar/EPazar.WebSite/Views/Shared/_KategoriListesiTopBanner.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9LYXRlZ29yaUxpc3Rlc2lUb3BCYW5uZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eaydin/Documents/GitHub/EPazar/EPazar/EPazar.WebSite/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eaydin/Documents/GitHub/EPazar/EPazar/EPazar.WebSite/Views/Shared/_LayoutDesktop.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXREZXNrdG9wLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eaydin/Documents/GitHub/EPazar/EPazar/EPazar.WebSite/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eaydin/Documents/GitHub/EPazar/EPazar/EPazar.WebSite/Views/UrunDetay/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXJ1bkRldGF5XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eaydin/Documents/GitHub/EPazar/EPazar/EPazar.WebSite/Views/Urunler/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXJ1bmxlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eaydin/Documents/GitHub/EPazar/EPazar/EPazar.WebSite/Views/Urunler/Liste.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXJ1bmxlclxMaXN0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eaydin/Documents/GitHub/EPazar/EPazar/EPazar.WebSite/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eaydin/Documents/GitHub/EPazar/EPazar/EPazar.WebSite/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

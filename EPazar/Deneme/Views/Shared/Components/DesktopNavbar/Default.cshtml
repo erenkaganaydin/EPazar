@@ -1,0 +1,62 @@
+﻿@using EPazar.Entity.Entity
+@using EPazar.Entity.SanalEntity
+@using Microsoft.AspNetCore.Http
+
+
+@model NavbarEntityleri
+@{
+    var AnaKategorilerList = Model.AnaKategorilerList;
+    var KategorilerList = Model.KategorilerList;
+    var AltKategorilerList = Model.AltKategorilerList;
+}
+
+ <div class="category-navigator">
+        <div class="category-navigator-wrap">
+            <nav>
+                <ul class="main-nav">
+                    @foreach (var AnaKategoriItem in AnaKategorilerList)
+                    {
+                        <li class="tab-link">
+                            @if(AnaKategoriItem.Id == 1 || AnaKategoriItem.Id == 2)
+                            {
+                                <a href="~/KategoriListesi/Listele/@AnaKategoriItem.Id/@Html.Raw(AnaKategoriItem.Ad)?Tumu=1" class="category-header">@AnaKategoriItem.Ad</a>
+                            }
+                            else{
+                                <a href="~/Urunler/Liste/@AnaKategoriItem.Id/@Html.Raw(AnaKategoriItem.Ad)?Tumu=1" class="category-header">@AnaKategoriItem.Ad</a>
+                            }
+                            @{var Kategorileri = KategorilerList.Where(x=>x.AnaKategoriId == AnaKategoriItem.Id).ToList().Take(6); }
+                            <div class="sub-nav">
+                                <div class="sub-nav-center">
+                                    <div class="sub-nav-outer">
+                                        @foreach(var KategoriItem in Kategorileri)
+                                        {
+                                            <div class="normal-column">
+                                                <div class="category-box">
+                                                    <a href="~/Urunler/Liste/@KategoriItem.AnaKategoriId/@Html.Raw(AnaKategoriItem.Ad)/@KategoriItem.Id/@Html.Raw(KategoriItem.Ad)/?Tumu=1" class="sub-category-header">
+                                                        @KategoriItem.Ad
+                                                    </a>
+                                                    @{var AltKategorileri = AltKategorilerList.Where(x=>x.KategoriId == KategoriItem.Id).ToList(); }
+                                                    <ul class="sub-item-list">
+                                                        @foreach(var AltKategoriItem in AltKategorileri)
+                                                        {
+                                                            <li><a href="~/Urunler/Liste/@KategoriItem.AnaKategoriId/@Html.Raw(AnaKategoriItem.Ad)/@KategoriItem.Id/@Html.Raw(KategoriItem.Ad)/@AltKategoriItem.Id/@Html.Raw(AltKategoriItem.Ad)?Tumu=1" class="sub-item-li">@AltKategoriItem.Ad</a></li>
+                                                        }
+                                                </ul>
+                                                </div>
+                                            </div>
+
+
+                                        }
+                                       
+                                </div>
+                                </div>
+                            </div>
+                    </li>
+                    }   
+            </ul>
+            </nav>
+        </div>
+        <div class="container-black">
+          
+        </div>
+    </div>

@@ -57,6 +57,12 @@ namespace EPazar.Business.Business
             return Result;
         }
 
+        public async Task<IEnumerable<long>> RenkIdList(IEnumerable<long> list, IEnumerable<string> OzellikList)
+        {
+            var Result = await Query.GetAll().Where(x => OzellikList.Contains(x.RenkAdi) && list.Contains(x.UrunId) && x.OzellikStok > 0).Select(x => x.UrunId).ToListAsync();
+            return Result;
+        }
+
         public Task<bool> RemoveRangeAsync(ViewUrunOzellikleriAciklamali entity)
         {
             throw new NotImplementedException();

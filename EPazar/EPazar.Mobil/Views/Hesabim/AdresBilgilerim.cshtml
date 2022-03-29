@@ -1,0 +1,71 @@
+﻿@using EPazar.Entity.Entity
+@using Microsoft.AspNetCore.Http
+@using System.Security.Claims
+   
+@model List<KullaniciAdresleri>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="~/css/mobilhesabim.css">
+
+<div class="container-fluid filtreler-container">
+    <div class="row-title row">
+        <div class="col-2">
+
+        </div>
+      
+        <div class="col-8">Adres Bilgilerim</div>
+
+    </div>
+</div>
+<div class="orders">
+     
+    <div style="color: dimgray;background-color: white;border: 1px solid #e6e6e6;padding: 10px;position: relative;">
+        <a href="/Hesabim/AdresEkle?ReturnUrl=/Hesabim/AdresBilgilerim">
+            <div style="display:flex;justify-content: center;align-items: center;text-align: center;">
+                <div style="position: relative;height: 45px;width: 45px;background: #fff;margin-bottom: 10px;text-align: center;"><i class="fa-solid fa-plus" style="font-size: 59px;text-align: center;"></i></div>
+            </div>
+            <h3 style="text-align: center!important;font-size: 15px;">
+                Adres Ekle
+            </h3>
+        </a>
+    </div>
+
+    @foreach(var item in Model)
+    {
+        <div style="text-align: left;margin-top: 12px;background-color: #fff;border: 1px solid #e6e6e6;">
+            <div stlye="margin: 0;padding: 0;border: 0;font: inherit;vertical-align: baseline;">
+                <div style="display: flex;justify-content: space-between;border-bottom: 1px solid #e9e9e9;padding: 8px 12px;">
+                    <div style="font-size: 15px;color: orange;line-height: 24px;">
+                        @item.AdresBasligi
+                    </div>
+                    <div style="font: inherit;vertical-align: baseline;margin: 0;padding: 0;border: 0;">
+                        <div style="adding-left: 8px;padding-right: 8px;padding-left: 8px;height: 24px!important;font-size: 14px;margin-right: 0!important;color: #f27a1a;border: 1px solid #f27a1a;line-height: 16px;display: flex;align-items: center;justify-content: center;border-radius: 3px;min-width: 28px;">
+                            <div style="text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">
+                                Düzenle
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="padding: 12px;font-size: 14px;    color: #414141;line-height: 1.4;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">
+                    @item.AdSoyad
+                    <br />
+                    @item.Adres
+                    <br />
+                    @item.Mahalle / @item.Ilce / @item.Sehir
+                    <br />
+                    @item.Telefon
+                </div>
+            </div>
+        </div>
+    }
+     
+</div>
+
+<script>
+    function phoneMask() {
+        var num = $(this).val().replace(/\D/g,'');
+        $(this).val(num.substring(0,1) + '(' + num.substring(1,4) + ')' + num.substring(4,7) + '-' + num.substring(7,11));
+    }
+    $('[type="tel"]').keyup(phoneMask);
+</script>

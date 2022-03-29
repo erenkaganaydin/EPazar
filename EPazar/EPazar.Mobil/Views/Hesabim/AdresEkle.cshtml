@@ -1,0 +1,80 @@
+﻿@using EPazar.Entity.Entity
+
+@model Kullanicilar
+@{
+    var Cinisyetler = new List<string>(){ "Belirtmek İstemiyorum" ,"Kadın","Erkek"};
+}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="~/css/mobiladresekle.css">
+
+<div class="container-fluid filtreler-container">
+    <div class="row-title">
+        <div class="back-icon">
+            <i class="fa-solid fa-xmark fa fa-2x"></i>
+        </div>
+        <div class="col-sm-8 col-8s page-title">
+            Adres Ekle
+        </div>
+    </div>
+</div>
+<div class="orders">
+    <form action="#" method="post">
+        <div class="row adresEkle">
+            <div class="col-12 bigrow">
+                <p class="formKucukBaslik">E-Posta</p>
+                <i class="formKucukAciklama">Sipariş bilgileriniz bu adrese gönderilecektir</i>
+                <input class="input-st" type="email">
+            </div>
+            <div class="col-12 bigrow">
+                <p class="formKucukBaslik">Adres Başlığı</p>
+                <input class="input-st" type="text" name="AdresBasligi" value="">
+            </div>
+            <div class="col-6 bigrow">
+                <p class="formKucukBaslik">Ad</p>
+                <input class="input-st" type="text" name="Ad" value="@Model.Ad">
+            </div>
+            <div class="col-6 bigrow">
+                <p class="formKucukBaslik">Soyad</p>
+                <input class="input-st" type="text" name="Soyad" value="@Model.Soyad">
+            </div>
+            <div class="col-12 bigrow">
+                <p class="formKucukBaslik">Cep Telefonu</p>
+                <input class="input-st" id="phone-input" type="tel" value="@Model.Telefon" name="Telefon"
+                       aria-label="Telefon numaranızı girin" placeholder="örn. 0(500)-000-0000">
+            </div>
+            <div class="col-6 bigrow">
+                <p class="formKucukBaslik">İl</p>
+                  <input name="Sehir" class="input-st" type="text" value="">
+            </div>
+            <div class="col-6 bigrow">
+                <p class="formKucukBaslik">İlçe</p>
+                <input name="Ilce" class="input-st" type="text" value="">
+           
+            </div>
+            <div class="col-12 bigrow">
+                <p class="formKucukBaslik">Mahalle</p>
+                <input name="Mahalle" class="input-st" type="text" value="">
+            </div>
+            <div class="col-12 bigrow">
+                <p class="formKucukBaslik">Adres</p>
+                <input name="Adres" class="input-st" type="text" value="">
+            </div>
+        </div>
+        <center style="margin: 10px">
+            <button type="submit" class="btn_kaydet"><span>Kaydet ve Devam Et</span></button>
+            <i class="formKucukAciklama" style="margin: 20px; float: left">Kaydet'e basarak Üyelik Koşulları'nı ve Kişisel
+                Verilerin
+                Korunması
+                Metni'ni kabul ediyorum.</i>
+        </center>
+    </form>
+</div>
+
+<script>
+    function phoneMask() {
+        var num = $(this).val().replace(/\D/g,'');
+        $(this).val(num.substring(0,1) + '(' + num.substring(1,4) + ')' + num.substring(4,7) + '-' + num.substring(7,11));
+    }
+    $('[type="tel"]').keyup(phoneMask);
+</script>

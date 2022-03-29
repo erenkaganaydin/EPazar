@@ -1,0 +1,17 @@
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.BaseBusiness\bin\Debug\net6.0\EPazar.BaseBusiness.deps.json
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.BaseBusiness\bin\Debug\net6.0\EPazar.BaseBusiness.dll
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.BaseBusiness\bin\Debug\net6.0\EPazar.BaseBusiness.pdb
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.BaseBusiness\bin\Debug\net6.0\EPazar.Data.dll
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.BaseBusiness\bin\Debug\net6.0\EPazar.Entity.dll
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.BaseBusiness\bin\Debug\net6.0\EPazar.Data.pdb
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.BaseBusiness\bin\Debug\net6.0\EPazar.Entity.pdb
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.BaseBusiness\obj\Debug\net6.0\EPazar.BaseBusiness.csproj.AssemblyReference.cache
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.BaseBusiness\obj\Debug\net6.0\EPazar.BaseBusiness.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.BaseBusiness\obj\Debug\net6.0\EPazar.BaseBusiness.AssemblyInfoInputs.cache
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.BaseBusiness\obj\Debug\net6.0\EPazar.BaseBusiness.AssemblyInfo.cs
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.BaseBusiness\obj\Debug\net6.0\EPazar.BaseBusiness.csproj.CoreCompileInputs.cache
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.BaseBusiness\obj\Debug\net6.0\EPazar.BaseBusiness.csproj.CopyComplete
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.BaseBusiness\obj\Debug\net6.0\EPazar.BaseBusiness.dll
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.BaseBusiness\obj\Debug\net6.0\refint\EPazar.BaseBusiness.dll
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.BaseBusiness\obj\Debug\net6.0\EPazar.BaseBusiness.pdb
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.BaseBusiness\obj\Debug\net6.0\ref\EPazar.BaseBusiness.dll

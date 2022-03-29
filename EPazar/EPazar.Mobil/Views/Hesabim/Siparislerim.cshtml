@@ -1,0 +1,80 @@
+﻿
+@using  EPazar.Entity.SanalEntity;
+@using System.Globalization
+@model HesabimEntityleri
+
+@{
+    var Siparisler = Model.Siparisler;
+    var SiparisDetaylari = Model.ViewSiparisDetay;
+}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="~/css/mobilhesabim.css">
+
+<div class="container-fluid filtreler-container">
+    <div class="row-title row">
+        <div class="col-2">
+
+        </div>
+      
+        <div class="col-8">Adres Bilgilerim</div>
+
+    </div>
+</div>
+<div class="orders">
+     @if(Siparisler.Count <= 0){
+                                    <div class="block o-siparis">
+                                        <div style="background-color:#ffa5006b" class="oh-siparis-baslik">
+                                            Hiç Siparişiniz Bulunmamaktadır...
+                                        </div>
+                                    </div>
+                                }      
+    @foreach(var siparis in Siparisler){
+        var SiparisinDetaylari = SiparisDetaylari.Where(x=> x.SiparisId == siparis.Id).ToList();
+        var SiparisMagazaSayisi = SiparisinDetaylari.GroupBy(x=> x.TedarikciAdi).Select(x=> x.Key).ToList().Count();
+        var SiparisUrunAdet = SiparisinDetaylari.GroupBy(x => new { x.UrunId, x.Adet }).ToList().Sum(x => x.Key.Adet);
+
+        var day = siparis.CreateTime.Day;
+        var month = siparis.CreateTime.Month;
+        var AyAdi = CultureInfo.CreateSpecificCulture("tr-TR").DateTimeFormat.GetAbbreviatedMonthName(month);
+        var year = siparis.CreateTime.Year;
+        var hour = siparis.CreateTime.Hour;
+        var minute = siparis.CreateTime.Minute;
+        
+        var SonGuncellemeGunu  = siparis.UpdateTime.Day;
+        var SonGuncellemeAyi = CultureInfo.CreateSpecificCulture("tr-TR").DateTimeFormat.GetAbbreviatedMonthName(month);
+        <div style="text-align: left;margin-top: 12px;background-color: #fff;border: 1px solid #e6e6e6;">
+            <div stlye="margin: 0;padding: 0;border: 0;font: inherit;vertical-align: baseline;">
+                <div style="display: flex;justify-content: space-between;border-bottom: 1px solid #e9e9e9;padding: 8px 12px;">
+                    <div style="font-size: 15px;color: orange;line-height: 24px;">
+                        @day @AyAdi @year - @hour:@minute
+                    </div>
+                    <div style="font: inherit;vertical-align: baseline;margin: 0;padding: 0;border: 0;">
+                        <div style="adding-left: 8px;padding-right: 8px;padding-left: 8px;height: 24px!important;font-size: 14px;margin-right: 0!important;color: #f27a1a;border: 1px solid #f27a1a;line-height: 16px;display: flex;align-items: center;justify-content: center;border-radius: 3px;min-width: 28px;">
+                            <div style="text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">
+                                Detay
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="padding: 12px;font-size: 14px;    color: #414141;line-height: 1.4;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">
+                    @foreach (var item in SiparisinDetaylari)
+                    {
+                        <a class="iw-siparis-resim-wrap" href="/UrunDetay/@item.UrunId/@item.UrunAdi">
+                            <img src="@item.ResimLink" alt="@item.UrunAdi">
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+     
+</div>
+
+<script>
+    function phoneMask() {
+        var num = $(this).val().replace(/\D/g,'');
+        $(this).val(num.substring(0,1) + '(' + num.substring(1,4) + ')' + num.substring(4,7) + '-' + num.substring(7,11));
+    }
+    $('[type="tel"]').keyup(phoneMask);
+</script>

@@ -61,10 +61,17 @@ namespace EPazar.Business.Business
         }
         public async Task<List<Sepet>> PredicateUrunOzellikAsync(Sepet entity)
         {
-            var Result = await Query.GetAll().Where(x => x.CookieToken == entity.CookieToken 
-                                                        && x.UrunId == entity.UrunId 
-                                                        && x.OzellikId == entity.OzellikId).ToListAsync();
-            return Result;
+            IQueryable<Sepet> query = Query.GetAll();
+
+            if (entity.OzellikId != null)
+            {
+                query = query.Where(x => x.OzellikId == entity.OzellikId);
+            }
+
+            query = query.Where(x => x.CookieToken == entity.CookieToken
+                                                        && x.UrunId == entity.UrunId);
+
+            return await query.ToListAsync();
         }
 
         public Task<bool> RemoveRangeAsync(Sepet entity)

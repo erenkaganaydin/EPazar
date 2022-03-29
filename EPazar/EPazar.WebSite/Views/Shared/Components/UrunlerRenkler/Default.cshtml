@@ -1,0 +1,33 @@
+﻿@using Microsoft.AspNetCore.Http.Extensions
+@using System.Text.RegularExpressions
+@model List<string>  
+
+
+@foreach (var item in Model)
+{
+    var Url = Context.Request.Query["Renk"];
+    var VarMi = Url.Contains(item);
+
+    <a onclick="RenkFilterEkle('@item')" href="#" style="display: flex;"><input type="checkbox" checked="@VarMi" >
+        <span class="checkbox-span">@item</span>
+    </a>
+}
+
+<script>
+    function RenkFilterEkle(BedenBilgisi){
+        BedenBilgisi = BedenBilgisi.replace(" ","%20");
+        debugger;
+        let text = window.location.href;
+        text = text.replace("%C5","Ş");
+        text = text.replace("%9E","");
+        if(text.search(BedenBilgisi) != -1)      
+        {
+            window.location.href = text.replace("&Renk="+BedenBilgisi, "");
+            return;
+        }
+        else{
+            window.location.href =  window.location.href+"&Renk="+BedenBilgisi;
+            return;
+        }
+    }
+</script>

@@ -1,0 +1,30 @@
+﻿@using EPazar.Entity.SanalEntity
+@model UrunlerKategorilerEntityleri
+
+@if(Model.AltKategoriler != null)
+{
+    foreach(var item in Model.AltKategoriler)
+    {
+        <a href="~/Urunler/Liste/@item.UstKategoriId/ /@item.KategoriId/ /@item.Id/ ?Tumu=1">@item.Ad</a>
+    }
+}
+else
+{
+    @if(Model.Kategoriler != null)
+    {
+        foreach(var item in Model.Kategoriler)
+        {
+            <a href="~/Urunler/Liste/@item.AnaKategoriId/ /@item.Id/ ?Tumu=1">@item.Ad</a>
+        }
+    }
+    else
+    {
+        @if(Model.AnaKategoriler != null)
+        {
+            foreach(var item in Model.AnaKategoriler)
+            {
+                <a href="~/Urunler/Liste/@item.Id/@item.Ad ?Tumu=1">@item.Ad</a>
+            }
+        }
+    }
+}

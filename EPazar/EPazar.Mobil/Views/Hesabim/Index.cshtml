@@ -1,0 +1,77 @@
+﻿@using Microsoft.AspNetCore.Http
+@using System.Security.Claims
+    
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="~/css/mobilhesabim.css">
+
+<div class="container-fluid filtreler-container">
+    <div class="row-title row">
+        <div class="col-2">
+
+        </div>
+      
+        <div class="col-8">@ViewData["Email"]</div>
+
+    </div>
+</div>
+<div class="orders">
+        <div class="row adresEkle">
+
+            <div class="col-12 bigrow ">
+                <p class="baslik">Hesabım & Yardım</p>
+            </div>
+
+            <a class="col-12 bigrow" href="/Hesabim/HesapBilgileri">
+                    <i class="far fa-solid fa-user sola"></i>
+                    <p class="formKucukBaslik">Kullanıcı Bilgilerim</p>
+                    <i class="fa-solid fa-angle-right saga"></i>
+            </a>
+
+            <a class="col-12 bigrow" href="/Hesabim/AdresBilgilerim">
+                <i class="fa fa-location-dot sola"></i>
+                <p class="formKucukBaslik">Adres Bilgilerim</p>
+                <i class="fa-solid fa-angle-right saga"></i>
+            </a>
+
+            <a class="col-12 bigrow" href="#">
+                <i class="fa fa-wallet sola"></i>
+                <p class="formKucukBaslik">Siparişlerim</p>
+                <i class="fa-solid fa-angle-right saga"></i>
+            </a>
+@*
+            <a class="col-12 bigrow" href="#">
+                <i class="fa fa-thin fa-bell sola"></i>
+                <p class="formKucukBaslik">Duyuru Tercihlerim</p>
+                <i class="fa-solid fa-angle-right saga"></i>
+            </a>
+
+            <a class="col-12 bigrow" href="#">
+                <i class="fa fa-thin fa-lock sola"></i>
+                <p class="formKucukBaslik">Şifre Değişikliği</p>
+                <i class="fa-solid fa-angle-right saga"></i>
+            </a>*@
+
+            <a class="col-12 bigrow" href="https://api.whatsapp.com/send/?phone=%2B905301395727&text=Destek%20almak%20i%C3%A7in%20ula%C5%9Ft%C4%B1m.&app_absent=0">
+                <i class="fa fa-thin fa-circle-question sola"></i>
+                <p class="formKucukBaslik">Yardım</p>
+                <i class="fa-solid fa-angle-right saga"></i>
+            </a>
+
+        </div>
+        <div class="row adresEkle">
+            <a class="col-12 bigrow" href="/Hesabim/CikisYap">
+                <p class="formKucukBaslik">Çıkış Yap</p>
+                <i class="fa fa-duotone fa-arrow-right-from-bracket saga"></i>
+            </a>
+        </div>
+</div>
+
+<script>
+    function phoneMask() {
+        var num = $(this).val().replace(/\D/g,'');
+        $(this).val(num.substring(0,1) + '(' + num.substring(1,4) + ')' + num.substring(4,7) + '-' + num.substring(7,11));
+    }
+    $('[type="tel"]').keyup(phoneMask);
+</script>

@@ -1,0 +1,209 @@
+﻿@using EPazar.Business.Business
+@using EPazar.Entity.View
+@using Microsoft.AspNetCore.Http
+@using System.Security.Claims
+
+@model List<ViewSepet>
+
+  <link rel="stylesheet" href="~/css/Sepet.css?Id=1">
+
+@{
+    var UserId =  Context.User.FindFirstValue(ClaimTypes.Email) != null ? Context.User.FindFirstValue(ClaimTypes.Email) : null;
+
+    var Hata = Context.Request.Query["Hata"];
+    if(Hata.Count>0)
+    {
+        var Mesaj = Hata.First();
+        <script>
+           alert("@(Html.Raw(@Mesaj))");
+        </script>
+    }
+}
+
+<div class="sepet-main">
+                <div class="sepet-container">
+                    <div class="urun-listesi">
+                        <div class="urun-listesi-header">
+                            <div class="header-metin">Sepetim (2 Ürün)</div>
+                        </div>
+                        @if(UserId == null){
+                        <div class="login-info">
+                            <i class="fa-solid fa-user"></i>
+                            <i class="fa fa-user login-info-fa"></i>
+                            <div class="login-info-text" >
+                                <span>Alışverişte kolaylık için Hemen Üye Girişi Yap</span>
+                                <a href="/Hesabim" class="login-info-link">Giriş Yap</a>
+                            </div>
+                        </div>
+                        }
+                            @{
+                                var TedarikciList = Model.GroupBy(x=>x.TedarikciAdi).Select(x=> x.Key);
+                            }
+                            @foreach (var item in TedarikciList)
+                            {
+                        <div class="magaza-urun-grubu">
+
+                                <div class="magaza-info">
+                                    <div class="magaza-info-wrapper">
+                                        <div class="magaza-info-satici">
+                                            <div class="magaza-info-satici-div">Satıcı:</div>
+                                            <div class="magaza-info-satici-adi">
+                                                <a class="magaza-info-satici-link" href="#"><span class="magaza-grubu-satici-ad">@item</span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @{
+                                    var TedarikciUrunleri = Model.Where(x => x.TedarikciAdi == item).ToList();
+                                    var FiyatToplam = Math.Round(TedarikciUrunleri.Sum(x=> x.Fiyat),2);
+                                }
+                                   
+                                @if(FiyatToplam >= 60){
+                                    <div class="kargo-info">
+                                        <i class="fa-solid fa-truck-fast"></i>
+                                        <p class="shipping-info-text">Kargo Bedava</p>
+                                    </div>
+                                }
+                                else{
+                                    var KalanFiyat = 60-FiyatToplam;
+                                    <div class="kargo-info not-free-shipping">
+                                        <i class="fa-solid fa-truck-fast"></i>
+                                        <p class="shipping-info-text">@Math.Round(KalanFiyat,2)₺ 'lik Ürün Ekle Kargon Bedava Olsun </p>
+                                    </div>
+                                }
+                                @foreach (var urunler in TedarikciUrunleri)
+                                {
+                                    var Url = "";
+                                    <div class="magaza-sepet-urun">
+                                        <div class="urn-img-cont">
+                                            <div class="urn-img-wrap">
+                                                <img class="urn-img-wrap-img" src="@urunler.UrunResmi" alt="@urunler.UrunAdi">
+                                            </div>
+                                        </div>
+                                      
+                                        <div class="urn-detay-item">
+                                            <p class="urn-item-ad"><span>@urunler.TedarikciAdi</span> @urunler.UrunAdi</p>
+                                            @if(urunler.OzellikId != null){
+                                                Url = "/"+urunler.OzellikId;
+                                                <p class="urn-tahmini-teslim">
+                                                    <span>@urunler.OzellikTuru :</span><span>@urunler.OzellikAdi</span>
+                                                </p>
+                                            }
+                                            <p class="urn-tahmini-teslim">
+                                                <span>Tahmini Teslim:</span><span>3 gün İçerisinde</span>
+                                            </p>
+                                        </div>
+                                        <div class="urn-item-faaliyetler">
+                                            <div class="urun-adet-div">
+                                                
+                                                <div class="urun-adet-grup-sayac">
+                                                    <a href="/Sepet/AdetAzalt/@urunler.UrunId@Url" class="turun-adet-grup-sayac-button "><svg fill="#333" xmlns="http://www.w3.org/2000/svg" width="9" height="2" viewBox="0 0 9 2"><path d="M3.938 0H.562C.252 0 0 .253 0 .564L.004.63c.032.28.27.497.558.497l3.375-.002 1.126.002h3.375c.31 0 .562-.252.562-.563L8.996.497c-.032-.28-.27-.496-.559-.496H5.063L3.938 0z"></path></svg></a>
+                                                    <input readonly class="turun-adet-grup-sayac-input" minlength="1" maxlength="10" type="number" value="@urunler.Adet">
+                                                    <a href="/Sepet/AdetArttir/@urunler.UrunId@Url" class="turun-adet-grup-sayac-button">
+                                                        <svg fill="#F27A1A" xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9"><path d="M4.434.004c-.28.032-.497.27-.497.558v3.375H.563C.252 3.938 0 4.19 0 4.5l.004.066c.032.28.27.497.558.497l3.375-.002v3.377c0 .31.252.562.563.562l.066-.004c.28-.032.497-.27.497-.559V5.063h3.375c.31 0 .562-.252.562-.563l-.004-.066c-.032-.28-.27-.497-.559-.497H5.063V.563C5.063.252 4.81 0 4.5 0l-.066.004z"></path></svg>
+                                                    </a>
+
+                                                </div>
+                                            </div>
+                                            <div class="urun-fiyat-div">
+                                                <span>@Math.Round((double)urunler.EskiFiyat,2) ₺</span>
+                                                @Math.Round(urunler.Fiyat,2) ₺
+                                            </div>
+                                            <a class="urun-sil-button" href="/SepettenKaldir/@urunler.UrunId@Url"> <i class="fa-regular fa-trash-can"></i></a>
+                                        </div>
+                                    </div>
+                                }
+
+                        </div>
+
+                            }   
+                          
+                            
+
+                        <div class="onerilen-urnuler">
+                            <h2>Önerilen Ürünler</h2>
+                            <div class="onerilen-urunler-div">
+                                <div class="onerilen-urun-kart-wrap">
+                                    <a href="#" class="onerilen-urun-item">
+                                        <div class="img-wrap">
+                                            <img class="o-item-img" src="https://cdn.dsmcdn.com/ty334/product/media/images/20220217/11/51607646/21858817/1/1_org_zoom.jpg" alt="">
+                                        </div>
+                                        <div>
+                                            <div class="o-shipp-wrap">
+                                                <div class="o-kargo-bedava">KARGO BEDAVA</div>
+                                            </div>
+                                        </div>
+                                        <div class="o-urun-desc-center-wrap">
+                                            <div class="o-urun-desc-center">
+                                                <div class="o-urun-desc-title">
+                                                    <span class="o-urun-desc-marka">Bigatu</span>
+                                                    <span class="o-urun-desc-aciklama"> Drcilor Ne olduğunu bilmediğim ürünü</span>
+                                                </div>
+                                            </div>
+                                            <div class="o-urun-fiyat">
+                                                <div class="prd-bx">
+                                                    <div class="prd-bx-na">
+                                                        <div class="urun-box-eski">99₺</div>
+                                                        <div class="urun-box-yeni-f">69.99₺</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <aside class="sepet-yapiskan" >
+                        <div class="sepet-navigation">
+                            <div class="sepet-siparis-ozet">
+                                <h1>Sepet Bilgileri</h1>
+                                <ul class="sepet-bilgileri-ozet-tutar">
+                                    <li><span>Ürün Toplamı</span> <strong>@Math.Round(Model.Sum(x=> x.Fiyat),2) ₺</strong></li>
+                                    @{
+                                        var ToplamKargo = TedarikciList.Count()*14.99;
+                                    }
+                                    <li><span>Kargo Toplamı(@TedarikciList.Count())</span> <strong>@ToplamKargo₺</strong></li>
+                                    @foreach (var item in TedarikciList)
+                                    {
+                                        var TedarikciUrunleri = Model.Where(x => x.TedarikciAdi == item).ToList();
+                                        var FiyatToplam = TedarikciUrunleri.Sum(x=> x.Fiyat);
+                                        if(FiyatToplam >=60)
+                                        {
+                                            <li>
+                                                <div title="60₺ üzeri kargo indirimi"><span>60₺ üzeri kargo indirimi</span></div> <strong class="kampanya-strong">14.99₺</strong>
+                                            </li>
+                                        }
+                                    }
+                                    
+                                </ul>
+                            <hr />
+                            <div class="sepet-toplam">
+                                @{
+                                   var Toplam= @Model.Sum(x=> x.Fiyat);
+                                    foreach (var item in TedarikciList)
+                                    {
+                                        var TedarikciUrunleri = Model.Where(x => x.TedarikciAdi == item).ToList();
+                                        var FiyatToplam = TedarikciUrunleri.Sum(x=> x.Fiyat);
+                                        if(FiyatToplam >=60)
+                                        {
+                                           
+                                        }
+                                        else{
+                                            Toplam += 14.99;
+                                        }
+                                    }
+                                }
+                                @Math.Round(Toplam, 2)₺
+                            </div>
+                            </div>
+                            <div class="sepet-onayla">
+                                <a href="~/Odeme/SiparisOlustur" class="sepet-onayla-href">
+                                    <i class="fas fa-lock sepet-i-rm" aria-hidden="true"></i><span>Ürünleri Güvenle Al</span><i class="fas fa-check-circle sepet-i"></i></a>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+
+            </div>

@@ -14,6 +14,7 @@ namespace EPazar.Entity.Entity
 		public string? Telefon { get; set; }
 		public string? EMail { get; set; }
 		public string? Sifre { get; set; }
+		public string? Cinsiyet { get; set; }
 		public int? DogumGunu { get; set; }
 		public int? DogumAyi { get; set; }
 		public int? DogumYili { get; set; }

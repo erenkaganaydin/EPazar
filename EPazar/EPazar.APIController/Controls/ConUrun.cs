@@ -24,7 +24,7 @@ namespace EPazar.Controls.Controls
 
         public async Task<List<Urun>> ApiPostList(string baseUrl, List<Urun> Entity)
         {
-            var stringPayload = JsonConvert.SerializeObject(Entity);
+            var stringPayload = JsonConvert.SerializeObject(Entity, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
             var Content = HttpContent(stringPayload);
             var response = await ResponseAsync(baseUrl, Content);
             HttpClient = Starter();

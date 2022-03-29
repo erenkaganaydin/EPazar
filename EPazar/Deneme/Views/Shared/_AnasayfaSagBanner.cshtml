@@ -1,0 +1,14 @@
+﻿@using EPazar.Entity.Entity
+
+@model List<AnasayfaSagBanner>
+
+    @foreach(var item in Model)
+    {
+        <div class="banner-wrap">
+            <div class="">
+                <a href="@item.Link"  style="margin-bottom: 15px;visibility: visible;height: auto;display: block;width: 340px;height: 333px; background-repeat: no-repeat;background-attachment: fixed;background-position: center;">
+                <img src="@item.Image" style="width:100%" alt="" />
+                </a>
+            </div>
+        </div>
+    }

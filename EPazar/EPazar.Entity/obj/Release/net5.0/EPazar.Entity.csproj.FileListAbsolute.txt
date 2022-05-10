@@ -9,4 +9,4 @@ C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Entity\obj\Release\net5.0\
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Entity\obj\Release\net5.0\EPazar.Entity.dll
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Entity\obj\Release\net5.0\EPazar.Entity.pdb
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Entity\obj\Release\net5.0\ref\EPazar.Entity.dll
-C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Entity\obj\Release\net5.0\refint\EPazar.Entity.dll
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Entity\bin\Release\net5.0\ref\EPazar.Entity.dll

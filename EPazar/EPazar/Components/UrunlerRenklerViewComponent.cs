@@ -35,5 +35,7 @@ namespace EPazar.Components
             return View(UrunOzellikAdlari);
         }
         #endregion
+
+
     }
 }

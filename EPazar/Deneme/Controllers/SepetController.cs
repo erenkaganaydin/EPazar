@@ -5,9 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Net;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -37,7 +35,7 @@ namespace EPazar.Controllers
         {
             BusUrunResimleri = new BusUrunResimleri();
 
-            ViewSepetList = new List <ViewSepet>();
+            ViewSepetList = new List<ViewSepet>();
             ViewSepet = new ViewSepet();
             BusViewSepet = new BusViewSepet();
 
@@ -56,11 +54,11 @@ namespace EPazar.Controllers
 
         public async Task<IActionResult> Index()
         {
-          
+
             ViewSepet.SepetToken = HttpContext.Request.Cookies["SepetToken"];
             var viewSepets = await BusViewSepet.PredicateAsync(ViewSepet);
 
-            foreach(var item in viewSepets)
+            foreach (var item in viewSepets)
             {
                 var resim = await BusUrunResimleri.FirstOrDefaultAsync(item.UrunId);
                 item.UrunResmi = resim.ResimLink;
@@ -68,6 +66,12 @@ namespace EPazar.Controllers
             }
 
             return View(ViewSepetList);
+        }
+
+        [Route("/sepetim")]
+        public async Task<IActionResult> Yonlendir()
+        {
+            return View();
         }
 
         [Route("/SepeteEkle/{UrunId?}/{UrunAdi?}/{SeciliRenk?}/{SeciliOzellik?}")]
@@ -84,7 +88,7 @@ namespace EPazar.Controllers
             ViewUrunOzellikleriAciklamali.UrunId = UrunDetay.Id;
             ViewUrunOzellikleriAciklamali.OzellikAdi = SeciliOzellik;
             ViewUrunOzellikleriAciklamali.RenkAdi = SeciliRenk;
-            
+
 
 
             var UrunOzellikDetay = await BusViewUrunOzellikleriAciklamali.FirstOrDefaultSepetEkleAsync(ViewUrunOzellikleriAciklamali);
@@ -99,7 +103,7 @@ namespace EPazar.Controllers
                 Sepet.CookieToken = Guid.NewGuid().ToString();
             }
 
-            Sepet.OzellikId = UrunOzellikDetay==null ? null : UrunOzellikDetay.Id;
+            Sepet.OzellikId = UrunOzellikDetay == null ? null : UrunOzellikDetay.Id;
 
             Sepet.UrunId = SepeteEklenecekUrun.Id;
 
@@ -117,7 +121,7 @@ namespace EPazar.Controllers
             }
 
 
-            var Islem = await BusSepet.InsertAsync(Sepet,false);
+            var Islem = await BusSepet.InsertAsync(Sepet, false);
 
             if (Islem)
             {
@@ -134,12 +138,12 @@ namespace EPazar.Controllers
         public async Task<ActionResult> SepettenKaldir(long? UrunId, long? OzellikId)
         {
             Sepet.CookieToken = HttpContext.Request.Cookies["SepetToken"];
-            Sepet.UrunId    = (long)UrunId;
+            Sepet.UrunId = (long)UrunId;
             Sepet.OzellikId = OzellikId;
 
-            var KaldirilacakUrunler = await BusSepet.PredicateUrunOzellikAsync(Sepet); 
+            var KaldirilacakUrunler = await BusSepet.PredicateUrunOzellikAsync(Sepet);
 
-            foreach(var item in KaldirilacakUrunler)
+            foreach (var item in KaldirilacakUrunler)
             {
                 var SepettenKaldir = await BusSepet.DeleteAsync(item);
             }

@@ -1,0 +1,194 @@
+﻿@using EPazar.Business.Business
+@using EPazar.Entity.View
+@using Microsoft.AspNetCore.Http
+@using System.Security.Claims
+
+
+@model List<ViewSepet>
+
+  <link rel="stylesheet" href="~/css/Sepet.css?Id=1">
+
+
+
+@{
+    var UserId =  Context.User.FindFirstValue(ClaimTypes.Email) != null ? Context.User.FindFirstValue(ClaimTypes.Email) : null;
+
+    var Hata = Context.Request.Query["Hata"];
+    if(Hata.Count>0)
+    {
+        var Mesaj = Hata.First();
+        <script>
+           alert("@(Html.Raw(@Mesaj))");
+        </script>
+    }
+}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/w3.css">
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/w3.css">
+    <link rel="stylesheet" href="~/css/mobilsepet.css">
+
+<div style="margin-bottom:63px;" class="sepet-main">
+                <div class="sepet-container">
+                    <div class="urun-listesi">
+                    
+                        <div class="container-fluid">
+                            <div class="row-title">
+                                <div class="col-sm-8 col-8s page-title">
+                                    Sepetim
+                                </div>
+                            </div>
+                        </div>
+                        @if(UserId == null){
+                        <div class="login-info">
+                            <div class="login-info-text" >
+                                <span>Alışverişte kolaylık için Hemen Üye Girişi Yap</span>
+                                <a href="/Hesabim" style="color:orange;" class="login-info-link">Giriş Yap</a>
+                            </div>
+                        </div>
+                        }
+                            @{
+                                var TedarikciList = Model.GroupBy(x=>x.TedarikciAdi).Select(x=> x.Key);
+                            }
+                            @foreach (var item in TedarikciList)
+                            {
+                        <div style="margin-top:10px;margin-bottom: 96px;">
+                            @{
+                                    var TedarikciUrunleri = Model.Where(x => x.TedarikciAdi == item).ToList();
+                                    var FiyatToplam = Math.Round(TedarikciUrunleri.Sum(x=> x.Fiyat),2);
+                                }
+                                <div class="owner-container">
+                                    <div class="row owner-box">
+                                        <div class="col-6 order-owner">
+                                            Satıcı:<span class="medium-color"> @item</span>
+                                        </div>
+                                        @if(FiyatToplam >= 60){
+                                        <div class="col-6 order-cargo">
+                                            <i class="fa-solid fa-circle-check"></i>
+                                            Kargo Bedava
+                                        </div>
+                                        }
+                                        else{
+                                          var KalanFiyat = 60-FiyatToplam;
+                                          <div class="col-6 order-cargo">
+                                            <i class="fa-solid fa-circle-check"></i>
+                                            @Math.Round(KalanFiyat,2)₺ den sonra Kargo Bedava
+                                        </div>
+                                        }
+                                    </div>
+                                </div>
+
+                                @foreach (var urunler in TedarikciUrunleri)
+                                {
+                                    var Url = "";
+                                    <div class="main-container">
+                                        <div class="row order-box">
+                                            <div class="col-3 order-image-div">
+                                                <img class="order-image" src="@urunler.UrunResmi" alt="@urunler.UrunAdi">
+                                            </div>
+                                            <div class="col-9 order-desc">
+                                                <div class="order-title row">
+                                                    <div class="col-10">
+                                                        @urunler.TedarikciAdi @urunler.UrunAdi
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <i class="fa-regular fa-trash-can"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="order-exp">Kids Çocuklar Için Özel - Arı Sütü, Pekmez, Bal Ve Vitamin Katkılı Kakaolu Macun</div>
+                                                <div class="order-exp">@urunler.OzellikTuru :<span class="light-color"> @urunler.OzellikAdi</span></div>
+                                                <div class="order-exp">Tahmini Kargoya Teslim:<span class="light-color"> 3 gün içinde</span></div>
+                                                <div class="row count-price">
+                                                    <div class="col-6"></div>
+                                                    <div class="col-6 prices"> <span class="old-price">@Math.Round((double)urunler.EskiFiyat,2) ₺</span><br><span class="new-price"> @Math.Round(urunler.Fiyat,2) ₺</span></div>
+                                                </div>
+                                                </div>
+                                        </div>
+                                    </div>
+
+                       
+                                }
+
+                        </div>
+
+                            }   
+                          
+                            
+
+                    </div>
+
+                                <div class="summary__container">
+              <div class="summary-detail ">
+                <div class="summary-detail__wrapper">
+                  <span class="summary-detail__label">Ara Toplam</span>
+                  <span class="summary-detail__price">@Math.Round(Model.Sum(x=> x.Fiyat),2) ₺</span>
+                </div>
+                @{
+                    var ToplamKargo = TedarikciList.Count()*14.99;
+                }
+                <div class="summary-detail__wrapper">
+                  <span class="summary-detail__label">Kargo(@TedarikciList.Count())</span>
+                  <span class="summary-detail__price">@ToplamKargo₺</span>
+                </div>
+
+                foreach (var item in TedarikciList)
+                {
+                    var TedarikciUrunleri = Model.Where(x => x.TedarikciAdi == item).ToList();
+                    var FiyatToplam = TedarikciUrunleri.Sum(x=> x.Fiyat);
+                    if(FiyatToplam >=60)
+                    {
+                        <div class="summary-detail__wrapper summary-detail__wrapper--discount">
+
+                          <div class="label-wrapper">
+                            <span class="summary-detail__label">Kargo İndirimi</span>
+                          </div>
+
+                          <span class="summary-detail__price summary-detail__price--discount">14,99 ₺</span>
+
+                        </div>
+                    }
+                }
+              </div>
+              <div class="order-summary">
+                <div class="order-summary__price-wrapper">
+                  <i class="icon-arrow-drop-down order-summary__icon order-summary__icon--active"></i>
+                  <div>
+                    <div class="order-summary__total-price-wrapper">
+                      <p class="order-summary__total-text ">Toplam</p>
+                    </div>
+                    @{
+                       var Toplam= Model.Sum(x=> x.Fiyat);
+                        foreach (var item in TedarikciList)
+                        {
+                            var TedarikciUrunleri = Model.Where(x => x.TedarikciAdi == item).ToList();
+                            var FiyatToplam = TedarikciUrunleri.Sum(x=> x.Fiyat);
+                            if(FiyatToplam >=60)
+                            {
+                               
+                            }
+                            else{
+                                Toplam += 14.99;
+                            }
+                        }
+                    }
+                    <p class="q-typography q-body bold q-initial order-summary__price-text">@Math.Round(Toplam, 2) ₺</p>
+                  </div>
+                </div>
+                <a href="~/Odeme/SiparisOlustur" >
+                    <button class="q-primary q-fluid q-button-medium q-button order-summary__button">
+                      <span>
+                        <p class="q-typography q-paragraph bold q-initial order-summary__button-text">Sepeti Onayla</p>
+                      </span>
+                    </button>
+                </a>
+              </div>
+            </div>
+
+                    @*//---------------------------------*@
+
+                </div>
+
+</div>

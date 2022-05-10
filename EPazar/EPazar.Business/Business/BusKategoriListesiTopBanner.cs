@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace EPazar.Business.Business
@@ -46,7 +45,7 @@ namespace EPazar.Business.Business
 
         public async Task<List<KategoriListesiTopBanner>> PredicateAsync(KategoriListesiTopBanner entity)
         {
-            var Result = await Query.GetAll().Where(x=> x.KategoriId == entity.KategoriId).OrderBy(x => x.Sira).ToListAsync().ConfigureAwait(true);
+            var Result = await Query.GetAll().Where(x => x.KategoriId == entity.KategoriId).OrderBy(x => x.Sira).ToListAsync().ConfigureAwait(true);
 
             return Result;
         }

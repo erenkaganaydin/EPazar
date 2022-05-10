@@ -3,20 +3,41 @@
 @using System.Text.RegularExpressions
 @using System.Web
 @model List<string>  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    @{
-       
+
+<script type="text/javascript">
+    function RenkAra(value){
+        $.ajax({
+        url: "/UrunOzellikleri/Renkler/"+value,
+        data: {
+        },
+        type: "GET",
+        dataType : "html",
+        success: function (data){
+                console.log(data);
+                $('#renklerDivi').html(data);
+                //$('#showresults').html($('#showresults',data).html());
+                // similar to $(data).find('#showresults')
+            }
+        });
     }
-@foreach (var item in Model)
-{
-    var Url = Context.Request.Query["Renk"];
-    var deneme = HttpUtility.UrlDecode(item);
-    var VarMi = Url.Contains(deneme);
+  
+</script>
+<input type="text" value="" onkeyup="RenkAra(this.value)" id="inputRenkAdi" name="RenkAdi" style="border: 1px solid gray;border-radius: 13px;margin-bottom: 9px;"/>
+<div id="renklerDivi">
+    @foreach (var item in Model)
+    {
+        var Url = Context.Request.Query["Renk"];
+        var deneme = HttpUtility.UrlDecode(item);
+        var VarMi = Url.Contains(deneme);
 
-    <a onclick="RenkFilterEkle('@Uri.EscapeUriString(item)')" href="@Context.Request.Path" style="display: flex;"><input type="checkbox" checked="@VarMi" >
-        <span class="checkbox-span">@item</span>
-    </a>
-}
+        <a onclick="RenkFilterEkle('@Uri.EscapeUriString(item)')" href="@Context.Request.Path" style="display: flex;"><input type="checkbox" checked="@VarMi" >
+            <span class="checkbox-span">@item</span>
+        </a>
+    }
+</div>
+
 
 <script>
     function RenkFilterEkle(BedenBilgisi){

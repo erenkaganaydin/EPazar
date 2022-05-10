@@ -20,20 +20,40 @@
     <ul class="navigation">
         @foreach (var AnaKategoriItem in AnaKategorilerList)
         {
-            @if(SecilenSeciliAnaKategoriId == AnaKategoriItem.Id.ToString())
+            @if(AnaKategoriItem.Id == 1 || AnaKategoriItem.Id == 2)
             {
-            <li class="active"> 
-                <a style="text-decoration:none" href="~/KategoriListesi/Listele/@AnaKategoriItem.Id/@AnaKategoriItem.Ad?Tumu=1" class="category-header">
-                    @AnaKategoriItem.Ad
-                </a>
-            </li>
+                @if(SecilenSeciliAnaKategoriId == AnaKategoriItem.Id.ToString())
+                {
+                <li class="active"> 
+                    <a style="text-decoration:none" href="~/KategoriListesi/Listele/@AnaKategoriItem.Id/@AnaKategoriItem.Ad?Tumu=1" class="category-header">
+                        @AnaKategoriItem.Ad
+                    </a>
+                </li>
+                }
+                else{
+                <li class=""> 
+                    <a style="text-decoration:none" href="~/KategoriListesi/Listele/@AnaKategoriItem.Id/@AnaKategoriItem.Ad?Tumu=1" class="category-header">
+                        @AnaKategoriItem.Ad
+                    </a>
+                </li>
+                }
             }
             else{
-            <li class=""> 
-                <a style="text-decoration:none" href="~/KategoriListesi/Listele/@AnaKategoriItem.Id/@AnaKategoriItem.Ad?Tumu=1" class="category-header">
-                    @AnaKategoriItem.Ad
-                </a>
-            </li>
+                @if(SecilenSeciliAnaKategoriId == AnaKategoriItem.Id.ToString())
+                {
+                <li class="active"> 
+                    <a style="text-decoration:none" href="~/Urunler/Liste/@AnaKategoriItem.Id/@Html.Raw(AnaKategoriItem.Ad)?Tumu=1" class="category-header">
+                        @AnaKategoriItem.Ad
+                    </a>
+                </li>
+                }
+                else{
+                <li class=""> 
+                    <a style="text-decoration:none" href="~/Urunler/Liste/@AnaKategoriItem.Id/@Html.Raw(AnaKategoriItem.Ad)?Tumu=1" class="category-header">
+                        @AnaKategoriItem.Ad
+                    </a>
+                </li>
+                }
             }
         }   
     </ul>

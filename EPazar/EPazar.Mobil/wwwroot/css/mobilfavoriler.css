@@ -1,0 +1,123 @@
+.favori-wrap{
+    display: flex;
+    flex-wrap: wrap;
+    /*padding: 5px;*/
+}
+.urun-kart {
+    border-radius: 3px;
+    border: 1px solid #e6e6e6;
+    background-color: #fff;
+    margin: 4px;
+    width: calc(50vw - 13px);
+    float: left;
+    position: relative;
+    flex-direction: column;
+    display: flex;
+    white-space: nowrap;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+.urun-resim-wrap{
+    height: 181px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+.urun-resim{
+    height: inherit;
+    border-radius: 3px;
+    width: 90%;
+}
+.stam{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    white-space: normal;
+    bottom: 16px;
+}
+.stam-text{
+    margin: 0;
+    position: relative!important;
+    left: 0;
+    top: 5px;
+    display: flex;
+    border-radius: 3px;
+    background-color: #666;
+    width: 50px;
+    height: auto;
+    font-weight: 600;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3px;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 3px;
+    font-size: 9px;
+    text-transform: uppercase;
+}
+.urun-baslik{
+    text-overflow: ellipsis;
+    white-space: pre-wrap;
+    overflow: hidden;
+    color: #666;
+    text-align: left;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    font-size: 12px;
+    line-height: 14px;
+    height: 30px;
+}
+.urun-marka-text {
+    margin: 0;
+    font-family: Source Sans Pro,Helvetica,Arial,sans-serif;
+    font-style: normal;
+    font-stretch: normal;
+    color: #333;
+    font-size: 12px;
+    line-height: 16px;
+    margin-left: -95px;
+}
+
+.urun-size{
+    text-align: left;
+    margin: 5px 10px 0;
+    font-size: 12px;
+    height: 10px;
+    color: #333;
+    line-height: 10px;
+}
+.urun-fiyat{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: left;
+}
+.fiyat{
+    display: flex;
+    align-items: center;
+    padding-right: 5px;
+}
+
+.delete-icon{
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 50%;
+    color: #999;
+    padding: 8px;
+}
+
+.delete-i{
+    font-size: 14px;
+}

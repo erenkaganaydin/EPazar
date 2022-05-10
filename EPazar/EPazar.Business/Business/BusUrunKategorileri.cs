@@ -95,9 +95,10 @@ namespace EPazar.Business.Business
             throw new NotImplementedException();
         }
 
-        public Task<bool> UpdateAsync(UrunKategorileri entity)
+        public async Task<bool> UpdateAsync(UrunKategorileri entity)
         {
-            throw new NotImplementedException();
+            var Result = await Query.UpdateAsync(entity).ConfigureAwait(true);
+            return Result;
         }
 
         public Task<List<UrunKategorileri>> PredicateAsync(UrunKategorileri entity)

@@ -3,10 +3,7 @@ using EPazar.Entity.SanalEntity;
 using EPazar.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace EPazar.Controllers
@@ -25,11 +22,11 @@ namespace EPazar.Controllers
         {
             _logger = logger;
 
-            IndexEntityleri = new IndexEntityleri();    
+            IndexEntityleri = new IndexEntityleri();
             BusAnasayfaBanner = new BusAnasayfaBanner();
-            BusAnasayfaTopBanner = new BusAnasayfaTopBanner();    
-            BusAnasayfaSagBanner = new BusAnasayfaSagBanner();    
-            BusAnasayfaMiniBanner = new BusAnasayfaMiniBanner();    
+            BusAnasayfaTopBanner = new BusAnasayfaTopBanner();
+            BusAnasayfaSagBanner = new BusAnasayfaSagBanner();
+            BusAnasayfaMiniBanner = new BusAnasayfaMiniBanner();
         }
 
         public async Task<IActionResult> Index()

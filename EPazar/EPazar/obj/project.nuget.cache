@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "InuTnHmsJtgru8WpEcLs3bzleAzfhU+1x3rvuFbMk/CRJC2wQTk9H2WWnIVv97iyScrsAWM7iUkWST5HiOMSGw==",
+  "dgSpecHash": "3evgr/U7+VwOBvEry2oVWCXbwAbkhY5K7xV9jCAlxhcPvLcOktdnU6TRyl07uCbO0fbVZPQc2mbN/OkpsGD/jQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\eaydin\\Documents\\GitHub\\EPazar\\EPazar\\EPazar\\EPazar.csproj",
   "expectedPackageFiles": [
@@ -143,7 +143,7 @@
     "C:\\Users\\eaydin\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\eaydin\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Users\\eaydin\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
-    "C:\\Users\\eaydin\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.14\\microsoft.netcore.app.host.win-x64.5.0.14.nupkg.sha512"
+    "C:\\Users\\eaydin\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.16\\microsoft.netcore.app.host.win-x64.5.0.16.nupkg.sha512"
   ],
   "logs": []
 }

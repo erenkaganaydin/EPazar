@@ -97,3 +97,14 @@ C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Mobil\obj\Debug\net5.0\Raz
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Mobil\obj\Debug\net5.0\Razor\Views\GirisYapKayitOl\OturumAc.cshtml.g.cs
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Mobil\obj\Debug\net5.0\Razor\Views\Hesabim\AdresBilgilerim.cshtml.g.cs
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Mobil\obj\Debug\net5.0\Razor\Views\Hesabim\AdresEkle.cshtml.g.cs
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Mobil\obj\Debug\net5.0\Razor\Views\Sepet\Index.cshtml.g.cs
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Mobil\obj\Debug\net5.0\Razor\Views\Urunler\Index.cshtml.g.cs
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Mobil\obj\Debug\net5.0\Razor\Views\Urunler\Liste.cshtml.g.cs
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Mobil\obj\Debug\net5.0\Razor\Views\UrunDetay\Index.cshtml.g.cs
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Mobil\obj\Debug\net5.0\Razor\Views\Odeme\GizlilikSozlesmesi.cshtml.g.cs
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Mobil\obj\Debug\net5.0\Razor\Views\Odeme\Index.cshtml.g.cs
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Mobil\obj\Debug\net5.0\Razor\Views\Odeme\MesafeliSatisSozlesmesi.cshtml.g.cs
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Mobil\obj\Debug\net5.0\Razor\Views\Odeme\OdemeBasarili.cshtml.g.cs
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Mobil\obj\Debug\net5.0\Razor\Views\Odeme\OdemeBasarisiz.cshtml.g.cs
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Mobil\obj\Debug\net5.0\Razor\Views\Odeme\OdemeBilgileri.cshtml.g.cs
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Mobil\obj\Debug\net5.0\Razor\Views\Urunler\Filtre.cshtml.g.cs

@@ -1,0 +1,81 @@
+﻿@using EPazar.Business.Business
+@using EPazar.Entity.SanalEntity
+@using Microsoft.AspNetCore.Http.Extensions
+@model UrunlerEntity
+
+@{
+    var UrunListesi = Model.UrunListesi;
+}
+    <link rel="stylesheet" href="~/css/mobilurunlerlist.css">
+    <link rel="stylesheet" href="~/css/mobiladreslerim.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/w3.css">
+  
+   <div class="container-fluid filtreler-container">
+    <div class="row-title row">
+        <div class="col-2">
+            @*<i class="fa-solid fa-angle-left fa fa-2x"></i>*@
+        </div>
+        <div class="col-8">@ViewData["KategoriAdi"]</div>
+
+    </div>
+
+</div>
+<script>
+    function FiltreAc(){
+        let text = window.location.href;
+        text = text.replace(" ","");
+
+        if(text.search("Liste") != -1)      
+        {
+            window.location.href = text.replace("Liste", "Filtre");
+            return;
+        }
+        return;
+    }
+</script>
+<div class="top-head">
+    <div onclick="FiltreAc()" class="filter-div" style="font-size: 12px">
+        <i class="fa fa-filter" style="color: orange;"></i>
+        <span style="font-weight: 500">Filtre</span>
+    </div>
+</div>
+<script>
+    function UruneGit(link) {
+        window.location.href = "/UrunDetay/"+link;
+    }
+</script>
+<div class="orders">
+    <div class="favori-wrap">
+        @foreach (var item in UrunListesi){
+            <a class="urun-kart" href="/UrunDetay/@item.Id">
+                @{
+                    var UrunResimi = item.UrunResimleri.FirstOrDefault();
+                    if (UrunResimi == null)
+                        UrunResimi.ResimLink = "https://UrunResmiYok.com";
+                }
+                <div class="urun-resim-wrap">
+                    <img class="urun-resim" src="@UrunResimi.ResimLink" alt="@item.Adi">
+                    <div class="stam">
+                        <div class="stam-text">
+                            <span style="padding: 0;font-weight: 100;border: 0;">Kargo Bedava</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="urun-baslik">
+                    <span class="urun-marka-text"></span> @item.Adi
+                </div>
+                <div class="urun-size"></div>
+                <div class="urun-fiyat">
+                    <div class="fiyat">
+                        <span class="go-go">Hemen Al</span>
+                        <span class="q-typography q-paragraph bold q-initial primary main">@item.EskiFiyat₺</span>
+                    </div>
+                </div>
+            </a>
+        }
+
+    </div>
+</div>

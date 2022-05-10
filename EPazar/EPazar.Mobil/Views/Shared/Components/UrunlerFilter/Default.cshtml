@@ -3,17 +3,76 @@
 @model List<string>    
 @{
 }
+<style>
+.accordion {
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+  display:flex;
+  justify-content: space-between;
+}
 
+.accordion {
+    float:right;
+}
+.accordion a{
+    text-decoration: underline!important;
+    color: black;
+}
 
+.active, .accordion:hover {
+  background-color: #ccc; 
+}
+
+.panel {
+  padding: 0 1px;
+  display: none;
+  background-color: white;
+  overflow: hidden;
+}
+</style>
+<script type="text/javascript">
+    function BedenAra(value){
+        $.ajax({
+        url: "/UrunOzellikleri/UrunBedenleri/"+value,
+        data: {
+        },
+        type: "GET",
+        dataType : "html",
+        success: function (data){
+                console.log(data);
+                $('#bedenlerDivi').html(data);
+                //$('#showresults').html($('#showresults',data).html());
+                // similar to $(data).find('#showresults')
+            }
+        });
+    }
+  
+</script>
+<input type="text" value="" placeholder="Bedenlerde Arayın..." onkeyup="BedenAra(this.value)" id="inputRenkAdi" name="RenkAdi" style="border: 1px solid gray;border-radius: 13px;margin-bottom: 9px;width: 96%;text-align: center;margin-left: 8px;height: 39px;"/>
+<div id="bedenlerDivi">
 @foreach (var item in Model)
 {
     var Url = Context.Request.Query["Beden"];
     var VarMi = Url.Contains(item);
-
-    <a onclick="BedenFilterEkle('@item')" href="#" style="display: flex;"><input type="checkbox" checked="@VarMi" >
-        <span class="checkbox-span">@item</span>
-    </a>
+        Console.WriteLine(Url);
+        <div class="secili-filtre">
+        <a onclick="BedenFilterEkle('@item')" href="#" style="display: flex;">
+            @if (VarMi)
+            {
+                <span>✅</span>
+            }
+            <span class="checkbox-span">@item</span>
+        </a>
+    </div>
 }
+</div>
 
 <script>
     function BedenFilterEkle(BedenBilgisi){

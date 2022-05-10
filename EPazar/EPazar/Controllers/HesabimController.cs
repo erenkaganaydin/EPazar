@@ -93,7 +93,7 @@ namespace EPazar.Controllers
                 Siparis.UyeId = EmailKontrol.Id;
             }
             var UyeSiparisleri = await BusSiparis.PredicateIncludeAsync(Siparis);
-           
+
 
             HesabimEntityleri.Siparisler = UyeSiparisleri;
 
@@ -107,7 +107,7 @@ namespace EPazar.Controllers
                 var Link = await BusUrunResimleri.FirstOrDefaultAsync(UrunResimleri);
                 item.ResimLink = Link.ResimLink;
                 ViewSiparisDetayList.Add(item);
-            }  
+            }
 
             HesabimEntityleri.ViewSiparisDetay = ViewSiparisDetayList;
 
@@ -122,9 +122,9 @@ namespace EPazar.Controllers
         [Route("/Hesabim/SiparisBilgisi/{SiparisId?}")]
 
         public async Task<IActionResult> SiparisBilgisi(long? SiparisId)
-        { 
+        {
             if (SiparisId == null)
-	        {
+            {
                 return RedirectToAction("Siparislerim", "Hesabim");
             }
             Kullanicilar.EMail = HttpContext.User.FindFirstValue(ClaimTypes.Email) != null ? HttpContext.User.FindFirstValue(ClaimTypes.Email) : null;

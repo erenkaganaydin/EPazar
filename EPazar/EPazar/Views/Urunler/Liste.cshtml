@@ -39,13 +39,16 @@
                 </div>
                 <script>
                 function UruneGit(link) {
-                    window.location.href = "/UrunDetay/"+link;
-                }
+                        window.open(
+                            '/UrunDetay/' + link,
+                            '_blank' // <- This is what makes it open in a new window.
+                        );
+                };
                 </script>
                 <div class="urunler-list">
                     <div class="urunler-flex">
                        @foreach (var item in UrunListesi)
-            {
+                {
                 <div class="urun-detay">
                     <div class="urun-child">
                         <div onclick="UruneGit(@item.Id)"  >
@@ -90,7 +93,7 @@
                                 </div>
                             </div>
                         </div>
-                      }
+                    }
                         
 
                     </div>

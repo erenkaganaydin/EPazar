@@ -33,6 +33,17 @@ namespace EPazar.Business.Business
             var Result = await Query.GetAll().Where(x => x.Id == entity.Id).FirstOrDefaultAsync();
             return Result;
         }
+        public async Task<Siparis> FirstOrDefaultPanelAsync(Siparis entity)
+        {
+            var Result = await Query.GetAll()
+                .Where(x => x.Id == entity.Id)
+                .Include(x => x.Kullanicilar)
+                .Include(x => x.KullaniciAdresleri)
+                .Include(x => x.SiparisDurum)
+                .Include(x => x.OdemeDurum)
+                .FirstOrDefaultAsync();
+            return Result;
+        }
 
         public async Task<Siparis> FirstOrDefaultUyeIdSiparisIdAsync(Siparis entity)
         {
@@ -96,6 +107,19 @@ namespace EPazar.Business.Business
         public async Task<bool> UpdateAsync(Siparis entity)
         {
             var Result = await Query.UpdateAsync(entity);
+            return Result;
+        }
+
+        public async Task<List<Siparis>> GetAllIncludePanelAsync()
+        {
+            var Result = await Query.GetAll()
+                .Include(x => x.SiparisDetay)
+                .Include(x => x.Kullanicilar)
+                .Include(x => x.KullaniciAdresleri)
+                .Include(x => x.SiparisDurum)
+                .Include(x => x.OdemeDurum)
+                .OrderByDescending(x=> x.Id)
+                .ToListAsync();
             return Result;
         }
     }

@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace EPazar.Business.Business
@@ -34,19 +33,24 @@ namespace EPazar.Business.Business
 
         public async Task<IEnumerable<long>> IdList(IEnumerable<long> list, IEnumerable<string> OzellikList)
         {
-            var Result = await Query.GetAll().Where(x=> OzellikList.Contains(x.OzellikAdi) && list.Contains(x.UrunId) && x.OzellikStok > 0).Select(x => x.UrunId).ToListAsync();
+            var Result = await Query.GetAll().Where(x => OzellikList.Contains(x.OzellikAdi) && list.Contains(x.UrunId) && x.OzellikStok > 0).Select(x => x.UrunId).ToListAsync();
             return Result;
         }
 
-      
+
 
         public async Task<List<string>> UrunOzellikAdlari()
         {
-            var Result = await Query.GetAll().Where(x=> x.OzellikTurId == 1 || x.OzellikTurId == 2 || x.OzellikTurId ==3 ).GroupBy(x=>x.OzellikAdi).Select(x=> x.Key).ToListAsync();
+            var Result = await Query.GetAll().Where(x => x.OzellikTurId == 1 || x.OzellikTurId == 2 || x.OzellikTurId == 3).GroupBy(x => x.OzellikAdi).Select(x => x.Key).ToListAsync();
 
             return Result;
         }
+        public async Task<List<string>> UrunOzellikAdlariFiltrele(UrunOzellikleri entity)
+        {
+            var Result = await Query.GetAll().Where(x => x.OzellikAdi.Contains(entity.OzellikAdi)).GroupBy(x => x.OzellikAdi).Select(x => x.Key).ToListAsync().ConfigureAwait(true);
 
+            return Result;
+        }
         public async Task<bool> UpdateAsync(UrunOzellikleri entity)
         {
             var Result = await Query.UpdateAsync(entity);
@@ -73,14 +77,15 @@ namespace EPazar.Business.Business
         public Task<bool> DeleteSqlRawAsync(UrunOzellikleri entity)
         {
             throw new NotImplementedException();
-        } 
-
-        public Task<List<UrunOzellikleri>> GetAllAsync()
-        {
-            throw new NotImplementedException();
         }
 
-      
+        public async Task<List<UrunOzellikleri>> GetAllAsync()
+        {
+            var Result = await Query.GetAll().ToListAsync().ConfigureAwait(true);
+            return Result;
+        }
+
+
 
         public Task<List<UrunOzellikleri>> PredicateAsync(UrunOzellikleri entity)
         {
@@ -92,6 +97,6 @@ namespace EPazar.Business.Business
             throw new NotImplementedException();
         }
 
-      
+
     }
 }

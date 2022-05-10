@@ -1,0 +1,15 @@
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\UygulamaAndorid\UygulamaAndorid\bin\Release\netstandard2.0\UygulamaAndorid.deps.json
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\UygulamaAndorid\UygulamaAndorid\bin\Release\netstandard2.0\UygulamaAndorid.dll
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\UygulamaAndorid\UygulamaAndorid\bin\Release\netstandard2.0\UygulamaAndorid.pdb
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\UygulamaAndorid\UygulamaAndorid\obj\Release\netstandard2.0\UygulamaAndorid.csproj.AssemblyReference.cache
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\UygulamaAndorid\UygulamaAndorid\obj\Release\netstandard2.0\UygulamaAndorid.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\UygulamaAndorid\UygulamaAndorid\obj\Release\netstandard2.0\App.xaml.g.cs
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\UygulamaAndorid\UygulamaAndorid\obj\Release\netstandard2.0\MainPage.xaml.g.cs
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\UygulamaAndorid\UygulamaAndorid\obj\Release\netstandard2.0\UygulamaAndorid.AssemblyInfoInputs.cache
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\UygulamaAndorid\UygulamaAndorid\obj\Release\netstandard2.0\UygulamaAndorid.AssemblyInfo.cs
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\UygulamaAndorid\UygulamaAndorid\obj\Release\netstandard2.0\UygulamaAndorid.csproj.CoreCompileInputs.cache
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\UygulamaAndorid\UygulamaAndorid\obj\Release\netstandard2.0\XamlC.stamp
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\UygulamaAndorid\UygulamaAndorid\obj\Release\netstandard2.0\UygulamaAndorid.dll
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\UygulamaAndorid\UygulamaAndorid\obj\Release\netstandard2.0\refint\UygulamaAndorid.dll
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\UygulamaAndorid\UygulamaAndorid\obj\Release\netstandard2.0\UygulamaAndorid.pdb
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\UygulamaAndorid\UygulamaAndorid\obj\Release\netstandard2.0\ref\UygulamaAndorid.dll

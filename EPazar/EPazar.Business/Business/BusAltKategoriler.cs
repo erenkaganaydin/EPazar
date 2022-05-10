@@ -14,7 +14,7 @@ namespace EPazar.Business.Business
     {
         public async Task<AltKategoriler> AddanId(AltKategoriler Entity)
         {
-            var Result = await Query.GetAll().Where(x => x.Ad == Entity.Ad).FirstOrDefaultAsync().ConfigureAwait(true);
+            var Result = await Query.GetAll().Where(x => x.Ad == Entity.Ad && x.KategoriId == Entity.KategoriId && x.UstKategoriId == Entity.UstKategoriId).FirstOrDefaultAsync().ConfigureAwait(true);
 
             return Result;
         }

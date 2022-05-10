@@ -1,0 +1,24 @@
+﻿@using Microsoft.AspNetCore.Http.Extensions
+@using System.Text.RegularExpressions
+@using System.Web
+@model List<string>
+
+@{ 
+    Layout = null;
+}
+
+@foreach (var item in Model)
+{
+    var Url = Context.Request.Query["Beden"];
+    var VarMi = Url.Contains(item);
+
+    <div class="secili-filtre">
+        <a onclick="BedenFilterEkle('@item')" href="#" style="display: flex;">
+            @if (VarMi)
+            {
+                <span>✅</span>
+            }
+            <span class="checkbox-span">@item</span>
+        </a>
+    </div>
+}

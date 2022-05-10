@@ -2,21 +2,50 @@
 @using System.Text.RegularExpressions
 @model List<string>  
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+
+<script type="text/javascript">
+    function RenkAra(value){
+        console.log(value);
+            
+        $.ajax({
+        url: "/UrunOzellikleri/Renkler/"+value,
+        data: {
+        },
+        type: "GET",
+        dataType : "html",
+        success: function (data){
+                console.log(data);
+                $('#renklerDivi').html(data);
+                //$('#showresults').html($('#showresults',data).html());
+                // similar to $(data).find('#showresults')
+            }
+        });
+    }
+  
+</script>
+<input type="text" value="" placeholder="Renklerde Arayın..." onkeyup="RenkAra(this.value)" id="inputRenkAdi" name="RenkAdi" style="border: 1px solid gray;border-radius: 13px;margin-bottom: 9px;width: 96%;text-align: center;margin-left: 8px;height: 39px;"/>
+<div id="renklerDivi">
 @foreach (var item in Model)
 {
     var Url = Context.Request.Query["Renk"];
     var VarMi = Url.Contains(item);
 
-    <a onclick="RenkFilterEkle('@item')" href="#" style="display: flex;"><input type="checkbox" checked="@VarMi" >
-        <span class="checkbox-span">@item</span>
-    </a>
+    <div class="secili-filtre">
+        <a onclick="RenkFilterEkle('@item')" href="#" style="display: flex;">
+            @if (@VarMi)
+            {
+                <span>✅</span>
+            }
+            <span class="checkbox-span">@item</span>
+        </a>
+    </div>
 }
-
+</div>
 <script>
     function RenkFilterEkle(BedenBilgisi){
         BedenBilgisi = BedenBilgisi.replace(" ","%20");
-        debugger;
         let text = window.location.href;
         text = text.replace("%C5","Ş");
         text = text.replace("%9E","");

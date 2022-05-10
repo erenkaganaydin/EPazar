@@ -48,7 +48,18 @@ namespace EPazar.Business.Business
 
         public async Task<List<SiparisDetay>> PredicateAsync(SiparisDetay entity)
         {
-            var Result = await Query.GetAll().Where(x => x.SiparisId == entity.SiparisId).ToListAsync();
+            var Result = await Query.GetAll()
+                .Where(x => x.SiparisId == entity.SiparisId)
+                .ToListAsync();
+            return Result;
+        }
+        public async Task<List<SiparisDetay>> PredicatePanelAsync(SiparisDetay entity)
+        {
+            var Result = await Query.GetAll()
+                .Where(x => x.SiparisId == entity.SiparisId)
+                .Include(x=> x.Urunler)
+                .ToListAsync();
+
             return Result;
         }
 

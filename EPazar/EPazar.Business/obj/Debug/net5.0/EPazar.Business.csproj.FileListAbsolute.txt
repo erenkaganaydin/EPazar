@@ -14,6 +14,6 @@ C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Business\obj\Debug\net5.0\
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Business\obj\Debug\net5.0\EPazar.Business.csproj.CoreCompileInputs.cache
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Business\obj\Debug\net5.0\EPazar.Business.csproj.CopyComplete
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Business\obj\Debug\net5.0\EPazar.Business.dll
-C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Business\obj\Debug\net5.0\refint\EPazar.Business.dll
-C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Business\obj\Debug\net5.0\EPazar.Business.pdb
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Business\obj\Debug\net5.0\ref\EPazar.Business.dll
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Business\obj\Debug\net5.0\EPazar.Business.pdb
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Business\obj\Debug\net5.0\refint\EPazar.Business.dll

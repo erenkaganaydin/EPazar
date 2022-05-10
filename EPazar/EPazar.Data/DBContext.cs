@@ -40,6 +40,7 @@ namespace EPazar.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
           
+            modelBuilder.Entity<OdemeDurum>().HasQueryFilter(x=> !x.Deleted);
             modelBuilder.Entity<AnaKategoriler>().HasQueryFilter(x=> !x.Deleted);
             modelBuilder.Entity<AnasayfaBanner>().HasQueryFilter(x=> !x.Deleted);
             modelBuilder.Entity<AnasayfaTopBanner>().HasQueryFilter(x=> !x.Deleted);
@@ -65,6 +66,7 @@ namespace EPazar.Data
             modelBuilder.Entity<KargoFirmalari> ().HasQueryFilter(x=> !x.Deleted);
             modelBuilder.Entity<Favoriler> ().HasQueryFilter(x=> !x.Deleted);
             modelBuilder.Entity<Tedarikciler> ().HasQueryFilter(x=> !x.Deleted);
+            modelBuilder.Entity<Admin> ().HasQueryFilter(x=> !x.Deleted);
 
             modelBuilder.Entity<ViewSepet> ().HasKey(x=> x.UrunId);
             modelBuilder.Entity<ViewSiparisDetay> ().HasNoKey();
@@ -77,6 +79,7 @@ namespace EPazar.Data
         #endregion OnModelCreating
 
      
+        public virtual DbSet<OdemeDurum> OdemeDurum { get; set; }
         public virtual DbSet<AnaKategoriler> AnaKategoriler { get; set; }
         public virtual DbSet<AnasayfaBanner> AnasayfaBanner { get; set; }
         public virtual DbSet<AnasayfaTopBanner> AnasayfaTopBanner { get; set; }
@@ -105,5 +108,6 @@ namespace EPazar.Data
         public virtual DbSet<ViewSiparisTedarikciToplam> ViewSiparisTedarikciToplam { get; set; }
         public virtual DbSet<KargoFirmalari> KargoFirmalari { get; set; }
         public virtual DbSet<Favoriler> Favoriler { get; set; }
+        public virtual DbSet<Admin> Admin { get; set; }
     }
 }

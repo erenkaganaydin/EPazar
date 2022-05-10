@@ -1,12 +1,9 @@
 ﻿using EPazar.Business.Business;
 using EPazar.Entity.Entity;
 using EPazar.Entity.XMLEntity;
-using EPazarAPI.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -77,7 +74,7 @@ namespace EPazarAPI.Controllers
             BusOzellikTur = new BusOzellikTur();
 
             BusUrunKategorileri = new BusUrunKategorileri();
-        } 
+        }
         #endregion
 
         [HttpPost("Urunler/Guncelle")]
@@ -103,8 +100,8 @@ namespace EPazarAPI.Controllers
                     var YeniFiyat = ((urun.TedarikciFiyati * 20) / 100) + urun.TedarikciFiyati;
                     var ArtiKargo = YeniFiyat + 14.99;
                     var Yuzde = random.Next(40, 55);
-                    Urunler.EskiFiyat = Math.Round(((ArtiKargo * Yuzde) / 100) + ArtiKargo,2);
-                    Urunler.Fiyat = Math.Round(ArtiKargo,2);
+                    Urunler.EskiFiyat = Math.Round(((ArtiKargo * Yuzde) / 100) + ArtiKargo, 2);
+                    Urunler.Fiyat = Math.Round(ArtiKargo, 2);
 
 
                     var UrunVarMi = await BusUrunler.FirstOrDefaultAsync(Urunler);
@@ -118,8 +115,6 @@ namespace EPazarAPI.Controllers
                         var Update = await BusUrunler.UpdateAsync(Urunler);
                     }
                     #endregion
-
-                   
 
                     #region Urun Resim İşlemleri
                     try
@@ -264,6 +259,10 @@ namespace EPazarAPI.Controllers
                         HipatuAnaKategoriEsitleme.TedarikciKategoriUcAdi = urun.TedarikciKategoriUcAdi;
                         #endregion
 
+                        if (urun.TedarikciKategoriIkiAdi == "Pantolon")
+                        {
+                            var x = 21;
+                        }
                         var VarMi = await BusHipatuAnaKategoriEsitleme.VarMi(HipatuAnaKategoriEsitleme);
                         if (VarMi != null)
                         {
@@ -293,11 +292,18 @@ namespace EPazarAPI.Controllers
                             {
                                 UrunKategorileri.AltKategoriId = AltKategoriId.Id;
                             }
-                            
+
                             var UrunKategoriKayitliMi = await BusUrunKategorileri.FirstOrDefaultAsync(UrunKategorileri);
                             if (UrunKategoriKayitliMi == null)
                             {
                                 var UrunKategoriekle = await BusUrunKategorileri.InsertAsync(UrunKategorileri, false);
+                            }
+                            else
+                            {
+                                UrunKategoriKayitliMi.AnaKategoriId = UrunKategorileri.AnaKategoriId;
+                                UrunKategoriKayitliMi.KategoriId = UrunKategorileri.KategoriId;
+                                UrunKategoriKayitliMi.AltKategoriId = UrunKategorileri.AltKategoriId;
+                                var KategoriGuncelleme = await BusUrunKategorileri.UpdateAsync(UrunKategoriKayitliMi);
                             }
                         }
                         else
@@ -310,7 +316,7 @@ namespace EPazarAPI.Controllers
                     {
                         var exep = ex.Message;
                     }
-                   
+
                     #endregion
                 }
             }
@@ -339,7 +345,7 @@ namespace EPazarAPI.Controllers
                 }
             }
 
-            else 
+            else
             {
                 var HipatuTumUrunlerId = await BusUrunler.AkitfBebekTumUrunler();
                 var OnlardanGelen = Urun.Select(x => x.TedarikciUrunId);

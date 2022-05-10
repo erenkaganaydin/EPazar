@@ -2,56 +2,71 @@
 
 @model List<Favoriler>
 
-    <link rel="stylesheet" href="~/css/Favoriler.css">
-    
-    <div class="alc-hesap-container">
-                <div class="r-sag-div">
+    @{
+        
+    }
 
-                    <div class="block">
+  
+    <html>
 
-                        <div class="oc-block">
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/w3.css">
+    <link rel="stylesheet" href="~/css/mobilfavoriler.css">
+    <link rel="stylesheet" href="~/css/mobiladreslerim.css">
 
-                            <div class="block" style="width: 100%;">
 
-                                <div class="favori-block-wrap">
-                                    @foreach(var item in Model){
-                                         <div class="onerilen-urun-kart-wrap">
-                                        <a href="~/UrunDetay/@item.UrunId" class="onerilen-urun-item">
-                                            <div class="img-wrap">
-                                                <img class="o-item-img" src="@item.ResimLink" alt="@item.Urunler.Adi">
-                                            </div>
-                                            <div>
-                                                <div class="o-shipp-wrap">
-                                                    <div class="o-kargo-bedava">KARGO BEDAVA</div>
-                                                </div>
-                                            </div>
-                                            <div class="o-urun-desc-center-wrap">
-                                                <div class="o-urun-desc-center">
-                                                    <div class="o-urun-desc-title">
-                                                        <span class="o-urun-desc-marka"></span>
-                                                        <span class="o-urun-desc-aciklama"> @item.Urunler.Adi</span>
-                                                    </div>
-                                                </div>
-                                                <div class="o-urun-fiyat">
-                                                    <div class="prd-bx">
-                                                        <div class="prd-bx-na">
-                                                            <div class="urun-box-eski">@item.Urunler.EskiFiyat ₺ </div>
-                                                            <div class="urun-box-yeni-f">@item.Urunler.Fiyat ₺</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    }
-                                   
-                                </div>
+<div class="container-fluid filtreler-container">
+  <a class="row-title row" href="/Hesabim">
+    <div class="col-2">
+      <i class="fa-solid fa-angle-left fa fa-2x"></i>
+    </div>
+    <div class="col-8">Farovilerim</div>
+  </a>
+</div>
+<div class="orders">
+  <div class="favori-wrap">
 
+            <script>
+                function FavoriKaldir(UrunId){
+                    window.location.href='/Hesabim/Favorilerim/FavoriKaldir/'+UrunId;
+                }
+                function UruneGit(UrunId){
+                    window.location.href='/UrunDetay/'+UrunId;
+                }
+            </script>
+            @foreach(var item in Model){
+                <div class="urun-kart">
+                    <a href="/UrunDetay/@item.UrunId" class="urun-resim-wrap">
+                        <img class="urun-resim" src="@item.ResimLink" alt="">
+                        <div class="stam">
+                            <div class="stam-text">
+                                <span style="padding: 0;font-weight: 100;border: 0;">Kargo Bedava</span>
                             </div>
                         </div>
-
+                    </a>
+                    <a href="/UrunDetay/@item.UrunId"  class="urun-baslik">
+                        <span class="urun-marka-text"> </span> @item.Urunler.Adi
+                    </a>
+                    <div class="urun-size"></div>
+                    <div class="urun-fiyat">
+                        <div class="fiyat">
+                            <span class="q-typography q-paragraph bold q-initial primary main">@item.Urunler.Fiyat TL</span>
+                        </div>
                     </div>
-
+                    <div onclick="FavoriKaldir(@item.UrunId)" class="delete-icon">
+                        <i class="fa fa-close delete-i"></i>
+                    </div>
                 </div>
+            }
 
-            </div>
+  </div>
+</div>
+
+<script>
+  function phoneMask() {
+    var num = $(this).val().replace(/\D/g,'');
+    $(this).val(num.substring(0,1) + '(' + num.substring(1,4) + ')' + num.substring(4,7) + '-' + num.substring(7,11));
+  }
+  $('[type="tel"]').keyup(phoneMask);
+</script>

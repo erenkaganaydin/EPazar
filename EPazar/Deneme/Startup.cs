@@ -1,16 +1,10 @@
-using EPazar.Data.Repositories;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace EPazar
 {
@@ -36,6 +30,7 @@ namespace EPazar
                options.AddPolicy("myclients", builder =>
                    builder.WithOrigins("https://www.sanalakpos.com", "https://www.sanalakpos.com/", "https://lookup.binlist.net/").AllowAnyMethod().AllowAnyHeader()));
             services.AddControllersWithViews();
+            
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
             {
                 options.LoginPath = "/GirisYapKayitOl/OturumAc";
@@ -61,7 +56,7 @@ namespace EPazar
             app.UseStaticFiles();
 
             app.UseRouting();
-            
+
 
             app.UseAuthorization();
 

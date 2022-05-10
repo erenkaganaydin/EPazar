@@ -1,5 +1,5 @@
 ﻿
-<!--#region container-->
+<!--#region container
 
 
 <nav class="w3-sidenav w3-white w3-animate-left" style="display:none;">
@@ -9,47 +9,83 @@
         </a>
     </div>
     <div class="sidenav-list">
-        <a href="#">
+        <a href="~/Urunler/Liste/1/KADIN?Tumu=1">
             <i class="fa fa-person-dress"></i>
           KADIN
         </a>
-        <a href="#">
+        <a href="~/Urunler/Liste/2/ERKEK?Tumu=1">
             <i class="fa fa-person-dress"></i>
           ERKEK
         </a>
-        <a href="#">
+        <a href="~/Urunler/Liste/3/COCUK?Tumu=1">
             <i class="fa fa-person-dress"></i>
             ÇOCUK
         </a>
-        <a href="#">
+        <a href="~/Urunler/Liste/4/COCUK?Tumu=1">
             <i class="fa fa-person-dress"></i>
-            EV
+            EV & YAŞAM
         </a>
-        <a href="#">
+        <a href="~/Urunler/Liste/5/Ayakkabi?Tumu=1">
             <i class="fa fa-person-dress"></i>
-            YAŞAM
+            Ayakkabı & Çanta
+        </a>
+        <a href="~/Urunler/Liste/6/TesetturGiyim?Tumu=1">
+            <i class="fa fa-person-dress"></i>
+            Tesettür Giyim
         </a>
 
     </div>
     <hr>
 </nav>
+-->
+<script>
+    function setCookie(cname, cvalue, exdays) {
+        const d = new Date();
+        d.setTime(d.getTime() + (exdays*24*60*60*1000));
+        let expires = "expires="+ d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+    function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for(let i = 0; i <ca.length; i++) {
+                let c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+        }
+        return "";
+    }
 
-
+</script>
+@await Component.InvokeAsync("MobilLeftBar")
 
 <div class="w3-overlay w3-animate-opacity" onclick="w3_close()" style="cursor:pointer"></div>
 
 <div class="w3-container">
     <span class="w3-opennav w3-xxlarge" onclick="w3_open()">&#9776;</span>
 
-    <span><a href="mobilindex.html"><img class="logo-img" src="https://www.bigtarz.com/img/Bigtarz.png" alt="Bigtarz Logo"></a></span>
+    <span><a href="/Home"><img class="logo-img" src="https://www.bigtarz.com/img/Bigtarz.png" alt="Bigtarz Logo"></a></span>
 
     <span class="kullanici"><a href="/Hesabim"><i class="far fa-user fa-2x"></i></a></span>
     <span class="favori"><a href="/Hesabim/Favorilerim"><i class="fa-regular fa-heart fa-2x"></i></a></span>
-    <span class="sepet"><a href="/Sepet"><i class="fa fa-light fa-cart-shopping fa-2x"></i></span>
+    <span class="sepet"><a href="/Sepet"><i class="fa fa-light fa-cart-shopping fa-2x"></i></a></span>
     <div class="Arama">
 
         <div class="search-box-container">
-            <input class="search-box" type="text" tabindex="1" placeholder="Kategori, ürün veya markayı yazınız" maxlength="50" autocomplete="off" value="">
+            <form method="get" action="/Urunler/Liste/?Tumu=1&">
+                            @{
+                                string Aranan = "";
+                                var Arama = Context.Request.Query["Arama"];
+                                if (Arama.Count > 0)
+                                    Aranan = Arama.First();
+                            }
+                <input class="search-box" type="text" tabindex="1" placeholder="Kategori, ürün veya markayı yazınız" maxlength="50" autocomplete="off" value="@Aranan">
+             </form>
         </div>
     </div>
 

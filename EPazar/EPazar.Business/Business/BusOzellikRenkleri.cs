@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace EPazar.Business.Business
@@ -56,6 +55,12 @@ namespace EPazar.Business.Business
         public Task<List<OzellikRenkleri>> PredicateAsync(OzellikRenkleri entity)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<List<OzellikRenkleri>> OzellikAdlari(OzellikRenkleri entity)
+        {
+            var Result = await Query.GetAll().Where(x => x.Ad.Contains(entity.Ad)).ToListAsync().ConfigureAwait(true);
+            return Result;
         }
 
         public Task<bool> RemoveRangeAsync(OzellikRenkleri entity)

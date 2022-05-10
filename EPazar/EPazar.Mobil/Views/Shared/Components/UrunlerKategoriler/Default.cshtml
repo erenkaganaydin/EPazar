@@ -5,7 +5,11 @@
 {
     foreach(var item in Model.AltKategoriler)
     {
-        <a href="~/Urunler/Liste/@item.UstKategoriId/ /@item.KategoriId/ /@item.Id/ ?Tumu=1">@item.Ad</a>
+        <div class="secili-filtre">        
+            <a href="~/Urunler/Liste/@item.UstKategoriId/ /@item.KategoriId/ /@item.Id/ ?Tumu=1">
+                @item.Ad
+            </a>
+        </div>
     }
 }
 else
@@ -14,7 +18,9 @@ else
     {
         foreach(var item in Model.Kategoriler)
         {
-            <a href="~/Urunler/Liste/@item.AnaKategoriId/ /@item.Id/ ?Tumu=1">@item.Ad</a>
+            <div class="secili-filtre">
+                <a href="~/Urunler/Liste/@item.AnaKategoriId/ /@item.Id/ ?Tumu=1">@item.Ad</a>
+            </div>
         }
     }
     else
@@ -23,7 +29,9 @@ else
         {
             foreach(var item in Model.AnaKategoriler)
             {
-                <a href="~/Urunler/Liste/@item.Id/@item.Ad ?Tumu=1">@item.Ad</a>
+                <div class="secili-filtre">
+                    <a href="~/Urunler/Liste/@item.Id/@item.Ad ?Tumu=1">@item.Ad</a>
+                </div>
             }
         }
     }

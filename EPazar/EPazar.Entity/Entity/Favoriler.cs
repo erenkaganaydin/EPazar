@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EPazar.Entity.Entity
 {
@@ -20,5 +15,7 @@ namespace EPazar.Entity.Entity
         public string ResimLink { get; set; }
 
         public Urunler Urunler { get; set; }
+
+
     }
 }

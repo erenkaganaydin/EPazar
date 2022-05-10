@@ -1,0 +1,18 @@
+﻿@using Microsoft.AspNetCore.Http.Extensions
+@using System.Text.RegularExpressions
+@model List<string>
+
+@{ 
+    Layout = null;
+}
+
+@foreach (var item in Model)
+{
+    var Url = Context.Request.Query["Renk"];
+    var VarMi = Url.Contains(item);
+
+    <a onclick="RenkFilterEkle('@Html.Raw(item)')" href="#" style="display: flex;">
+        <input type="checkbox" checked="@VarMi">
+        <span class="checkbox-span">@Html.Raw(item)</span>
+    </a>
+}

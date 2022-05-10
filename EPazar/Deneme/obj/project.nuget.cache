@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "1EaPrbsTIYF4Suw9RkcfNf1OykckG9sEgofj2E6ORg4vhYo5XQT2JFw5HbyTsXoCNoAY/WaR1jh2qGl/hLo96g==",
+  "dgSpecHash": "IOhe0pzdkVYd/+pTm7+AesFzIhdsH1UPfUMxDb1peTSmDUjdHTxPLr8xw7RUeLKP/rywytGFvwADl/qsqUmP3Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\eaydin\\Documents\\GitHub\\EPazar\\EPazar\\Deneme\\Bigtarz.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\eaydin\\.nuget\\packages\\castle.core\\4.4.1\\castle.core.4.4.1.nupkg.sha512",
     "C:\\Users\\eaydin\\.nuget\\packages\\castle.windsor\\5.1.1\\castle.windsor.5.1.1.nupkg.sha512",
+    "C:\\Users\\eaydin\\.nuget\\packages\\jquery\\3.6.0\\jquery.3.6.0.nupkg.sha512",
     "C:\\Users\\eaydin\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\eaydin\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
     "C:\\Users\\eaydin\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.0.1\\microsoft.data.sqlclient.sni.runtime.2.0.1.nupkg.sha512",
@@ -143,7 +144,7 @@
     "C:\\Users\\eaydin\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\eaydin\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Users\\eaydin\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
-    "C:\\Users\\eaydin\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.14\\microsoft.netcore.app.host.win-x64.5.0.14.nupkg.sha512"
+    "C:\\Users\\eaydin\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.16\\microsoft.netcore.app.host.win-x64.5.0.16.nupkg.sha512"
   ],
   "logs": []
 }

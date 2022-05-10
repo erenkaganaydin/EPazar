@@ -1,0 +1,415 @@
+﻿@{
+}
+
+@using EPazar.Entity.SanalEntity
+
+@model OdemeEntityleri
+@{
+    var ViewSepet = Model.ViewSepet;
+    var Siparis = Model.Siparis;
+    var KullaniciAdresleri = Model.KullaniciAdresleri;
+    var SeciliKullaniciAdresi = Model.SeciliKullaniciAdresi;
+}
+@{
+    //  AŞAĞIDA 3D SECURE İŞLEMİ İÇİN GEREKLİ ALANLAR VE KULLANIMLARI İLE ASP.NET KOD ÖRNEĞİ VERİLMİŞTİR. GİRİLEN DEĞERLER TEST AMAÇLI GİRİLMİŞTİR.
+    //  3DPAY MODEL ÜZERİNE DÜZENLENMİŞ KOD ÖRNEĞİDİR. İŞ YERLERİ KENDİ DEĞERLERİYLE DEĞİŞKENLERİ TANIMLAMALIDIR. 
+    //  İŞ YERLERİNE REFERANS AMAÇLI OLUŞTURULMUŞTUR.
+    //  SİFRE =>  S3220329e
+
+        /**************           GEREKLİ  PARAMETRELER       ********************/
+        String clientId = "102139631";   //Banka tarafından verilen işyeri numarası     
+        String amount = Siparis.ToplamTutar.ToString();          //İşlem tutarı
+        String oid = Siparis.SiparisNumarasi;                 //Sipariş Numarası
+        String okUrl = "https://bigtarz.com/Odeme/OdemeBasarili";     //İşlem başarılıysa dönülecek sayfa
+        String failUrl = "https://bigtarz.com/Odeme/OdemeBasarisiz";   //İşlem başarısızsa dönülecek sayfa
+        String rnd = DateTime.Now.ToString();  //Kontrol ve güvenlik amaçlı sürekli değişen bir değer tarih gibi
+        
+        String taksit = "0";      //Taksit sayısı
+        String islemtipi = "Auth"; //İşlem tipi
+        String storekey="kaoTOPENG_3435";  //İş yeri anahtarı
+       
+    }
+<!doctype html>
+<html lang="tr">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+    <link rel="stylesheet" href="~/css/OdemeSecenekleri.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js" integrity="sha512-yFjZbTYRCJodnuyGlsKamNE/LlEaEAxSUDe5+u61mV8zzqJVFOH7TnULE2/PP/l5vKWpUNnF4VGVkXh3MjgLsg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    </head>
+<body>
+    @{
+    var Hata = Context.Request.Query["Hata"];
+    if(Hata.Count>0)
+    {
+        var Mesaj = Hata.First();
+        <script>
+            alert("@Mesaj");
+        </script>
+    }
+}
+<!--#region container-->
+<div class="container">
+
+    <div class="body-main">
+        <div class="main-wrap">
+            <form class="form" action="https://www.sanalakpos.com/fim/est3Dgate" method="POST">
+
+            <main class="payment">
+                <div class="header-pay">
+                    <a class="sepet-href" href="/Sepet">
+                        <img class="logo-img"  src="~/img/BigtarzLogo.svg" alt="Bigtarz Logo">
+                    </a>
+                    <div class="p-header-guven">
+                        <i class="fa-brands fa-expeditedssl i-ssl"></i>
+                        <span class="ssl-text">SSL secured |</span>
+                        <span> Güvenle öde, güvenle al.</span>
+                    </div>
+
+                </div>
+                <div class="p-main">
+                    <div class="p-cont">
+                        <div class="p-nav">
+                            <section class="p-nav-sect">
+                                <div class="p-adres-secili">
+                                    <p class="p-adres-secili-title">Adres Bilgisi</p>
+                                      <div class="secili-kargo-bilgileri">
+                                                    @{
+                                                        var Adres = "";
+                                                        var AdresBasligi = "";
+                                                        if(SeciliKullaniciAdresi != null){
+                                                            Adres= SeciliKullaniciAdresi.Adres;
+                                                            AdresBasligi = SeciliKullaniciAdresi.AdresBasligi;
+                                                        }
+                                                    }
+                                                <p class="secili-kargo-adi">@AdresBasligi</p>
+                                          
+                                                <p>@Adres</p>
+                                            </div>
+                                </div>
+                                <div class="p-ayrac"></div>
+                                <div class="p-odeme-sekme">
+                                    <p class="p-odeme-title">Ödeme Seçimi</p>
+                                    <p class="odeme-seicmleri-aciklama">Ödemelerinizi Tüm Kartlarla yapabilirsiniz. Akbank kartlarınızda 12'taksite kadar taksitlendirebilirsiniz...</p>
+                                </div>
+                            </section>
+                            <div class="secili-nav"></div>
+                        </div>
+                        <div class="p-lay-tab-conte">
+                            <div class="p-layout-wrap">
+                                <div class="p-adreses">
+                                    <div class="payment-giris">
+
+                                        <div class="payment-header">
+                                            <span class="p-h-kart">Kart Bilgileri</span>
+                                        </div>
+                                        <div class="odeme-bilgileri">
+                                            <div class="payment-wrap">
+                                                <div class="kart-baslik">Kart Üzerindeki İsim</div>       
+                                                <div class="kart-detaylari" style="flex-direction: column;margin-left: 25px;">
+                                                    <input type="text" name="KartAd" class="kart-ad-input">
+                                                     <div>
+                                                            <br>
+
+                                                            <span id="kart-bank-tur" style="font-size: 11px;margin-right: 25px;"></span>
+                                                            <span id="kart-bank-ad" style="font-size: 11px;margin-right: 25px;">
+                                                            </span>
+                                                        </div>
+                                                </div>
+                                                <div class="kart-baslik">Kart Numaranız</div>
+                                                 <input type="text" id="pan" name="pan" onkeyup="return pan_value(this.value)" class="kart-numarasi-input">
+                                                   <script>
+                                                        function cc_format(value) {
+                                                            var v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '')
+                                                            var matches = v.match(/\d{4,16}/g);
+                                                            var match = matches && matches[0] || ''
+                                                            var parts = []
+                                                            for (i=0, len=match.length; i<len; i+=4) {
+                                                                parts.push(match.substring(i, i+4))
+                                                            }
+                                                            if (parts.length) {
+                                                                return parts.join(' ')
+                                                            } else {
+                                                                return value
+                                                            }
+                                                        }
+                                                        function pan_value (value ){
+                                                            const pan = document.getElementById('pan');
+                                                            const KartBankAd = document.getElementById('kart-bank-ad');
+                                                            const KartBankTur = document.getElementById('kart-bank-tur');
+                                                            var new_val = value.replace(' ','')
+                                                            new_val = new_val.replace('%','')
+                                                            new_val = new_val.replace(' ','')
+                                                            new_val = new_val.replace(' ','')
+                                                            new_val = new_val.replace(' ','')
+                                                            new_val = new_val.replace(' ','')
+                                                            console.log(new_val);
+                                                            $.ajax({
+                                                                type:'POST',
+                                                                url: 'https://lookup.binlist.net/'+new_val,
+                                                                success: function(response) {
+                                                                    console.log(response);
+                                                                    console.log("-----");
+                                                                    console.log();
+                                                                    if (response.bank.name != null && response.bank.name != undefined)
+                                                                        KartBankAd.innerHTML = response.bank.name;
+                                                                    if (response.scheme != null && response.scheme != undefined)
+                                                                        KartBankTur.innerHTML = response.scheme.toString().toUpperCase();                                                                }
+                                                            });
+                                                            pan.value = cc_format(value);
+                                                        }
+                                                    </script>
+                                                <div class="kart-detaylari">
+                                                    <div>
+                                                        <label >Son Kullanma Tarihi</label>
+                                                        <div class="son-kullanma-tarihi">
+                                                            <div class="combobox-secim">
+                                                                <select class="secim-select" name="Ecom_Payment_Card_ExpDate_Month" >
+                                                                    <option value="1">01</option>
+                                                                    <option value="2">02</option>
+                                                                    <option value="3">03</option>
+                                                                    <option value="4">04</option>
+                                                                    <option value="5">05</option>
+                                                                    <option value="6">06</option>
+                                                                    <option value="7">07</option>
+                                                                    <option value="8">08</option>
+                                                                    <option value="9">09</option>
+                                                                    <option value="10">10</option>
+                                                                    <option value="11">11</option>
+                                                                    <option value="12">12</option>
+                                                                </select>
+                                                                <i class="fa fa-angle-down select-i"></i>
+                                                            </div>
+                                                            <div class="son-kullanma-tarihi">
+                                                                <div class="combobox-secim">
+                                                                    <select class="secim-select" name="Ecom_Payment_Card_ExpDate_Year" id="">
+                                                                        <option value="2022">2022</option>
+                                                                        <option value="2023">2023</option>
+                                                                        <option value="2024">2024</option>
+                                                                        <option value="2025">2025</option>
+                                                                        <option value="2026">2026</option>
+                                                                        <option value="2027">2027</option>
+                                                                        <option value="2028">2028</option>
+                                                                        <option value="2029">2029</option>
+                                                                        <option value="2030">2030</option>
+                                                                        <option value="2031">2031</option>
+                                                                        <option value="2032">2032</option>
+                                                                        <option value="2033">2033</option>
+                                                                        <option value="2034">2034</option>
+                                                                        <option value="2035">2035</option>
+                                                                        <option value="2036">2036</option>
+                                                                        <option value="2037">2037</option>
+                                                                        <option value="2038">2038</option>
+                                                                        <option value="2039">2039</option>
+                                                                        <option value="2040">2040</option>
+                                                                    </select>
+                                                                    <i class="fa fa-angle-down select-i"></i>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <label>CVV</label>
+                                                        <div class="son-kullanma-tarihi">
+                                                            <div class="combobox-secim">
+                                                                <div class="combobox-secim">
+                                                                    <input class="cvv" name="cv2" type="tel">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="taksit-giris">
+                                        <p class="taksit-header">Taksit Seçimi</p>
+                                        <p class="taksit-desc">Kartınıza Uygun Taksit Seçeneğini Seçiniz</p>
+                                        <div class="p-secim-tablo">
+                                            <p>Takist secenekleri sizin için düzenleniyor... Takipte kalın!</p>
+                                           @* <table>
+                                                <tr>
+                                                    <th>Taksit Sayısı</th>
+                                                    <th>Aylık Ödeme</th>
+                                                </tr>
+                                                <tr class="selected">
+                                                    <td>
+                                                        <div class="p-radio-button"><input checked type="radio" name="takist" value="1">Tek Çekim</div>
+                                                    </td>
+                                                    <td class="ty-font-oxygen">538,93 TL</td>
+                                                </tr>
+                                                <tr class="">
+                                                    <td>
+                                                        <div class="p-radio-button"><input type="radio" name="takist" value="2">2 Taksit</div>
+                                                    </td>
+                                                    <td class="ty-font-oxygen">280,24 TL</td>
+                                                </tr>
+                                                <tr class="">
+                                                    <td>
+                                                        <div class="p-radio-button"><input type="radio" name="takist" value="3">3 Taksit</div>
+                                                    </td>
+                                                    <td class="ty-font-oxygen">192,22 TL</td>
+                                                </tr>
+                                                <tr class="">
+                                                    <td>
+                                                        <div class="p-radio-button"><input type="radio" name="takist" value="4">4 Taksit</div>
+                                                    </td>
+                                                    <td class="ty-font-oxygen">146,86 TL</td>
+                                                </tr>
+                                                <tr class="">
+                                                    <td>
+                                                        <div class="p-radio-button"><input type="radio" name="takist" value="6">6 Taksit</div>
+                                                    </td>
+                                                    <td class="ty-font-oxygen">98,80 TL</td>
+                                                </tr>
+                                                <tr class="">
+                                                    <td>
+                                                        <div class="p-radio-button"><input type="radio" name="takist" value="8">8 Taksit</div>
+                                                    </td>
+                                                    <td class="ty-font-oxygen">76,80 TL</td>
+                                                </tr>
+                                                <tr class="">
+                                                    <td>
+                                                        <div class="p-radio-button"><input type="radio" name="takist" value="9">9 Taksit</div>
+                                                    </td>
+                                                    <td class="ty-font-oxygen">68,86 TL</td>
+                                                </tr>
+                                                <tr class="">
+                                                    <td>
+                                                        <div class="p-radio-button"><input type="radio" name="takist" value="12">12 Taksit</div>
+                                                    </td>
+                                                    <td class="ty-font-oxygen">53,89 TL</td>
+                                                </tr>
+                                            </table>*@
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @{
+                        var TedarikciList = ViewSepet.GroupBy(x=>x.TedarikciAdi).Select(x=> x.Key);
+                    }
+                    <aside class="sepet-yapiskan" >
+                        <div class="sepet-navigation">
+                            <div class="sepet-siparis-ozet">
+                                <h1>Sepet Bilgileri</h1>
+                                <ul class="sepet-bilgileri-ozet-tutar">
+                                    <li><span>Ürün Toplamı</span> <strong>@Math.Round(ViewSepet.Sum(x=> x.Fiyat), 2)₺</strong></li>
+                                    @{
+                                        var ToplamKargo = TedarikciList.Count()*14.99;
+                                    }
+                                    <li><span>Kargo Toplamı(@TedarikciList.Count())</span> <strong>@ToplamKargo₺</strong></li>
+                                    @foreach (var item in TedarikciList)
+                                    {
+                                        var TedarikciUrunleri = ViewSepet.Where(x => x.TedarikciAdi == item).ToList();
+                                        var FiyatToplam = TedarikciUrunleri.Sum(x=> x.Fiyat);
+                                        if(FiyatToplam >=60)
+                                        {
+                                            <li>
+                                                <div title="60₺ üzeri kargo indirimi"><span>60₺ üzeri kargo indirimi</span></div> <strong class="kampanya-strong">14.99₺</strong>
+                                            </li>
+                                        }
+                                    }
+                            
+                                </ul>
+                                <hr />
+                                <div class="sepet-toplam">
+                                    @{
+                                       var Toplam= @ViewSepet.Sum(x=> x.Fiyat);
+                                        foreach (var item in TedarikciList)
+                                        {
+                                            var TedarikciUrunleri = ViewSepet.Where(x => x.TedarikciAdi == item).ToList();
+                                            var FiyatToplam = TedarikciUrunleri.Sum(x=> x.Fiyat);
+                                            if(FiyatToplam >=60)
+                                            {
+                                   
+                                            }
+                                            else{
+                                                Toplam += 14.99;
+                                            }
+                                        }
+                                        amount = Math.Round(Toplam, 2).ToString();
+
+                                    }
+                                    @Math.Round(Toplam, 2)₺
+                                </div>
+                            </div>
+                            <div class="sepet-onayla">
+                                <button type="submit" class="sepet-onayla-href">
+                                    <i class="fas fa-lock sepet-i-rm" aria-hidden="true"></i><span>Siparişi Tamamla</span><i class="fas fa-check-circle sepet-i"></i>
+                                </button>
+                            </div>
+                            <div class="sepet-siparis-ozet" style="font-size:11px;">
+                                        Ödeme adımına geçmenizle birlikte 
+                                        <a href="/Odeme/GizlilikSozlesmesi">Gizlilik Sözleşmesi</a> ve 
+                                        <a href="/Odeme/MesafeliSatisSozlesmesi">Mesafeli Satış Sözleşmesi</a>ni onaylamış olursunuz. 
+                                    </div>
+                        </div>
+                    </aside>
+                </div>
+            </main>
+
+            @{
+                String hashstr = clientId + oid + amount + okUrl + failUrl + islemtipi + taksit + rnd + storekey;
+                System.Security.Cryptography.SHA1 sha = new System.Security.Cryptography.SHA1CryptoServiceProvider();
+                byte[] hashbytes = System.Text.Encoding.GetEncoding("ISO-8859-9").GetBytes(hashstr);
+                byte[] inputbytes = sha.ComputeHash(hashbytes);
+        
+                String hash = Convert.ToBase64String(inputbytes);  //Güvenlik amaçlı hash değeri
+            }
+
+            <input type="hidden" name="clientid" value="@clientId">
+                <input type="hidden" name="amount" value="@amount">
+                @*<input type="hidden" name="amount" value="0.01">*@
+                <input type="hidden" name="oid" value="@oid">	
+                <input type="hidden" name="okUrl" value="@okUrl">
+                <input type="hidden" name="failUrl" value="@failUrl">
+                <input type="hidden" name="rnd" value="@rnd" >
+                <input type="hidden" name="hash" value="@hash" >
+                <input type="hidden" name="islemtipi" value="@islemtipi" />
+                <input type="hidden" name="taksit" value="@taksit" />
+                <input type="hidden" name="storetype" value="3D_PAY_HOSTING" >	
+                
+                <input type="hidden" name="lang" value="tr">
+				<input type="hidden" name="currency" value="949">
+                <input type="hidden" name="firmaadi" value="Bigtarz">
+                
+                <input type="hidden" name="Fismi" value="is">
+                <input type="hidden" name="faturaFirma" value="faturaFirma">
+                <input type="hidden" name="Fadres" value="XXX">
+                <input type="hidden" name="Fadres2" value="XXX">
+                <input type="hidden" name="Fil" value="XXX">
+                <input type="hidden" name="Filce" value="XXX">
+                <input type="hidden" name="Fpostakodu" value="postakod93013">
+                
+                <input type="hidden" name="tel" value="XXX">
+                <input type="hidden" name="fulkekod" value="tr">
+                
+                <input type="hidden" name="nakliyeFirma" value="MNG Kargo">
+                <input type="hidden" name="tismi" value="XXX">
+                <input type="hidden" name="tadres" value="XXX">
+                <input type="hidden" name="tadres2" value="XXX">
+                <input type="hidden" name="til" value="XXX">
+                <input type="hidden" name="tilce" value="XXX">
+                
+                <input type="hidden" name="tpostakodu" value="35000">
+                <input type="hidden" name="tulkekod" value="tr">
+                
+                <input type="hidden" name="itemnumber1" value="a1">
+                <input type="hidden" name="productcode1" value="a2">
+                <input type="hidden" name="qty1" value="3">
+                <input type="hidden" name="desc1" value="a4 desc">
+                <input type="hidden" name="id1" value="a5">
+                <input type="hidden" name="price1" value="0.01">
+                <input type="hidden" name="total1" value="0.01">
+
+           </form>
+        </div>
+    </div>
+</div>
+
+
+ </body>
+</html>

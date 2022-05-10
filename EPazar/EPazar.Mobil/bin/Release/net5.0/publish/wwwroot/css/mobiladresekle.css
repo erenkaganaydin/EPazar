@@ -1,0 +1,210 @@
+.row-title{
+    padding: 15px;
+    text-align: center;
+}
+a{
+    color: black;
+
+}
+.page-title{
+    font-weight: 600;
+}
+.back-icon{
+    position: absolute;
+    left: 5%;
+    top: 10px;
+}
+.orders{
+    margin: 10px 0px 0 0px;
+
+}
+body{
+    margin: 0;
+    background-color: #f8f8f8;
+    line-height: normal;
+}
+.container-fluid{
+    padding: 8px;
+    border-bottom: solid 1px #DED9DE;
+}
+.owner-container{
+    background-color: #ffffff;
+    border: solid 1px #DED9DE;
+}
+.owner-box{
+    padding: 15px;
+    font-size: medium;
+}
+.order-box{
+    padding: 5px;
+}
+.order-cargo{
+    text-align: right;
+    color: #f27a1a;
+    font-weight: bolder;
+}
+.order-owner{
+    white-space: nowrap;
+    width: 50%;
+    overflow: hidden;
+    text-overflow:ellipsis
+}
+.order-image{
+    margin: 10px;
+    width: 32%;
+    min-width: 80px;
+    border-radius: 3px;
+    height: auto;
+    margin-right: 15px;
+    border: 1px solid #DED9DE;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.order-desc{
+    padding-top: 5px;
+}
+.fa-regular{
+    color: #666;
+}
+.light-color{
+    color: #999;
+}
+.medium-color{
+    color: #666;
+}
+.order-exp{
+    font-size: 12px;
+    color: #666;
+    white-space: nowrap;
+    width: 100%;
+    overflow: hidden;
+    text-overflow:ellipsis
+}
+.order-title{
+    font-size: 13px;
+    font-weight: 600;
+}
+.count-price{
+    padding-top: 10px;
+    padding-right: 10px;
+}
+.prices{
+    float: right;
+    text-align: right;
+}
+
+.old-price{
+    color: #666;
+    font-size: 12px;
+    text-decoration:line-through;
+}
+.new-price{
+    font-size: 16px;
+    color: #f27a1a;
+}
+.promotion-code{
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 3px;
+    border: 1px solid #e6e6e6;
+    background-color: #f6f6f6;
+    font-size: 12px;
+    height: 30px;
+    width: 100%;
+    padding-left: 10px;
+    box-sizing: border-box;
+}
+.promotion-button{
+    height: 38px;
+    font-size: 14px;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    user-select: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: 400;
+    font-family: Source Sans Pro,sans-serif;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #f27a1a;
+    color: #fff;
+    border: 1px solid #f27a1a;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.w3-btn{
+    width: 100%;
+    padding: 5px 0 5px 0px;
+}
+.fa-percent{
+    color: #f27a1a;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.fa-angle-down{
+    float: right;
+    line-height: 20px;
+    margin-right: 10px;
+    color: #f27a1a;
+}
+.filtreler-container{
+    padding: 0;
+    background-color: white;
+}
+.input-st{
+    width: 100%;
+    border: 1px solid #e6e6e6;
+    background-color: #ebebeb;
+    line-height: 2em;
+}
+.adresEkle{
+    background-color: white;
+    border: 1px solid #e6e6e6;
+    padding: 0 10px 10px 10px;
+    margin: 10px;
+}
+.bigrow{
+    padding-right: 5px;
+    padding-left: 5px   ;
+}
+.formKucukBaslik{
+    color: #333333;
+    font-size: small;
+    padding: 0 0 3px 0;
+    margin: 15px 0 5px 0;
+    font-weight: 600;
+}
+.formKucukAciklama{
+    font-size: smaller;
+    color: grey;
+}
+.btn_kaydet{
+    width: 100%;
+    background-color: #f27a1a;
+    color: #fff;
+    border: 1px solid #f27a1a;
+    height: 44px;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    user-select: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: 400;
+    font-family: Source Sans Pro,sans-serif;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    border-radius: 3px;
+}

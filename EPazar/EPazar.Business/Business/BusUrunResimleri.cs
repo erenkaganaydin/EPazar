@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace EPazar.Business.Business
@@ -22,6 +21,12 @@ namespace EPazar.Business.Business
         public Task<List<UrunResimleri>> PredicateAsync(UrunResimleri entity)
         {
             var Result = Query.GetAll().Where(x => x.UrunId == entity.UrunId).ToListAsync();
+            return Result;
+        }
+
+        public async Task<List<UrunResimleri>> PredicateHttpAsync()
+        {
+            var Result = await Query.GetAll().Where(x => x.ResimLink.Contains("Http") && !x.ResimLink.Contains("Https")).ToListAsync().ConfigureAwait(true);
             return Result;
         }
 
@@ -45,7 +50,7 @@ namespace EPazar.Business.Business
             var Result = Query.GetAll().Where(x => x.UrunId == entity.UrunId).FirstOrDefault();
             return Result;
         }
-   
+
 
         public async Task<UrunResimleri> FirstOrDefaultAsync(long urunId)
         {
@@ -58,15 +63,16 @@ namespace EPazar.Business.Business
             throw new NotImplementedException();
         }
 
-       
+
         public Task<bool> RemoveRangeAsync(UrunResimleri entity)
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> UpdateAsync(UrunResimleri entity)
+        public async Task<bool> UpdateAsync(UrunResimleri entity)
         {
-            throw new NotImplementedException();
+            var Result = await Query.UpdateAsync(entity).ConfigureAwait(true);
+            return Result;
         }
     }
 }

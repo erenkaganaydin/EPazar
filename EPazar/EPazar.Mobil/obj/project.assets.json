@@ -7799,9 +7799,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\eaydin\\Documents\\GitHub\\EPazar\\EPazar\\EPazar.Mobil\\EPazar.Mobil.csproj",
-      "projectName": "EPazar.Mobil",
-      "projectPath": "C:\\Users\\eaydin\\Documents\\GitHub\\EPazar\\EPazar\\EPazar.Mobil\\EPazar.Mobil.csproj",
+      "projectUniqueName": "C:\\Users\\eaydin\\Documents\\GitHub\\EPazar\\EPazar\\EPazar.Mobil\\Bigtarz.Mobil.csproj",
+      "projectName": "Bigtarz.Mobil",
+      "projectPath": "C:\\Users\\eaydin\\Documents\\GitHub\\EPazar\\EPazar\\EPazar.Mobil\\Bigtarz.Mobil.csproj",
       "packagesPath": "C:\\Users\\eaydin\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\eaydin\\Documents\\GitHub\\EPazar\\EPazar\\EPazar.Mobil\\obj\\",
       "projectStyle": "PackageReference",
@@ -7855,7 +7855,7 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[5.0.14, 5.0.14]"
+            "version": "[5.0.16, 5.0.16]"
           }
         ],
         "frameworkReferences": {
@@ -7866,7 +7866,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

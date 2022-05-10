@@ -5,7 +5,24 @@
 @{
 }
 
-
+<script type="text/javascript">
+    function BedenAra(value){
+        $.ajax({
+        url: "/UrunOzellikleri/UrunBedenleri/"+value,
+        data: {
+        },
+        type: "GET",
+        dataType : "html",
+        success: function (data){
+                console.log(data);
+                $('#bedenlerDivi').html(data);
+            }
+        });
+    }
+  
+</script>
+<input type="text" value="" onkeyup="BedenAra(this.value)" id="inputBedenAdi" name="BedenAdi" style="border: 1px solid gray;border-radius: 13px;margin-bottom: 9px;"/>
+<div id="bedenlerDivi">
 @foreach (var item in Model)
 {
     var Url = Context.Request.Query["Beden"];
@@ -16,6 +33,7 @@
         <span class="checkbox-span">@item</span>
     </a>
 }
+</div>
 
 <script>
     function BedenFilterEkle(BedenBilgisi){

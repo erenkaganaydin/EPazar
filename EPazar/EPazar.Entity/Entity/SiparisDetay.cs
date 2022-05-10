@@ -16,6 +16,8 @@ namespace EPazar.Entity.Entity
 		public long SiparisId { get; set; }
 
 		public int? Adet { get; set; }
+
+		[ForeignKey(nameof(Urunler))]
 		public long UrunId { get; set; }
 		public string? UrunTedarikciAdi { get; set; }
 		public string? UrunAdi { get; set; }
@@ -25,5 +27,6 @@ namespace EPazar.Entity.Entity
 		public string? OzellikAdi { get; set; }
 
         public Siparis? Siparis { get; set; }
+        public Urunler? Urunler { get; set; }
     }
 }

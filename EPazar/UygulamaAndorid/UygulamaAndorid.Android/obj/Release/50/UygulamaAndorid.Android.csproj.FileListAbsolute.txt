@@ -1,0 +1,3 @@
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\UygulamaAndorid\UygulamaAndorid.Android\obj\Release\50\MonoAndroid,Version=v5.0.AssemblyAttributes.cs
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\UygulamaAndorid\UygulamaAndorid.Android\obj\Release\50\build.props
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\UygulamaAndorid\UygulamaAndorid.Android\obj\Release\50\adb.props

@@ -1,0 +1,163 @@
+﻿@using EPazar.Entity.Entity
+@using System.Linq;
+
+
+@model Urunler;
+@{
+    var UrunOzellikRenkleri = Model.ViewUrunOzellikleriAciklamali.GroupBy(x => x.RenkAdi).Select(x=> x.Key);
+
+    var SeciliRenk = Context.Request.RouteValues.FirstOrDefault(x=> x.Key == "SeciliRenk").Value;
+    var SecilenRenk = "";
+    if(SeciliRenk != null)
+        SecilenRenk= SeciliRenk.ToString();
+
+    var SeciliOzellik = Context.Request.RouteValues.FirstOrDefault(x=> x.Key == "SeciliOzellik").Value;
+    var SecilenOzellik = "";
+    if (SeciliOzellik != null)
+        SecilenOzellik = SeciliOzellik.ToString();
+}
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/mobiladreslerim.css">
+    <link rel="stylesheet" href="~/css/mobilurundetay.css">
+    <link rel="stylesheet" href="~/css/w3.css">
+
+ <link rel="stylesheet" href="~/css/UrunDetay.css">
+
+ <!-- jQuery 1.8 or later, 33 KB -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<!-- Fotorama from CDNJS, 19 KB -->
+<link  href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
+
+            <div class="Urun-Navigation">
+                <a href="#"> Anasayfa </a>
+                <a href="#" class="urun-navigation-arrow"> > </a>
+                <a href="#"> Kadın </a>
+                <a href="#" class="urun-navigation-arrow"> > </a>
+                <a href="#" > Giyim </a>
+                <a href="#" class="urun-navigation-arrow"> > </a>
+                <a href="#"> Jean </a>
+            </div>
+
+<div class="orders">
+    <div class="favori-wrap">
+        <div class="galery">
+        <div class="foto">
+            <div class="fotorama" data-nav="thumbs" data-allowfullscreen="native">
+                @foreach (var item in Model.UrunResimleri)
+                {
+                    <img alt="Bigtarz-@Model.Adi" src="@item.ResimLink">
+                }
+            </div>
+        </div>
+        </div>
+
+        <div class="product-detay">
+            <div class="product-detay-baslik">
+                <h1 class="product-info-brand">
+                    <span class="urun-ad">Şile Bezi Elbise</span>
+                </h1>
+            </div>
+
+        </div>
+        <div class="satici-bilgileri">
+            <div class="satici-bilgeri-detay">
+                <span>Satıcı: </span><span>Bigtarz</span>
+            </div>
+        </div>
+        <div class="satici-bilgileri">
+            <div class="satici-bilgeri-detay">
+                <i class="fa fa-box"></i>   <span class="termin-sure"> Tahmini kargoya Veriliş: </span> <span> Bigtarz</span>
+            </div>
+        </div>
+
+        @{
+            if(Model.ViewUrunOzellikleriAciklamali.Count > 0)
+            {
+                   <div class="satici-bilgileri"  style="margin-top: 25px; margin-bottom: 15px;" >
+                        <div class="size-wrap">
+                            <div><h3 class="header-size">Renk</h3></div>
+                            <!------->
+                            <div class="">
+                                @foreach (var item in UrunOzellikRenkleri){
+                                    <a class="urun-ozellikleri-renksecenegi 
+@if(item == SecilenRenk){@:secili
+}" href="/UrunDetay/@Model.Id/@Model.Adi/@item">
+                                        <span class="urun-ozellikleri-renksecenegi-span">
+                                            @item
+                                        </span>
+                                    </a>
+                                }
+                            </div>
+                            <!------->
+                        </div>
+                    </div>
+            
+                    
+                    var RenkOzellikleri = Model.ViewUrunOzellikleriAciklamali.Where(x => x.RenkAdi == SecilenRenk).Select(x=> new { x.OzellikAdi ,x.OzellikStok });
+                    
+                    <div class="satici-bilgileri"  style="margin-top: 25px; margin-bottom: 15px;" >
+                        <div class="size-wrap">
+                            <div><h3 class="header-size">Beden @SecilenOzellik</h3></div>
+                            <!------->
+                            <div class="">
+                                @foreach(var ozelikadlari in RenkOzellikleri)
+                                 
+                                    @if(ozelikadlari.OzellikStok < 1){
+                                        <div title="Stokta Yok" class="v-item no-stock">L</div>
+                                    }
+                                    else
+                                    {
+                                        <a href="/UrunDetay/@Model.Id/@Model.Adi/@SecilenRenk/@ozelikadlari.OzellikAdi" 
+                                            title="Beden Seçmek İçin Tıklayın" class="v-item  
+                                            @if(ozelikadlari.OzellikAdi == SecilenOzellik){
+                                                @:secildi
+                                            }"> @ozelikadlari.OzellikAdi </a>
+                                    }
+                                 
+                            </div>
+                            <!------->
+
+                        </div>
+                    </div>
+
+            }
+        }
+       
+        
+       
+
+        <div class="urun-bilgileri">
+            <div class="bilgiler-header">
+              <h3 class="bilgiler-header-txt"> Ürün Açıklamaları </h3>
+            </div>
+            <div class="urun-aciklama-text">
+                @Model.Aciklama
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="fiyat-warp">
+    <div class="fiyat-d">
+        <div class="fiyat-t">
+            <span>219.99₺</span>
+        </div>
+    </div>
+    <div class="sepet-button">
+        @{
+            var Url = "";
+        }
+        @if(SecilenRenk != "")
+        {
+            Url = "/" + SecilenRenk;
+            if (SecilenOzellik != "")
+                Url = Url + "/" + SecilenOzellik;
+        }
+        <a href="/SepeteEkle/@Model.Id/@Model.Adi@Url">
+            <button class="button-orange">Sepete Ekle</button>
+        </a>
+    </div>
+</div>

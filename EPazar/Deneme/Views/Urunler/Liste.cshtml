@@ -38,9 +38,12 @@
                     </div>
                 </div>
                 <script>
-                function UruneGit(link) {
-                    window.location.href = "/UrunDetay/"+link;
-                }
+                     function UruneGit(link) {
+                        window.open(
+                            '/UrunDetay/' + link,
+                            '_blank' // <- This is what makes it open in a new window.
+                        );
+                };
                 </script>
                 <div class="urunler-list">
                     <div class="urunler-flex">

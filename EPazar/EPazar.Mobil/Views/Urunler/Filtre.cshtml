@@ -1,0 +1,108 @@
+﻿    <link rel="stylesheet" href="~/css/mobilfiltreler.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<div class="container-fluid filtreler-container">
+    <div class="row-title">
+        <div class="back-icon">
+        </div>
+        <div class="col-sm-8 col-8s page-title">
+            FİLTRELE
+        </div>
+    </div>
+</div>
+
+<div style="margin-bottom:75px;" class="orders">
+    <button class="accordion" style="padding: 0px!important;">
+        <div class="owner-container" style="width: 100%;">
+            <div class="row owner-box">
+                <div class="row owner-box">
+                    <div class="col-10 order-owner">
+                            Kategoriler
+                    </div>
+                    <div class="col-2 order-cargo">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </button>
+    <div class="panel">
+        <div class="owner-container">
+            <div class="owner-box">
+                    @await Component.InvokeAsync("UrunlerKategoriler")
+            </div>
+        </div>
+    </div>
+
+    <button class="accordion" style="padding: 0px!important;">
+        <div class="owner-container" style="width: 100%;">
+            <div class="row owner-box">
+                <div class="col-10 order-owner">
+                    Renkler
+                </div>
+                <div class="col-2 order-cargo">
+                </div>
+            </div>
+        </div>
+    </button>
+
+    <div class="panel">
+        <div class="owner-container">
+            <div class="owner-box">
+                @await Component.InvokeAsync("UrunlerRenkler")
+            </div>
+        </div>
+    </div>
+
+    <button class="accordion" style="padding: 0px!important;">
+        <div class="owner-container" style="width: 100%;">
+            <div class="row owner-box">
+                <div class="col-10 order-owner">
+                    Bedenler
+                </div>
+                <div class="col-2 order-cargo">
+                </div>
+            </div>
+        </div>
+    </button>
+
+    <div class="panel">
+        <div class="owner-container" style="width: 100%;">
+            <div class="owner-box">
+                @await Component.InvokeAsync("UrunlerFilter")
+            </div>
+        </div>
+    </div>
+    <script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+      
+    }
+  });
+}
+</script>
+</div>
+<script>
+    function UrunleriAc(){
+        let text = window.location.href;
+        text = text.replace(" ","");
+
+        if(text.search("Filtre") != -1)      
+        {
+            window.location.href = text.replace("Filtre", "Liste");
+            return;
+        }
+        return;
+    }
+</script>
+<button style="margin-bottom:55px;" type="button" onclick="UrunleriAc();" class="btn_ara"><span>Filtreleri Uygula</span></button>

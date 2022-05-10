@@ -10,9 +10,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>@ViewData["Title"]</title>
     <meta name="description" content="@ViewData["MetaDesc"]">
+   
 </head>
 <body>
-<!--#region container-->
+    
+<script type="text/javascript">
+        let text = window.location.href;
+        var mobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()))
+        if(mobile){
+            if(text.search("sepetim") != -1)      
+            {
+
+            }
+            else{
+                document.location="https://m.bigtarz.com/";
+            }
+        }
+</script>
+  
+<!--#region container--> 
 <div class="container">
     <!--#region TopHeader-->
     <div class="top-header">

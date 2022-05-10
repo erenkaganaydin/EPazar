@@ -1,0 +1,15 @@
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\Mobil\Mobil\bin\Release\netstandard2.0\Mobil.deps.json
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\Mobil\Mobil\bin\Release\netstandard2.0\Mobil.dll
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\Mobil\Mobil\bin\Release\netstandard2.0\Mobil.pdb
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\Mobil\Mobil\obj\Release\netstandard2.0\Mobil.csproj.AssemblyReference.cache
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\Mobil\Mobil\obj\Release\netstandard2.0\Mobil.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\Mobil\Mobil\obj\Release\netstandard2.0\App.xaml.g.cs
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\Mobil\Mobil\obj\Release\netstandard2.0\MainPage.xaml.g.cs
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\Mobil\Mobil\obj\Release\netstandard2.0\Mobil.AssemblyInfoInputs.cache
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\Mobil\Mobil\obj\Release\netstandard2.0\Mobil.AssemblyInfo.cs
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\Mobil\Mobil\obj\Release\netstandard2.0\Mobil.csproj.CoreCompileInputs.cache
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\Mobil\Mobil\obj\Release\netstandard2.0\XamlC.stamp
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\Mobil\Mobil\obj\Release\netstandard2.0\Mobil.dll
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\Mobil\Mobil\obj\Release\netstandard2.0\refint\Mobil.dll
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\Mobil\Mobil\obj\Release\netstandard2.0\Mobil.pdb
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\Mobil\Mobil\obj\Release\netstandard2.0\ref\Mobil.dll

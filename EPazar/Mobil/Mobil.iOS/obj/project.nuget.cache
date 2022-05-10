@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "gc7aW7dmL4zEBMLvPSuMY4rIz9QTJWV6lqlVrwmUvavmSNoPH1wjLiYJVSQHmlFA10lH0GXSADJhFp9BTZTkPQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\eaydin\\Documents\\GitHub\\EPazar\\EPazar\\Mobil\\Mobil.iOS\\Mobil.iOS.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\eaydin\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Users\\eaydin\\.nuget\\packages\\xamarin.essentials\\1.7.0\\xamarin.essentials.1.7.0.nupkg.sha512",
+    "C:\\Users\\eaydin\\.nuget\\packages\\xamarin.forms\\5.0.0.2196\\xamarin.forms.5.0.0.2196.nupkg.sha512"
+  ],
+  "logs": []
+}

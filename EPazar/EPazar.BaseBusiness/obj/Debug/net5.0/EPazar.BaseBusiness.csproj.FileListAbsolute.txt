@@ -14,4 +14,4 @@ C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.BaseBusiness\obj\Debug\net
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.BaseBusiness\obj\Debug\net5.0\EPazar.BaseBusiness.dll
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.BaseBusiness\obj\Debug\net5.0\ref\EPazar.BaseBusiness.dll
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.BaseBusiness\obj\Debug\net5.0\EPazar.BaseBusiness.pdb
-C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.BaseBusiness\obj\Debug\net5.0\refint\EPazar.BaseBusiness.dll
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.BaseBusiness\bin\Debug\net5.0\ref\EPazar.BaseBusiness.dll

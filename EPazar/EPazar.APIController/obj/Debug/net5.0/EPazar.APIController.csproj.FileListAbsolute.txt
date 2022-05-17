@@ -1,0 +1,15 @@
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.APIController\bin\Debug\net5.0\EPazar.APIController.deps.json
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.APIController\bin\Debug\net5.0\EPazar.APIController.dll
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.APIController\bin\Debug\net5.0\ref\EPazar.APIController.dll
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.APIController\bin\Debug\net5.0\EPazar.APIController.pdb
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.APIController\bin\Debug\net5.0\EPazar.Entity.dll
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.APIController\bin\Debug\net5.0\EPazar.Entity.pdb
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.APIController\obj\Debug\net5.0\EPazar.APIController.csproj.AssemblyReference.cache
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.APIController\obj\Debug\net5.0\EPazar.APIController.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.APIController\obj\Debug\net5.0\EPazar.APIController.AssemblyInfoInputs.cache
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.APIController\obj\Debug\net5.0\EPazar.APIController.AssemblyInfo.cs
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.APIController\obj\Debug\net5.0\EPazar.APIController.csproj.CoreCompileInputs.cache
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.APIController\obj\Debug\net5.0\EPazar.APIController.csproj.CopyComplete
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.APIController\obj\Debug\net5.0\EPazar.APIController.dll
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.APIController\obj\Debug\net5.0\ref\EPazar.APIController.dll
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.APIController\obj\Debug\net5.0\EPazar.APIController.pdb

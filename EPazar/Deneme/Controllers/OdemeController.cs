@@ -133,6 +133,10 @@ namespace EPazar.Controllers
             {
                 Siparis.UyeId = EmailKontrol.Id;
             }
+            else
+            {
+                Redirect("/GirisYapKayitOl/OturumAc");
+            }
             var UyeSiparis = await BusSiparis.FirstOrDefaultJustUyeIdAsync(Siparis);
             if (UyeSiparis == null)
                 return BadRequest("Siparis Bulunmuyor");
@@ -144,11 +148,14 @@ namespace EPazar.Controllers
             OdemeEntityleri.ViewSepet = viewSepets;
             OdemeEntityleri.Siparis = Siparis;
 
-            KullaniciAdresleri.UyeId = Siparis.UyeId;
+            KullaniciAdresleri.UyeId = (long)Siparis.UyeId;
             OdemeEntityleri.KullaniciAdresleri = await BusKullaniciAdresleri.PredicateAsync(KullaniciAdresleri);
 
-            KullaniciAdresleri.Id = Siparis.AdresId;
-            OdemeEntityleri.SeciliKullaniciAdresi = await BusKullaniciAdresleri.FirstOrDefaultAsync(KullaniciAdresleri);
+            if (Siparis.AdresId != null)
+            {
+                KullaniciAdresleri.Id = (long)Siparis.AdresId;
+                OdemeEntityleri.SeciliKullaniciAdresi = await BusKullaniciAdresleri.FirstOrDefaultAsync(KullaniciAdresleri);
+            }
 
             return View(OdemeEntityleri);
         }
@@ -238,10 +245,10 @@ namespace EPazar.Controllers
             OdemeEntityleri.ViewSepet = viewSepets;
             OdemeEntityleri.Siparis = Siparis;
 
-            KullaniciAdresleri.UyeId = Siparis.UyeId;
+            KullaniciAdresleri.UyeId = (long)Siparis.UyeId;
             OdemeEntityleri.KullaniciAdresleri = await BusKullaniciAdresleri.PredicateAsync(KullaniciAdresleri);
 
-            KullaniciAdresleri.Id = Siparis.AdresId;
+            KullaniciAdresleri.Id = (long)Siparis.AdresId;
             OdemeEntityleri.SeciliKullaniciAdresi = await BusKullaniciAdresleri.FirstOrDefaultAsync(KullaniciAdresleri);
 
             return View(OdemeEntityleri);
@@ -344,10 +351,10 @@ namespace EPazar.Controllers
             OdemeEntityleri.ViewSepet = viewSepets;
             OdemeEntityleri.Siparis = Siparis;
 
-            KullaniciAdresleri.UyeId = Siparis.UyeId;
+            KullaniciAdresleri.UyeId = (long)Siparis.UyeId;
             OdemeEntityleri.KullaniciAdresleri = await BusKullaniciAdresleri.PredicateAsync(KullaniciAdresleri);
 
-            KullaniciAdresleri.Id = Siparis.AdresId;
+            KullaniciAdresleri.Id = (long)Siparis.AdresId;
             OdemeEntityleri.SeciliKullaniciAdresi = await BusKullaniciAdresleri.FirstOrDefaultAsync(KullaniciAdresleri);
 
             return View(OdemeEntityleri);

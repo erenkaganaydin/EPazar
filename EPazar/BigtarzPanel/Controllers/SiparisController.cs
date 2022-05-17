@@ -3,9 +3,6 @@ using EPazar.Entity.Entity;
 using EPazar.Entity.SanalEntity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace BigtarzPanel.Controllers
@@ -40,9 +37,16 @@ namespace BigtarzPanel.Controllers
             return View(Siparisler);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Index(Siparis Siparis)
+        {
+            var Siparisler = await BusSiparis.PredicateIncludePanelAsync(Siparis);
+            return View(Siparisler);
+        }
+
         public async Task<IActionResult> SiparisDetay(long? Id)
         {
-            Siparis.Id= (long)Id;
+            Siparis.Id = (long)Id;
             var SiparisBilgisi = await BusSiparis.FirstOrDefaultPanelAsync(Siparis);
 
             var OdemeDurumlari = await BusOdemeDurum.GetAllAsync();
@@ -68,7 +72,7 @@ namespace BigtarzPanel.Controllers
 
             if (SiparisGuncelle)
             {
-                return Redirect("/Siparis/SiparisDetay?Id="+ siparis.Id.ToString());
+                return Redirect("/Siparis/SiparisDetay?Id=" + siparis.Id.ToString());
             }
             else
             {

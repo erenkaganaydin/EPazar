@@ -80,4 +80,4 @@ C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\BigtarzPanel\bin\Debug\net5.0\EPa
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\BigtarzPanel\bin\Debug\net5.0\EPazar.Data.pdb
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\BigtarzPanel\obj\Debug\net5.0\Razor\Views\Siparis\Index.cshtml.g.cs
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\BigtarzPanel\obj\Debug\net5.0\Razor\Views\Siparis\SiparisDetay.cshtml.g.cs
-C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\BigtarzPanel\obj\Debug\net5.0\refint\BigtarzPanel.dll
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\BigtarzPanel\bin\Debug\net5.0\ref\BigtarzPanel.dll

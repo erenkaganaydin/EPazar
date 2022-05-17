@@ -105,7 +105,7 @@ namespace EPazar.M.Controllers
 
             HesabimEntityleri.Siparisler = UyeSiparisleri;
 
-            ViewSiparisDetay.UyeId = Siparis.UyeId;
+            ViewSiparisDetay.UyeId = (int)Siparis.UyeId;
             var UyeSiparisDetay = await BusViewSiparisDetay.PredicateAsync(ViewSiparisDetay);
 
             List<ViewSiparisDetay> ViewSiparisDetayList = new List<ViewSiparisDetay>();

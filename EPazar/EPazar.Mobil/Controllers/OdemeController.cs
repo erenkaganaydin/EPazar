@@ -142,10 +142,10 @@ namespace EPazar.Mobil.Controllers
             OdemeEntityleri.ViewSepet = viewSepets;
             OdemeEntityleri.Siparis = Siparis;
 
-            KullaniciAdresleri.UyeId = Siparis.UyeId;
+            KullaniciAdresleri.UyeId = (long)Siparis.UyeId;
             OdemeEntityleri.KullaniciAdresleri = await BusKullaniciAdresleri.PredicateAsync(KullaniciAdresleri);
 
-            KullaniciAdresleri.Id = Siparis.AdresId;
+            KullaniciAdresleri.Id = (long)Siparis.AdresId;
             OdemeEntityleri.SeciliKullaniciAdresi = await BusKullaniciAdresleri.FirstOrDefaultAsync(KullaniciAdresleri);
 
             return View(OdemeEntityleri);
@@ -236,10 +236,10 @@ namespace EPazar.Mobil.Controllers
             OdemeEntityleri.ViewSepet = viewSepets;
             OdemeEntityleri.Siparis = Siparis;
 
-            KullaniciAdresleri.UyeId = Siparis.UyeId;
+            KullaniciAdresleri.UyeId = (long)Siparis.UyeId;
             OdemeEntityleri.KullaniciAdresleri = await BusKullaniciAdresleri.PredicateAsync(KullaniciAdresleri);
 
-            KullaniciAdresleri.Id = Siparis.AdresId;
+            KullaniciAdresleri.Id = (long)Siparis.AdresId;
             OdemeEntityleri.SeciliKullaniciAdresi = await BusKullaniciAdresleri.FirstOrDefaultAsync(KullaniciAdresleri);
 
             return View(OdemeEntityleri);
@@ -342,10 +342,10 @@ namespace EPazar.Mobil.Controllers
             OdemeEntityleri.ViewSepet = viewSepets;
             OdemeEntityleri.Siparis = Siparis;
 
-            KullaniciAdresleri.UyeId = Siparis.UyeId;
+            KullaniciAdresleri.UyeId = (long)Siparis.UyeId;
             OdemeEntityleri.KullaniciAdresleri = await BusKullaniciAdresleri.PredicateAsync(KullaniciAdresleri);
 
-            KullaniciAdresleri.Id = Siparis.AdresId;
+            KullaniciAdresleri.Id = (long)Siparis.AdresId;
             OdemeEntityleri.SeciliKullaniciAdresi = await BusKullaniciAdresleri.FirstOrDefaultAsync(KullaniciAdresleri);
 
             return View(OdemeEntityleri);

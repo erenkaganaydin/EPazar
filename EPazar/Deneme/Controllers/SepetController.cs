@@ -117,7 +117,10 @@ namespace EPazar.Controllers
             if (EmailKontrol != null)
             {
                 Sepet.UyeId = EmailKontrol.Id;
-
+            }
+            else
+            {
+                return Redirect("/GirisYapKayitOl/OturumAc");
             }
 
 

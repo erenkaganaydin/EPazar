@@ -79,5 +79,5 @@ C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\BigtarzPanel\obj\Release\net5.0\B
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\BigtarzPanel\obj\Release\net5.0\BigtarzPanel.pdb
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\BigtarzPanel\obj\Release\net5.0\BigtarzPanel.genruntimeconfig.cache
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\BigtarzPanel\obj\Release\net5.0\ref\BigtarzPanel.dll
-C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\BigtarzPanel\bin\Release\net5.0\ref\BigtarzPanel.dll
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\BigtarzPanel\obj\Release\net5.0\Razor\Views\Siparis\SiparisDetay.cshtml.g.cs
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\BigtarzPanel\bin\Release\net5.0\ref\BigtarzPanel.dll

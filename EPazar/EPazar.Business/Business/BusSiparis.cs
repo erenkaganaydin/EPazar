@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace EPazar.Business.Business
@@ -59,7 +58,7 @@ namespace EPazar.Business.Business
 
         public async Task<Siparis> FirstOrDefaultUyeIdAsync(Siparis entity)
         {
-            var Result = await Query.GetAll().Where(x => x.UyeId == entity.UyeId && x.OdemeDurumId >= 1).Include(x=> x.KullaniciAdresleri).Include(x=> x.SiparisDurum).OrderByDescending(x=> x.Id).FirstOrDefaultAsync();
+            var Result = await Query.GetAll().Where(x => x.UyeId == entity.UyeId && x.OdemeDurumId >= 1).Include(x => x.KullaniciAdresleri).Include(x => x.SiparisDurum).OrderByDescending(x => x.Id).FirstOrDefaultAsync();
             return Result;
         }
 
@@ -95,7 +94,7 @@ namespace EPazar.Business.Business
 
         public async Task<List<Siparis>> PredicateIncludeAsync(Siparis entity)
         {
-            var Result = await Query.GetAll().Where(x => x.OdemeDurumId >= 2 && x.UyeId == entity.UyeId).Include(x=> x.SiparisDetay).Include(x=> x.KullaniciAdresleri).Include(x=> x.SiparisDurum).ToListAsync();
+            var Result = await Query.GetAll().Where(x => x.OdemeDurumId >= 2 && x.UyeId == entity.UyeId).Include(x => x.SiparisDetay).Include(x => x.KullaniciAdresleri).Include(x => x.SiparisDurum).ToListAsync();
             return Result;
         }
 
@@ -118,9 +117,42 @@ namespace EPazar.Business.Business
                 .Include(x => x.KullaniciAdresleri)
                 .Include(x => x.SiparisDurum)
                 .Include(x => x.OdemeDurum)
-                .OrderByDescending(x=> x.Id)
+                .OrderByDescending(x => x.Id)
                 .ToListAsync();
             return Result;
+        }
+
+        public async Task<List<Siparis>> PredicateIncludePanelAsync(Siparis Entity)
+        {
+            IQueryable<Siparis> query = Query.GetAll()
+                .Include(x => x.SiparisDetay)
+                .Include(x => x.Kullanicilar)
+                .Include(x => x.KullaniciAdresleri)
+                .Include(x => x.SiparisDurum)
+                .Include(x => x.OdemeDurum);
+
+            if (Entity.SiparisNumarasi != null)
+            {
+                query = query.Where(x => x.SiparisNumarasi == Entity.SiparisNumarasi);
+            }
+            else if (Entity.SiparisDurumAdi != null)
+            {
+                query = query.Where(x => x.SiparisDurum.Ad == Entity.SiparisDurumAdi);
+            }
+            else if (Entity.MusteriAd != null)
+            {
+                query = query.Where(x => x.Kullanicilar.Ad.Contains(Entity.MusteriAd));
+            }
+            else if (Entity.MusteriSoyad != null)
+            {
+                query = query.Where(x => x.Kullanicilar.Soyad.Contains(Entity.MusteriSoyad) );
+            }
+            else if (Entity.SiparisTarihi != null)
+            {
+                query = query.Where(x => x.CreateTime.Date == Entity.SiparisTarihi.Value.Date);
+            }
+
+            return query.ToList();
         }
     }
 }

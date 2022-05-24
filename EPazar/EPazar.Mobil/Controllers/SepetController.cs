@@ -68,6 +68,8 @@ namespace EPazar.Mobil.Controllers
             return View(ViewSepetList);
         }
 
+
+
         [Route("/sepetim")]
         public async Task<IActionResult> sepet()
         {
@@ -75,8 +77,8 @@ namespace EPazar.Mobil.Controllers
         }
 
 
-        [Route("/SepeteEkle/{UrunId?}/{UrunAdi?}/{SeciliRenk?}/{SeciliOzellik?}")]
-        public async Task<ActionResult> SepeteEkle(long? UrunId, string? UrunAdi, string? SeciliRenk, string? SeciliOzellik)
+        [Route("/SepeteEkle/{UrunId?}/{SeciliRenk?}/{SeciliOzellik?}")]
+        public async Task<ActionResult> SepeteEkle(long? UrunId, string? SeciliRenk, string? SeciliOzellik)
         {
 
             Urunler.Id = (long)UrunId;
@@ -118,9 +120,24 @@ namespace EPazar.Mobil.Controllers
             if (EmailKontrol != null)
             {
                 Sepet.UyeId = EmailKontrol.Id;
-
             }
-
+            else
+            {
+                string Url = "/GirisYapKayitOl/OturumAc?ReturnUrl=/SepeteEkle/";
+                if (UrunId != null)
+                {
+                    Url += UrunId.ToString() + "/";
+                }
+                if (SeciliRenk != null)
+                {
+                    Url += SeciliRenk + "/";
+                }
+                if (SeciliOzellik != null)
+                {
+                    Url += SeciliOzellik + "/";
+                }
+                return Redirect(Url);
+            }
 
             var Islem = await BusSepet.InsertAsync(Sepet, false);
 

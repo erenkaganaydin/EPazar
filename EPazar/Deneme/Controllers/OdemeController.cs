@@ -3,11 +3,9 @@ using EPazar.Entity.Entity;
 using EPazar.Entity.SanalEntity;
 using EPazar.Entity.View;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -83,21 +81,30 @@ namespace EPazar.Controllers
         #region SiparisOlustur
         public async Task<IActionResult> SiparisOlustur()
         {
-            var SiparisIslemSonucu = await SiparisIslemleri();
-            if (!SiparisIslemSonucu)
-                return BadRequest("Siparis İslem Sonucu Olumsuz Döndü");
-
-            var SiparisDetayIslemSonucu = await SiparisDetayIslemleri();
-            if (!SiparisIslemSonucu)
-                return BadRequest("Siparis Detay İslem Sonucu Olumsuz Döndü");
-
             Kullanicilar.EMail = HttpContext.User.FindFirstValue(ClaimTypes.Email) != null ? HttpContext.User.FindFirstValue(ClaimTypes.Email) : null;
             var EmailKontrol = await BusKullanicilar.FirstOrDefaultEmailAsync(Kullanicilar);
             if (EmailKontrol != null)
             {
                 Siparis.UyeId = EmailKontrol.Id;
+                if (Siparis.UyeId == null)
+                {
+                    return Redirect("/GirisYapKayitOl/OturumAc");
+                }
             }
-            var UyeSiparis = await BusSiparis.FirstOrDefaultJustUyeIdAsync(Siparis);
+            else
+            {
+                return Redirect("/GirisYapKayitOl/OturumAc");
+            }
+
+            var SiparisIslemSonucu = await SiparisIslemleri().ConfigureAwait(true);
+            if (!SiparisIslemSonucu)
+                return BadRequest("Siparis İslem Sonucu Olumsuz Döndü");
+
+            var SiparisDetayIslemSonucu = await SiparisDetayIslemleri().ConfigureAwait(true);
+            if (!SiparisIslemSonucu)
+                return BadRequest("Siparis Detay İslem Sonucu Olumsuz Döndü");
+
+            var UyeSiparis = await BusSiparis.FirstOrDefaultJustUyeIdAsync(Siparis).ConfigureAwait(true);
             if (UyeSiparis == null)
                 return Redirect("/Hesabim?ReturnUrl=/Odeme/SiparisOlustur");
 
@@ -105,7 +112,7 @@ namespace EPazar.Controllers
             ViewSiparisTedarikciToplam.SiparisId = Siparis.Id;
             var SiparisToplam = await BusViewSiparisTedarikciToplam.PredicateAsync(ViewSiparisTedarikciToplam);
 
-            foreach(var item in SiparisToplam)
+            foreach (var item in SiparisToplam)
             {
                 SiparisKargoBilgisi = new SiparisKargoBilgisi();
                 SiparisKargoBilgisi.SiparisId = item.SiparisId;
@@ -177,7 +184,7 @@ namespace EPazar.Controllers
             if (UyeSiparisBilgisi == null)
             {
                 return BadRequest("Üyeye ait sipariş bulunamadı.");
-            } 
+            }
             #endregion
 
             Siparis.Id = (long)UyeSiparisBilgisi.Id;
@@ -217,7 +224,7 @@ namespace EPazar.Controllers
         public async Task<IActionResult> OdemeBasarisiz(string? oid)
         {
             Siparis.SiparisNumarasi = oid;
-           
+
             return View();
         }
 
@@ -238,6 +245,8 @@ namespace EPazar.Controllers
 
             if (Siparis.AdresId == 0)
                 return Redirect("/Odeme?Hata=Adres bilgisi seçmelisiniz...");
+            else if (Siparis.AdresId == null)
+                return Redirect("/Odeme?Hata=Adres bilgisi seçmelisiniz...");
 
             ViewSepet.SepetToken = HttpContext.Request.Cookies["SepetToken"];
             var viewSepets = await BusViewSepet.PredicateAsync(ViewSepet);
@@ -252,7 +261,7 @@ namespace EPazar.Controllers
             OdemeEntityleri.SeciliKullaniciAdresi = await BusKullaniciAdresleri.FirstOrDefaultAsync(KullaniciAdresleri);
 
             return View(OdemeEntityleri);
-        } 
+        }
         #endregion
 
         #region SiparisDetayIslemleri
@@ -273,7 +282,7 @@ namespace EPazar.Controllers
                     SiparisDetay.OzellikAdi = item.OzellikAdi;
                 }
 
-                
+
                 SiparisDetay.SiparisId = Siparis.Id;
                 SiparisDetay.Adet = item.Adet;
                 SiparisDetay.UrunId = item.UrunId;
@@ -290,7 +299,7 @@ namespace EPazar.Controllers
 
             }
             return HataYok;
-        } 
+        }
         #endregion
 
         #region SiparisIslemleri
@@ -304,7 +313,7 @@ namespace EPazar.Controllers
             {
                 Toplam += item.Fiyat;
             }
-            Siparis.ToplamTutar = Math.Round(Toplam,2);
+            Siparis.ToplamTutar = Math.Round(Toplam, 2);
 
             Kullanicilar.EMail = HttpContext.User.FindFirstValue(ClaimTypes.Email) != null ? HttpContext.User.FindFirstValue(ClaimTypes.Email) : null;
             var EmailKontrol = await BusKullanicilar.FirstOrDefaultEmailAsync(Kullanicilar);
@@ -317,7 +326,7 @@ namespace EPazar.Controllers
 
             var SiparisEkle = await BusSiparis.InsertAsync(Siparis, false);
             return SiparisEkle;
-        } 
+        }
         #endregion
 
         #region RandomString
@@ -326,7 +335,7 @@ namespace EPazar.Controllers
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             return new string(Enumerable.Repeat(chars, length)
                 .Select(s => s[random.Next(s.Length)]).ToArray());
-        } 
+        }
         #endregion
 
         public async Task<IActionResult> MesafeliSatisSozlesmesi()

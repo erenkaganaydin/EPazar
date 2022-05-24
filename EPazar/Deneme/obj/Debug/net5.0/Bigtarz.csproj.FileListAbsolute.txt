@@ -121,4 +121,4 @@ C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\Deneme\obj\Debug\net5.0\ref\Bigta
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\Deneme\obj\Debug\net5.0\Bigtarz.pdb
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\Deneme\obj\Debug\net5.0\Bigtarz.genruntimeconfig.cache
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\Deneme\obj\Debug\net5.0\Razor\Views\UrunOzellikleri\UrunBedenleri.cshtml.g.cs
-C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\Deneme\bin\Debug\net5.0\ref\Bigtarz.dll
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\Deneme\obj\Debug\net5.0\refint\Bigtarz.dll

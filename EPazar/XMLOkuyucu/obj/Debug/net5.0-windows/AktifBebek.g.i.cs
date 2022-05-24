@@ -117,7 +117,7 @@ namespace XMLOkuyucu {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/XMLOkuyucu;component/aktifbebek.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/XMLOkuyucu;V1.0.0.0;component/aktifbebek.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\AktifBebek.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

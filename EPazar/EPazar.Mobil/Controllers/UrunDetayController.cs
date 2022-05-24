@@ -37,6 +37,8 @@ namespace EPazar.Mobil.Controllers
             var UrunDetay = await BusUrunler.IdToUrun(Urunler);
             ViewData["Title"] = "Bigtarz'da | " + UrunDetay.Adi;
 
+            UrunDetay.Adi = UrunDetay.Adi.Replace('+', ' ').Replace('%', ' ');
+
             var UrunOzellikleri = UrunDetay.ViewUrunOzellikleriAciklamali.FirstOrDefault();
             if (UrunOzellikleri != null)
             {

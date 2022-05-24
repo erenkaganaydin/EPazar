@@ -81,6 +81,21 @@ namespace EPazar.Mobil.Controllers
         #region SiparisOlustur
         public async Task<IActionResult> SiparisOlustur()
         {
+            Kullanicilar.EMail = HttpContext.User.FindFirstValue(ClaimTypes.Email) != null ? HttpContext.User.FindFirstValue(ClaimTypes.Email) : null;
+            var EmailKontrol = await BusKullanicilar.FirstOrDefaultEmailAsync(Kullanicilar);
+            if (EmailKontrol != null)
+            {
+                Siparis.UyeId = EmailKontrol.Id;
+                if (Siparis.UyeId == null)
+                {
+                    return Redirect("/GirisYapKayitOl/OturumAc");
+                }
+            }
+            else
+            {
+                return Redirect("/GirisYapKayitOl/OturumAc");
+            }
+
             var SiparisIslemSonucu = await SiparisIslemleri();
             if (!SiparisIslemSonucu)
                 return BadRequest("Siparis İslem Sonucu Olumsuz Döndü");
@@ -89,12 +104,6 @@ namespace EPazar.Mobil.Controllers
             if (!SiparisIslemSonucu)
                 return BadRequest("Siparis Detay İslem Sonucu Olumsuz Döndü");
 
-            Kullanicilar.EMail = HttpContext.User.FindFirstValue(ClaimTypes.Email) != null ? HttpContext.User.FindFirstValue(ClaimTypes.Email) : null;
-            var EmailKontrol = await BusKullanicilar.FirstOrDefaultEmailAsync(Kullanicilar);
-            if (EmailKontrol != null)
-            {
-                Siparis.UyeId = EmailKontrol.Id;
-            }
             var UyeSiparis = await BusSiparis.FirstOrDefaultJustUyeIdAsync(Siparis);
             if (UyeSiparis == null)
                 return Redirect("/Hesabim?ReturnUrl=/Odeme/SiparisOlustur");
@@ -126,27 +135,29 @@ namespace EPazar.Mobil.Controllers
         public async Task<IActionResult> Index()
         {
             Kullanicilar.EMail = HttpContext.User.FindFirstValue(ClaimTypes.Email) != null ? HttpContext.User.FindFirstValue(ClaimTypes.Email) : null;
-            var EmailKontrol = await BusKullanicilar.FirstOrDefaultEmailAsync(Kullanicilar);
+            var EmailKontrol = await BusKullanicilar.FirstOrDefaultEmailAsync(Kullanicilar).ConfigureAwait(true);
             if (EmailKontrol != null)
             {
                 Siparis.UyeId = EmailKontrol.Id;
             }
-            var UyeSiparis = await BusSiparis.FirstOrDefaultJustUyeIdAsync(Siparis);
+            var UyeSiparis = await BusSiparis.FirstOrDefaultJustUyeIdAsync(Siparis).ConfigureAwait(true);
             if (UyeSiparis == null)
                 return BadRequest("Siparis Bulunmuyor");
             Siparis = UyeSiparis;
 
             ViewSepet.SepetToken = HttpContext.Request.Cookies["SepetToken"];
-            var viewSepets = await BusViewSepet.PredicateAsync(ViewSepet);
+            var viewSepets = await BusViewSepet.PredicateAsync(ViewSepet).ConfigureAwait(true);
 
             OdemeEntityleri.ViewSepet = viewSepets;
             OdemeEntityleri.Siparis = Siparis;
 
             KullaniciAdresleri.UyeId = (long)Siparis.UyeId;
-            OdemeEntityleri.KullaniciAdresleri = await BusKullaniciAdresleri.PredicateAsync(KullaniciAdresleri);
-
-            KullaniciAdresleri.Id = (long)Siparis.AdresId;
-            OdemeEntityleri.SeciliKullaniciAdresi = await BusKullaniciAdresleri.FirstOrDefaultAsync(KullaniciAdresleri);
+            OdemeEntityleri.KullaniciAdresleri = await BusKullaniciAdresleri.PredicateAsync(KullaniciAdresleri).ConfigureAwait(true);
+            if (Siparis.AdresId != null)
+            {
+                KullaniciAdresleri.Id = (long)Siparis.AdresId;
+            }
+            OdemeEntityleri.SeciliKullaniciAdresi = await BusKullaniciAdresleri.FirstOrDefaultAsync(KullaniciAdresleri).ConfigureAwait(true);
 
             return View(OdemeEntityleri);
         }
@@ -159,12 +170,12 @@ namespace EPazar.Mobil.Controllers
         {
             #region  Siparis.UyeId
             Kullanicilar.EMail = HttpContext.User.FindFirstValue(ClaimTypes.Email) != null ? HttpContext.User.FindFirstValue(ClaimTypes.Email) : null;
-            var EmailKontrol = await BusKullanicilar.FirstOrDefaultEmailAsync(Kullanicilar);
+            var EmailKontrol = await BusKullanicilar.FirstOrDefaultEmailAsync(Kullanicilar).ConfigureAwait(true);
             if (EmailKontrol != null)
             {
                 Siparis.UyeId = EmailKontrol.Id;
             }
-            var UyeSiparisBilgisi = await BusSiparis.FirstOrDefaultJustUyeIdAsync(Siparis);
+            var UyeSiparisBilgisi = await BusSiparis.FirstOrDefaultJustUyeIdAsync(Siparis).ConfigureAwait(true);
             if (UyeSiparisBilgisi == null)
             {
                 return BadRequest("Üyeye ait sipariş bulunamadı.");
@@ -197,11 +208,11 @@ namespace EPazar.Mobil.Controllers
         public async Task<IActionResult> OdemeBasarili(string? oid)
         {
             Siparis.SiparisNumarasi = oid;
-            var SiparisBilgisi = await BusSiparis.FirstOrDefaultSiparisNumarasiAsync(Siparis);
+            var SiparisBilgisi = await BusSiparis.FirstOrDefaultSiparisNumarasiAsync(Siparis).ConfigureAwait(true);
 
             SiparisBilgisi.OdemeDurumId = 2;
 
-            var OdemeDurumuUpdate = await BusSiparis.UpdateAsync(SiparisBilgisi);
+            var OdemeDurumuUpdate = await BusSiparis.UpdateAsync(SiparisBilgisi).ConfigureAwait(true);
             return View();
         }
 
@@ -229,6 +240,8 @@ namespace EPazar.Mobil.Controllers
 
             if (Siparis.AdresId == 0)
                 return Redirect("/Odeme?Hata=Adres bilgisi seçmelisiniz...");
+            else if (Siparis.AdresId == null)
+                return Redirect("/Odeme?Hata=Adres bilgisi seçmelisiniz...");
 
             ViewSepet.SepetToken = HttpContext.Request.Cookies["SepetToken"];
             var viewSepets = await BusViewSepet.PredicateAsync(ViewSepet);
@@ -250,7 +263,7 @@ namespace EPazar.Mobil.Controllers
         private async Task<bool> SiparisDetayIslemleri()
         {
             ViewSepet.SepetToken = HttpContext.Request.Cookies["SepetToken"];
-            var ViewSepets = await BusViewSepet.PredicateAsync(ViewSepet);
+            var ViewSepets = await BusViewSepet.PredicateAsync(ViewSepet).ConfigureAwait(true);
 
             bool HataYok = true;
             foreach (var item in ViewSepets)
@@ -288,7 +301,7 @@ namespace EPazar.Mobil.Controllers
         private async Task<bool> SiparisIslemleri()
         {
             ViewSepet.SepetToken = HttpContext.Request.Cookies["SepetToken"];
-            var ViewSepets = await BusViewSepet.PredicateAsync(ViewSepet);
+            var ViewSepets = await BusViewSepet.PredicateAsync(ViewSepet).ConfigureAwait(true);
 
             double Toplam = 0;
             foreach (var item in ViewSepets)
@@ -298,7 +311,7 @@ namespace EPazar.Mobil.Controllers
             Siparis.ToplamTutar = Math.Round(Toplam, 2);
 
             Kullanicilar.EMail = HttpContext.User.FindFirstValue(ClaimTypes.Email) != null ? HttpContext.User.FindFirstValue(ClaimTypes.Email) : null;
-            var EmailKontrol = await BusKullanicilar.FirstOrDefaultEmailAsync(Kullanicilar);
+            var EmailKontrol = await BusKullanicilar.FirstOrDefaultEmailAsync(Kullanicilar).ConfigureAwait(true);
             if (EmailKontrol != null)
             {
                 Siparis.UyeId = EmailKontrol.Id;
@@ -306,7 +319,7 @@ namespace EPazar.Mobil.Controllers
 
             Siparis.SiparisNumarasi = $"{RandomString(4) + "-" + RandomString(4)}";
 
-            var SiparisEkle = await BusSiparis.InsertAsync(Siparis, false);
+            var SiparisEkle = await BusSiparis.InsertAsync(Siparis, false).ConfigureAwait(true);
             return SiparisEkle;
         }
         #endregion

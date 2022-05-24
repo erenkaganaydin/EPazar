@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "7Z9KNX/1hkASCsjjomWSy4bwpZTGuMDLVqqok20eB/jDi98UCcqHH/BKfwwoFwFndNygi4Xxyc4zTNnv4u396g==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\eaydin\\Documents\\GitHub\\EPazar\\EPazar\\Bigtarz.Magaza\\Bigtarz.Magaza.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\eaydin\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\eaydin\\.nuget\\packages\\restsharp\\107.3.0\\restsharp.107.3.0.nupkg.sha512",
+    "C:\\Users\\eaydin\\.nuget\\packages\\system.text.json\\5.0.0\\system.text.json.5.0.0.nupkg.sha512",
+    "C:\\Users\\eaydin\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.16\\microsoft.netcore.app.host.win-x64.5.0.16.nupkg.sha512"
+  ],
+  "logs": []
+}

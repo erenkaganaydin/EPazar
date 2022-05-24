@@ -53,7 +53,7 @@ namespace XMLOkuyucu {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/XMLOkuyucu;component/resimurl.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/XMLOkuyucu;V1.0.0.0;component/resimurl.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\ResimUrl.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

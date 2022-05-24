@@ -81,3 +81,5 @@ C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\BigtarzPanel\bin\Debug\net5.0\EPa
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\BigtarzPanel\obj\Debug\net5.0\Razor\Views\Siparis\Index.cshtml.g.cs
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\BigtarzPanel\obj\Debug\net5.0\Razor\Views\Siparis\SiparisDetay.cshtml.g.cs
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\BigtarzPanel\bin\Debug\net5.0\ref\BigtarzPanel.dll
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\BigtarzPanel\obj\Debug\net5.0\Razor\Views\Musteri\Index.cshtml.g.cs
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\BigtarzPanel\obj\Debug\net5.0\Razor\Views\Musteri\MusteriDetay.cshtml.g.cs

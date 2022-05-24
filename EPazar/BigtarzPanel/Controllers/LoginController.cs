@@ -43,7 +43,7 @@ namespace BigtarzPanel.Controllers
             {
                 var Claims = new List<Claim> { new Claim(ClaimTypes.Email, KullaniciBilgileri.EMail), new Claim(ClaimTypes.Name, KullaniciBilgileri.Ad), new Claim(ClaimTypes.Surname, KullaniciBilgileri.Soyad) };
 
-                var UserIdentity = new ClaimsIdentity(Claims, "Login");
+                var UserIdentity = new ClaimsIdentity(Claims, "PanelLogin");
 
                 ClaimsPrincipal Principal = new ClaimsPrincipal(UserIdentity);
 

@@ -145,7 +145,7 @@ namespace EPazar.Business.Business
             }
             else if (Entity.MusteriSoyad != null)
             {
-                query = query.Where(x => x.Kullanicilar.Soyad.Contains(Entity.MusteriSoyad) );
+                query = query.Where(x => x.Kullanicilar.Soyad.Contains(Entity.MusteriSoyad));
             }
             else if (Entity.SiparisTarihi != null)
             {

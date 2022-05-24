@@ -57,7 +57,7 @@
                         UrunResimi.ResimLink = "https://UrunResmiYok.com";
                 }
                 <div class="urun-resim-wrap">
-                    <img class="urun-resim" src="@UrunResimi.ResimLink" alt="@item.Adi">
+                    <img class="urun-resim" style="max-width: 180px;" src="@UrunResimi.ResimLink" alt="@item.Adi">
                     <div class="stam">
                         <div class="stam-text">
                             <span style="padding: 0;font-weight: 100;border: 0;">Kargo Bedava</span>
@@ -67,11 +67,13 @@
                 <div class="urun-baslik">
                     <span class="urun-marka-text"></span> @item.Adi
                 </div>
-                <div class="urun-size"></div>
                 <div class="urun-fiyat">
                     <div class="fiyat">
                         <span class="go-go">Hemen Al</span>
-                        <span class="q-typography q-paragraph bold q-initial primary main">@item.EskiFiyat₺</span>
+                        <span class="q-typography q-paragraph bold q-initial primary main" style="display: flex;flex-direction: column;text-align: center;margin-left: 6px;">
+                            <del style="font-size: 8px;color: #ac9696;text-align: left;">@item.EskiFiyat₺</del> 
+                            <p style="margin: 0;">@item.Fiyat</p>
+                        </span>
                     </div>
                 </div>
             </a>

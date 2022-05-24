@@ -43,10 +43,12 @@
                             </div>
                         </div>
                         @if(UserId == null){
-                        <div class="login-info">
-                            <div class="login-info-text" >
-                                <span>Alışverişte kolaylık için Hemen Üye Girişi Yap</span>
-                                <a href="/Hesabim" style="color:orange;" class="login-info-link">Giriş Yap</a>
+                        <div class="alert alert-primary" role="alert">
+                            <div class="login-info">
+                                <div class="login-info-text" >
+                                    <span>Alışverişte kolaylık için Hemen</span>
+                                    <a href="/Hesabim" style="color:orange;" class="login-info-link">Üye Girişi Yap</a>
+                                </div>
                             </div>
                         </div>
                         }
@@ -94,7 +96,7 @@
                                                     <div class="col-10">
                                                         @urunler.TedarikciAdi @urunler.UrunAdi
                                                     </div>
-                                                    <div class="col-2">
+                                                    <div class="col-2" onclick="SepettenKaldir('@urunler.UrunId', '@urunler.OzellikTuru')">
                                                         <i class="fa-regular fa-trash-can"></i>
                                                     </div>
                                                 </div>
@@ -114,10 +116,14 @@
 
                         </div>
 
-                            }   
-                          
-                            
+                            }
 
+
+            <script>
+            function SepettenKaldir(UrunId,OzellikId)  {
+                document.location.href = "/SepettenKaldir/"+UrunId +"/"+OzellikId;
+            }           
+            </script>
                     </div>
 
                                 <div class="summary__container">

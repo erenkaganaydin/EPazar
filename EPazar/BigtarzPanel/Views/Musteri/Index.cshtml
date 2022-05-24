@@ -1,0 +1,112 @@
+﻿@using EPazar.Entity.Entity
+
+
+@model List<Kullanicilar>
+
+<div class="container-fluid page-body-wrapper">
+    <div class="main-panel">
+        <div class="content-wrapper pb-0">
+            <div class="page-header flex-wrap">
+                <div class="header-left">
+                    <form action="#" method="post" >
+                        <input type="text" name="Ad" placeholder="Müşteri Ad" class="btn btn-outline-dribbble mb-2 mb-md-0" />
+                        <input type="text" name="Soyad" placeholder="Müşteri Soyad" class="btn btn-outline-dribbble mb-2 mb-md-0" />
+                        <input type="text" name="Telefon" placeholder="Müşteri Telefon" class="btn btn-outline-dribbble mb-2 mb-md-0" />
+                        <input type="text" name="Cinsiyet" placeholder="Cinsiyet" class="btn btn-outline-dribbble mb-2 mb-md-0" />
+                        <button type="submit" class="btn btn-facebook mb-2 mb-md-0">Arama Yap</button>
+                    </form>
+                </div>
+                <div class="header-right d-flex flex-wrap mt-md-2 mt-lg-0">
+                    <div class="d-flex align-items-center">
+                        <a href="#">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div style="padding: 0;" class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        </p>
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Ad Soyad</th>
+                                        <th>Telefon</th>
+                                        <th>E-Mail</th>
+                                        <th>Cinsiyet</th>
+                                        <th>Doğum Tarihi</th>
+                                        <th>Kayıt Tarihi</th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <script>
+                                        function MusteriDetayaGit(Id) {
+                                            window.location.href = "/Musteri/MusteriDetay?Id=" + Id
+                                            //onclick="SiparisDetayaGit(item.Id)"
+                                        }
+                                        function MusteriSil(Id) {
+                                            if (confirm('Müsteriyi Silmek İstiyorsanız Tamam\'a Tıklayın ❔')) {
+                                                    window.location.href = "/Musteri/KullaniciSil?Id=" + Id;
+
+                                            } else {
+
+                                            }
+                                        }
+                                    </script>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr >
+                                            <td class="py-1">
+                                                @item.AdSoyad
+                                            </td>
+                                            <td>
+                                                @item.Telefon 
+                                            </td>
+                                            <td>
+                                                @item.EMail
+                                            </td>
+                                            <td>
+                                                @item.Cinsiyet
+                                            </td>
+                                            <td>
+                                                @item.DogumGunu - @item.DogumAyi - @item.DogumYili
+                                            </td>
+                                            <td>
+                                                @item.CreateTime
+                                            </td>
+                                            <td>
+                                                <label onclick="MusteriDetayaGit('@item.Id')" class="badge badge-info"> <i class="mdi mdi-pencil"></i> Detay</label>
+                                            </td>
+                                            <td>
+                                                <label onclick="MusteriSil('@item.Id')" class="badge badge-warning"> <i class="mdi mdi-delete"></i> Sil</label>
+                                            </td>
+
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- partial:partials/_footer.html -->
+            <footer class="footer">
+                <div class="container">
+                    <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © SRK YILMAZ İNŞAAT (Tüm Hakları Saklıdır) </span>
+                    </div>
+                    <div>
+                    </div>
+                </div>
+            </footer>
+            <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>

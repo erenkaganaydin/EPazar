@@ -143,7 +143,8 @@
 <div class="fiyat-warp">
     <div class="fiyat-d">
         <div class="fiyat-t">
-            <span>219.99₺</span>
+            <span style="font-size:11px;"><del>@Model.EskiFiyat ₺</del></span>
+            <span>@Model.Fiyat ₺</span>
         </div>
     </div>
     <div class="sepet-button">
@@ -156,7 +157,7 @@
             if (SecilenOzellik != "")
                 Url = Url + "/" + SecilenOzellik;
         }
-        <a href="/SepeteEkle/@Model.Id/@Model.Adi@Url">
+        <a href="/SepeteEkle/@Model.Id@Url">
             <button class="button-orange">Sepete Ekle</button>
         </a>
     </div>

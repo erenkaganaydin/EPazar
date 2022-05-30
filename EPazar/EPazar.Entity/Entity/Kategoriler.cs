@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,10 @@ namespace EPazar.Entity.Entity
         public int Id { get; set; }
         public int Sira { get; set; }
         public int AnaKategoriId { get; set; }
+
+        [NotMapped]
+        public string? AnaKategoriAdi { get; set; }
+
         public string Ad { get; set; }
     }
 }

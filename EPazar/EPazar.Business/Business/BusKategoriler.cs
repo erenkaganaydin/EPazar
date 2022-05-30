@@ -38,9 +38,10 @@ namespace EPazar.Business.Business
             throw new NotImplementedException();
         }
 
-        public Task<bool> DeleteAsync(Kategoriler entity)
+        public async Task<bool> DeleteAsync(Kategoriler entity)
         {
-            throw new NotImplementedException();
+            var Result = await Query.DeleteAsync(entity).ConfigureAwait(true);
+            return Result;
         }
 
         public Task<bool> DeleteSqlRawAsync(Kategoriler entity)
@@ -48,21 +49,43 @@ namespace EPazar.Business.Business
             throw new NotImplementedException();
         }
 
-        public Task<Kategoriler> FirstOrDefaultAsync(Kategoriler entity)
+        public async Task<Kategoriler> FirstOrDefaultAsync(Kategoriler entity)
         {
-            throw new NotImplementedException();
+            var Result = await Query.GetAll().FirstOrDefaultAsync(x=> x.Id == entity.Id).ConfigureAwait(true);
+            return Result;
         }
 
         
 
-        public Task<bool> InsertAsync(Kategoriler entity, bool setIdentity)
+        public async Task<bool> InsertAsync(Kategoriler entity, bool setIdentity)
         {
-            throw new NotImplementedException();
+            var Result = await Query.InsertAsync(entity, setIdentity).ConfigureAwait(true);
+            return Result;
         }
 
         public Task<List<Kategoriler>> PredicateAsync(Kategoriler entity)
         {
             throw new NotImplementedException();
+        }
+        
+        public async Task<List<Kategoriler>> PredicateIncludeAsync(Kategoriler Entity)
+        {
+            IQueryable<Kategoriler> query = Query.GetAll();
+
+            if (Entity.Ad != null)
+            {
+                query = query.Where(x => x.Ad.Contains(Entity.Ad));
+            }
+            else if (Entity.Sira != 0)
+            {
+                query = query.Where(x => x.Sira== Entity.Sira);
+            }
+            else if (Entity.AnaKategoriId != 0)
+            {
+                query = query.Where(x => x.AnaKategoriId == Entity.AnaKategoriId);
+            }
+           
+            return query.ToList();
         }
 
         public Task<bool> RemoveRangeAsync(Kategoriler entity)
@@ -70,9 +93,10 @@ namespace EPazar.Business.Business
             throw new NotImplementedException();
         }
 
-        public Task<bool> UpdateAsync(Kategoriler entity)
+        public async Task<bool> UpdateAsync(Kategoriler entity)
         {
-            throw new NotImplementedException();
+            var Result = await Query.UpdateAsync(entity).ConfigureAwait(true);
+            return Result;
         }
     }
 }

@@ -1,5 +1,6 @@
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Business\bin\Debug\net5.0\EPazar.Business.deps.json
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Business\bin\Debug\net5.0\EPazar.Business.dll
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Business\bin\Debug\net5.0\ref\EPazar.Business.dll
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Business\bin\Debug\net5.0\EPazar.Business.pdb
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Business\bin\Debug\net5.0\EPazar.BaseBusiness.dll
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Business\bin\Debug\net5.0\EPazar.Data.dll
@@ -16,4 +17,3 @@ C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Business\obj\Debug\net5.0\
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Business\obj\Debug\net5.0\EPazar.Business.dll
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Business\obj\Debug\net5.0\ref\EPazar.Business.dll
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Business\obj\Debug\net5.0\EPazar.Business.pdb
-C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Business\obj\Debug\net5.0\refint\EPazar.Business.dll

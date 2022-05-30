@@ -1,5 +1,6 @@
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Entity\bin\Debug\net5.0\EPazar.Entity.deps.json
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Entity\bin\Debug\net5.0\EPazar.Entity.dll
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Entity\bin\Debug\net5.0\ref\EPazar.Entity.dll
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Entity\bin\Debug\net5.0\EPazar.Entity.pdb
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Entity\obj\Debug\net5.0\EPazar.Entity.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Entity\obj\Debug\net5.0\EPazar.Entity.AssemblyInfoInputs.cache
@@ -9,4 +10,3 @@ C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Entity\obj\Debug\net5.0\EP
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Entity\obj\Debug\net5.0\ref\EPazar.Entity.dll
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Entity\obj\Debug\net5.0\EPazar.Entity.pdb
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Entity\obj\Debug\net5.0\EPazar.Entity.csproj.AssemblyReference.cache
-C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\EPazar.Entity\bin\Debug\net5.0\ref\EPazar.Entity.dll

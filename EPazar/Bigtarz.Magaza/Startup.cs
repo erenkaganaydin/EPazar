@@ -50,7 +50,7 @@ namespace Bigtarz.Magaza
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Basvuru}/{action=Index}/{id?}");
             });
         }
     }

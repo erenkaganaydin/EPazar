@@ -30,9 +30,10 @@ namespace EPazar.Business.Business
             throw new NotImplementedException();
         }
 
-        public Task<bool> DeleteAsync(AnaKategoriler entity)
+        public async Task<bool> DeleteAsync(AnaKategoriler entity)
         {
-            throw new NotImplementedException();
+            var Result = await Query.DeleteAsync(entity).ConfigureAwait(true);
+            return Result;
         }
 
         public Task<bool> DeleteSqlRawAsync(AnaKategoriler entity)
@@ -40,9 +41,10 @@ namespace EPazar.Business.Business
             throw new NotImplementedException();
         }
 
-        public Task<AnaKategoriler> FirstOrDefaultAsync(AnaKategoriler entity)
+        public async Task<AnaKategoriler> FirstOrDefaultAsync(AnaKategoriler entity)
         {
-            throw new NotImplementedException();
+            var Result = await Query.GetAll().FirstOrDefaultAsync(x => x.Id == entity.Id).ConfigureAwait(true);
+            return Result;
         }
 
         
@@ -57,14 +59,31 @@ namespace EPazar.Business.Business
             throw new NotImplementedException();
         }
 
+        public async Task<List<AnaKategoriler>> PredicateIncludePanelAsync(AnaKategoriler Entity)
+        {
+            IQueryable<AnaKategoriler> query = Query.GetAll();
+
+            if (Entity.Ad != null)
+            {
+                query = query.Where(x => x.Ad.Contains(Entity.Ad));
+            }
+            else if (Entity.Sira != null)
+            {
+                query = query.Where(x => x.Sira == Entity.Sira);
+            }
+           
+            return query.ToList();
+        }
+
         public Task<bool> RemoveRangeAsync(AnaKategoriler entity)
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> UpdateAsync(AnaKategoriler entity)
+        public async Task<bool> UpdateAsync(AnaKategoriler entity)
         {
-            throw new NotImplementedException();
+            var Result = await Query.UpdateAsync(entity).ConfigureAwait(true);
+            return Result;
         }
     }
 }

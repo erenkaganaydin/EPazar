@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "4wTH47JRKI1uTJ7W3Z6bxi52kW2cop001hf+VEfr5emANKJrSTMV4LWH9lvC1RSZc0m5nE2Hz2KcxzgY1fwYeg==",
+  "dgSpecHash": "6J9dBMu2KxEVPWlsdGMWqufb16gv468vLGEP7XjL179WsucULAw/81JuYGWzerdzOKmvUulKC2ybOCG3OoqbHg==",
   "success": true,
   "projectFilePath": "C:\\Users\\eaydin\\Documents\\GitHub\\EPazar\\EPazar\\EPazar.Entity\\EPazar.Entity.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\eaydin\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
   "logs": []
 }

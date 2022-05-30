@@ -5,7 +5,6 @@ C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\Bigtarz.Magaza\bin\Release\net5.0
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\Bigtarz.Magaza\bin\Release\net5.0\Bigtarz.Magaza.runtimeconfig.json
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\Bigtarz.Magaza\bin\Release\net5.0\Bigtarz.Magaza.runtimeconfig.dev.json
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\Bigtarz.Magaza\bin\Release\net5.0\Bigtarz.Magaza.dll
-C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\Bigtarz.Magaza\bin\Release\net5.0\ref\Bigtarz.Magaza.dll
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\Bigtarz.Magaza\bin\Release\net5.0\Bigtarz.Magaza.pdb
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\Bigtarz.Magaza\bin\Release\net5.0\Bigtarz.Magaza.Views.dll
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\Bigtarz.Magaza\bin\Release\net5.0\Bigtarz.Magaza.Views.pdb
@@ -38,3 +37,8 @@ C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\Bigtarz.Magaza\obj\Release\net5.0
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\Bigtarz.Magaza\obj\Release\net5.0\Bigtarz.Magaza.genruntimeconfig.cache
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\Bigtarz.Magaza\obj\Release\net5.0\Bigtarz.Magaza.csproj.CopyComplete
 C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\Bigtarz.Magaza\obj\Release\net5.0\Bigtarz.Magaza.csproj.AssemblyReference.cache
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\Bigtarz.Magaza\bin\Release\net5.0\Newtonsoft.Json.dll
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\Bigtarz.Magaza\bin\Release\net5.0\RestSharp.dll
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\Bigtarz.Magaza\bin\Release\net5.0\EPazar.Entity.dll
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\Bigtarz.Magaza\bin\Release\net5.0\EPazar.Entity.pdb
+C:\Users\eaydin\Documents\GitHub\EPazar\EPazar\Bigtarz.Magaza\obj\Release\net5.0\refint\Bigtarz.Magaza.dll

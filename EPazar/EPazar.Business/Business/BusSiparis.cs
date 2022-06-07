@@ -35,7 +35,7 @@ namespace EPazar.Business.Business
         public async Task<Siparis> FirstOrDefaultPanelAsync(Siparis entity)
         {
             var Result = await Query.GetAll()
-                .Where(x => x.Id == entity.Id)
+                .Where(x => x.Id == entity.Id )
                 .Include(x => x.Kullanicilar)
                 .Include(x => x.KullaniciAdresleri)
                 .Include(x => x.SiparisDurum)
@@ -111,7 +111,7 @@ namespace EPazar.Business.Business
 
         public async Task<List<Siparis>> GetAllIncludePanelAsync()
         {
-            var Result = await Query.GetAll()
+            var Result = await Query.GetAll().Where(x => x.UyeId != null && x.AdresId != null)
                 .Include(x => x.SiparisDetay)
                 .Include(x => x.Kullanicilar)
                 .Include(x => x.KullaniciAdresleri)
@@ -124,7 +124,7 @@ namespace EPazar.Business.Business
 
         public async Task<List<Siparis>> PredicateIncludePanelAsync(Siparis Entity)
         {
-            IQueryable<Siparis> query = Query.GetAll()
+            IQueryable<Siparis> query = Query.GetAll().Where(x=> x.UyeId != null && x.AdresId != null)
                 .Include(x => x.SiparisDetay)
                 .Include(x => x.Kullanicilar)
                 .Include(x => x.KullaniciAdresleri)

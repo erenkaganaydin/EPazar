@@ -1,0 +1,22 @@
+﻿@using EPazar.Entity.Entity
+
+@model IEnumerable<Urunler>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td class="py-1">
+            <img src="@item.UrunResimleri.FirstOrDefault()" alt=" @item.Adi" />
+        </td>
+        <td class="py-1">
+            @item.Adi
+        </td>
+        <td> @item.Fiyat </td>
+
+        <td>@item.CreateTime</td>
+
+        <td><button type="button" onclick="KategoriDetayaGit(@item.Id)" class="btn btn-primary">Düzenle</button></td>
+        <td><button type="button" onclick="MusteriSil(@item.Id)" class="btn btn-danger">Sil</button></td>
+
+    </tr>
+}

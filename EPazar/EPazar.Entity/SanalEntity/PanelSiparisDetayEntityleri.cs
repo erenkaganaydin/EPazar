@@ -9,9 +9,9 @@ namespace EPazar.Entity.SanalEntity
 {
     public class PanelSiparisDetayEntityleri
     {
-        public Siparis Siparis{ get; set; }
-        public List<SiparisDetay> SiparisDetay { get; set; }
-        public List<OdemeDurum> OdemeDurumlari { get; set; }
-        public List<SiparisDurum> SiparisDurumlari { get; set; }
+        public Siparis? Siparis{ get; set; }
+        public List<SiparisDetay?> SiparisDetay { get; set; }
+        public List<OdemeDurum?> OdemeDurumlari { get; set; }
+        public List<SiparisDurum?> SiparisDurumlari { get; set; }
     }
 }

@@ -43,6 +43,9 @@ namespace EPazar.Controllers
         public SiparisKargoBilgisi SiparisKargoBilgisi { get; set; }
         public BusSiparisKargoBilgisi BusSiparisKargoBilgisi { get; set; }
 
+        public ViewSepetTedarikciToplam ViewSepetTedarikciToplam { get; set; }
+        public BusViewSepetTedarikciToplam BusViewSepetTedarikciToplam { get; set; }
+
 
         private static Random random = new Random();
         #endregion
@@ -75,6 +78,9 @@ namespace EPazar.Controllers
             BusViewSiparisTedarikciToplam = new BusViewSiparisTedarikciToplam();
 
             BusSiparisKargoBilgisi = new BusSiparisKargoBilgisi();
+
+            ViewSepetTedarikciToplam = new ViewSepetTedarikciToplam();
+            BusViewSepetTedarikciToplam = new BusViewSepetTedarikciToplam();
         }
         #endregion
 
@@ -119,7 +125,7 @@ namespace EPazar.Controllers
                 SiparisKargoBilgisi.KargoFirmaId = 1;
                 SiparisKargoBilgisi.KargoTakipKodu = "Oluşturulmamış";
                 SiparisKargoBilgisi.KargoTutari = 0;
-                if (item.Toplam < 60)
+                if (item.Toplam < 60) //TODO: Kargo Limiti
                 {
                     SiparisKargoBilgisi.KargoTutari = 14.99;
                 }
@@ -314,6 +320,18 @@ namespace EPazar.Controllers
                 Toplam += item.Fiyat;
             }
             Siparis.ToplamTutar = Math.Round(Toplam, 2);
+
+            ViewSepetTedarikciToplam.SepetToken = ViewSepet.SepetToken;
+            var SiparisToplam = await BusViewSepetTedarikciToplam.PredicateAsync(ViewSepetTedarikciToplam);
+
+            foreach (var item in SiparisToplam)
+            {
+                if (item.Toplam < 60) //TODO: Kargo Limiti
+                {
+                    Siparis.ToplamTutar += 14.99;
+                }
+            }
+
 
             Kullanicilar.EMail = HttpContext.User.FindFirstValue(ClaimTypes.Email) != null ? HttpContext.User.FindFirstValue(ClaimTypes.Email) : null;
             var EmailKontrol = await BusKullanicilar.FirstOrDefaultEmailAsync(Kullanicilar);

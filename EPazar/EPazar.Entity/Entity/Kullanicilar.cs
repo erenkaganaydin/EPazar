@@ -25,5 +25,15 @@ namespace EPazar.Entity.Entity
 			get { return Ad + " " + Soyad; }
 			set { AdSoyad = Ad + " " + Soyad; } 
 		}
+
+        public Kullanicilar()
+        {
+			Telefon = "";
+			EMail = "";
+			Cinsiyet = "";
+			Ad = "";
+			Soyad = "";
+			
+		}
     }
 }

@@ -71,6 +71,7 @@ namespace EPazar.Data
             modelBuilder.Entity<ViewSepet> ().HasKey(x=> x.UrunId);
             modelBuilder.Entity<ViewSiparisDetay> ().HasNoKey();
             modelBuilder.Entity<ViewSiparisTedarikciToplam> ().HasNoKey();
+            modelBuilder.Entity<ViewSepetTedarikciToplam> ().HasNoKey();
 
 
             base.OnModelCreating(modelBuilder);
@@ -109,5 +110,6 @@ namespace EPazar.Data
         public virtual DbSet<KargoFirmalari> KargoFirmalari { get; set; }
         public virtual DbSet<Favoriler> Favoriler { get; set; }
         public virtual DbSet<Admin> Admin { get; set; }
+        public virtual DbSet<ViewSepetTedarikciToplam> ViewSepetTedarikciToplam { get; set; }
     }
 }

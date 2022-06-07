@@ -72,7 +72,7 @@ namespace BigtarzPanel.Controllers
             var AnaKategoriDetayKaydet = await BusAnaKategoriler.UpdateAsync(AnaKategoriDetay).ConfigureAwait(true);
 
             AnaKategoriDetay = await BusAnaKategoriler.FirstOrDefaultAsync(AnaKategoriDetay).ConfigureAwait(true);
-            return View(AnaKategoriDetay);
+            return RedirectToAction("AnaKategoriDetay", "AnaKategoriler", new { Id = AnaKategoriDetay.Id });
         }
 
     }

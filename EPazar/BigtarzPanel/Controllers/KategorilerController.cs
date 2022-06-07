@@ -1,6 +1,7 @@
 ﻿using EPazar.Business.Business;
 using EPazar.Entity.Entity;
 using EPazar.Entity.SanalEntity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,16 +10,17 @@ using System.Threading.Tasks;
 
 namespace BigtarzPanel.Controllers
 {
+    [Authorize]
     public class KategorilerController : Controller
     {
         public PanelKategorilerEntityleri PanelKategorilerEntityleri { get; set; }
 
-        public Kategoriler Kategoriler { get; set; }
-        public BusKategoriler BusKategoriler { get; set; }
+            public Kategoriler Kategoriler { get; set; }
+            public BusKategoriler BusKategoriler { get; set; }
 
-        public AnaKategoriler AnaKategoriler { get; set; }
+            public AnaKategoriler AnaKategoriler { get; set; }
 
-        public BusAnaKategoriler BusAnaKategoriler { get; set; }
+            public BusAnaKategoriler BusAnaKategoriler { get; set; }
 
         public KategorilerController()
         {
@@ -85,16 +87,16 @@ namespace BigtarzPanel.Controllers
                 var SilmeDurum = await BusKategoriler.DeleteAsync(Kategoriler).ConfigureAwait(true);
                 if (SilmeDurum)
                 {
-                    return RedirectToAction("Index", "AnaKategoriler");
+                    return RedirectToAction("Index", "Kategoriler");
                 }
                 else
                 {
-                    return Json("AnaKategori Silinemedi!! Lütfen geri gidiniz!!!");
+                    return Json("Kategori Silinemedi!! Lütfen geri gidiniz!!!");
                 }
             }
             else
             {
-                return Json("AnaKategori Bulunamadı!! Lütfen geri gidiniz!!!");
+                return Json("Kategori Bulunamadı!! Lütfen geri gidiniz!!!");
             }
 
         }
@@ -122,7 +124,8 @@ namespace BigtarzPanel.Controllers
             var AnaKategoriDetayKaydet = await BusKategoriler.UpdateAsync(AnaKategoriDetay).ConfigureAwait(true);
 
             AnaKategoriDetay = await BusKategoriler.FirstOrDefaultAsync(AnaKategoriDetay).ConfigureAwait(true);
-            return View(AnaKategoriDetay);
+
+            return RedirectToAction("KategoriDetay", "Kategoriler", new { Id = AnaKategoriDetay.Id });
         }
 
     }

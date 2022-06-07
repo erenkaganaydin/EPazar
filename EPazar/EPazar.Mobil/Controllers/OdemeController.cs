@@ -43,6 +43,9 @@ namespace EPazar.Mobil.Controllers
         public SiparisKargoBilgisi SiparisKargoBilgisi { get; set; }
         public BusSiparisKargoBilgisi BusSiparisKargoBilgisi { get; set; }
 
+        public ViewSepetTedarikciToplam ViewSepetTedarikciToplam { get; set; }
+        public BusViewSepetTedarikciToplam BusViewSepetTedarikciToplam { get; set; }
+
 
         private static Random random = new Random();
         #endregion
@@ -75,6 +78,9 @@ namespace EPazar.Mobil.Controllers
             BusViewSiparisTedarikciToplam = new BusViewSiparisTedarikciToplam();
 
             BusSiparisKargoBilgisi = new BusSiparisKargoBilgisi();
+
+            ViewSepetTedarikciToplam = new ViewSepetTedarikciToplam();
+            BusViewSepetTedarikciToplam = new BusViewSepetTedarikciToplam();
         }
         #endregion
 
@@ -96,15 +102,15 @@ namespace EPazar.Mobil.Controllers
                 return Redirect("/GirisYapKayitOl/OturumAc");
             }
 
-            var SiparisIslemSonucu = await SiparisIslemleri();
+            var SiparisIslemSonucu = await SiparisIslemleri().ConfigureAwait(true);
             if (!SiparisIslemSonucu)
                 return BadRequest("Siparis İslem Sonucu Olumsuz Döndü");
 
-            var SiparisDetayIslemSonucu = await SiparisDetayIslemleri();
+            var SiparisDetayIslemSonucu = await SiparisDetayIslemleri().ConfigureAwait(true);
             if (!SiparisIslemSonucu)
                 return BadRequest("Siparis Detay İslem Sonucu Olumsuz Döndü");
 
-            var UyeSiparis = await BusSiparis.FirstOrDefaultJustUyeIdAsync(Siparis);
+            var UyeSiparis = await BusSiparis.FirstOrDefaultJustUyeIdAsync(Siparis).ConfigureAwait(true);
             if (UyeSiparis == null)
                 return Redirect("/Hesabim?ReturnUrl=/Odeme/SiparisOlustur");
 
@@ -119,7 +125,7 @@ namespace EPazar.Mobil.Controllers
                 SiparisKargoBilgisi.KargoFirmaId = 1;
                 SiparisKargoBilgisi.KargoTakipKodu = "Oluşturulmamış";
                 SiparisKargoBilgisi.KargoTutari = 0;
-                if (item.Toplam < 60)
+                if (item.Toplam < 60) //TODO: Kargo Limiti
                 {
                     SiparisKargoBilgisi.KargoTutari = 14.99;
                 }
@@ -135,29 +141,34 @@ namespace EPazar.Mobil.Controllers
         public async Task<IActionResult> Index()
         {
             Kullanicilar.EMail = HttpContext.User.FindFirstValue(ClaimTypes.Email) != null ? HttpContext.User.FindFirstValue(ClaimTypes.Email) : null;
-            var EmailKontrol = await BusKullanicilar.FirstOrDefaultEmailAsync(Kullanicilar).ConfigureAwait(true);
+            var EmailKontrol = await BusKullanicilar.FirstOrDefaultEmailAsync(Kullanicilar);
             if (EmailKontrol != null)
             {
                 Siparis.UyeId = EmailKontrol.Id;
             }
-            var UyeSiparis = await BusSiparis.FirstOrDefaultJustUyeIdAsync(Siparis).ConfigureAwait(true);
+            else
+            {
+                Redirect("/GirisYapKayitOl/OturumAc");
+            }
+            var UyeSiparis = await BusSiparis.FirstOrDefaultJustUyeIdAsync(Siparis);
             if (UyeSiparis == null)
                 return BadRequest("Siparis Bulunmuyor");
             Siparis = UyeSiparis;
 
             ViewSepet.SepetToken = HttpContext.Request.Cookies["SepetToken"];
-            var viewSepets = await BusViewSepet.PredicateAsync(ViewSepet).ConfigureAwait(true);
+            var viewSepets = await BusViewSepet.PredicateAsync(ViewSepet);
 
             OdemeEntityleri.ViewSepet = viewSepets;
             OdemeEntityleri.Siparis = Siparis;
 
             KullaniciAdresleri.UyeId = (long)Siparis.UyeId;
-            OdemeEntityleri.KullaniciAdresleri = await BusKullaniciAdresleri.PredicateAsync(KullaniciAdresleri).ConfigureAwait(true);
+            OdemeEntityleri.KullaniciAdresleri = await BusKullaniciAdresleri.PredicateAsync(KullaniciAdresleri);
+
             if (Siparis.AdresId != null)
             {
                 KullaniciAdresleri.Id = (long)Siparis.AdresId;
+                OdemeEntityleri.SeciliKullaniciAdresi = await BusKullaniciAdresleri.FirstOrDefaultAsync(KullaniciAdresleri);
             }
-            OdemeEntityleri.SeciliKullaniciAdresi = await BusKullaniciAdresleri.FirstOrDefaultAsync(KullaniciAdresleri).ConfigureAwait(true);
 
             return View(OdemeEntityleri);
         }
@@ -170,12 +181,12 @@ namespace EPazar.Mobil.Controllers
         {
             #region  Siparis.UyeId
             Kullanicilar.EMail = HttpContext.User.FindFirstValue(ClaimTypes.Email) != null ? HttpContext.User.FindFirstValue(ClaimTypes.Email) : null;
-            var EmailKontrol = await BusKullanicilar.FirstOrDefaultEmailAsync(Kullanicilar).ConfigureAwait(true);
+            var EmailKontrol = await BusKullanicilar.FirstOrDefaultEmailAsync(Kullanicilar);
             if (EmailKontrol != null)
             {
                 Siparis.UyeId = EmailKontrol.Id;
             }
-            var UyeSiparisBilgisi = await BusSiparis.FirstOrDefaultJustUyeIdAsync(Siparis).ConfigureAwait(true);
+            var UyeSiparisBilgisi = await BusSiparis.FirstOrDefaultJustUyeIdAsync(Siparis);
             if (UyeSiparisBilgisi == null)
             {
                 return BadRequest("Üyeye ait sipariş bulunamadı.");
@@ -208,11 +219,11 @@ namespace EPazar.Mobil.Controllers
         public async Task<IActionResult> OdemeBasarili(string? oid)
         {
             Siparis.SiparisNumarasi = oid;
-            var SiparisBilgisi = await BusSiparis.FirstOrDefaultSiparisNumarasiAsync(Siparis).ConfigureAwait(true);
+            var SiparisBilgisi = await BusSiparis.FirstOrDefaultSiparisNumarasiAsync(Siparis);
 
             SiparisBilgisi.OdemeDurumId = 2;
 
-            var OdemeDurumuUpdate = await BusSiparis.UpdateAsync(SiparisBilgisi).ConfigureAwait(true);
+            var OdemeDurumuUpdate = await BusSiparis.UpdateAsync(SiparisBilgisi);
             return View();
         }
 
@@ -263,7 +274,7 @@ namespace EPazar.Mobil.Controllers
         private async Task<bool> SiparisDetayIslemleri()
         {
             ViewSepet.SepetToken = HttpContext.Request.Cookies["SepetToken"];
-            var ViewSepets = await BusViewSepet.PredicateAsync(ViewSepet).ConfigureAwait(true);
+            var ViewSepets = await BusViewSepet.PredicateAsync(ViewSepet);
 
             bool HataYok = true;
             foreach (var item in ViewSepets)
@@ -301,7 +312,7 @@ namespace EPazar.Mobil.Controllers
         private async Task<bool> SiparisIslemleri()
         {
             ViewSepet.SepetToken = HttpContext.Request.Cookies["SepetToken"];
-            var ViewSepets = await BusViewSepet.PredicateAsync(ViewSepet).ConfigureAwait(true);
+            var ViewSepets = await BusViewSepet.PredicateAsync(ViewSepet);
 
             double Toplam = 0;
             foreach (var item in ViewSepets)
@@ -310,8 +321,20 @@ namespace EPazar.Mobil.Controllers
             }
             Siparis.ToplamTutar = Math.Round(Toplam, 2);
 
+            ViewSepetTedarikciToplam.SepetToken = ViewSepet.SepetToken;
+            var SiparisToplam = await BusViewSepetTedarikciToplam.PredicateAsync(ViewSepetTedarikciToplam);
+
+            foreach (var item in SiparisToplam)
+            {
+                if (item.Toplam < 60) //TODO: Kargo Limiti
+                {
+                    Siparis.ToplamTutar += 14.99;
+                }
+            }
+
+
             Kullanicilar.EMail = HttpContext.User.FindFirstValue(ClaimTypes.Email) != null ? HttpContext.User.FindFirstValue(ClaimTypes.Email) : null;
-            var EmailKontrol = await BusKullanicilar.FirstOrDefaultEmailAsync(Kullanicilar).ConfigureAwait(true);
+            var EmailKontrol = await BusKullanicilar.FirstOrDefaultEmailAsync(Kullanicilar);
             if (EmailKontrol != null)
             {
                 Siparis.UyeId = EmailKontrol.Id;
@@ -319,7 +342,7 @@ namespace EPazar.Mobil.Controllers
 
             Siparis.SiparisNumarasi = $"{RandomString(4) + "-" + RandomString(4)}";
 
-            var SiparisEkle = await BusSiparis.InsertAsync(Siparis, false).ConfigureAwait(true);
+            var SiparisEkle = await BusSiparis.InsertAsync(Siparis, false);
             return SiparisEkle;
         }
         #endregion

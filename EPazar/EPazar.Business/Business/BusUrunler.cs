@@ -42,6 +42,16 @@ namespace EPazar.Business.Business
             return Result;
         }
 
+        public async Task<List<Urunler>> PanelGetAll(int Sayfano)
+        {
+            var Result = await Query.GetAll().Skip(Sayfano * 10).Take(10)
+                                    .Include(x => x.UrunResimleri)
+                                    .Include(x => x.ViewUrunOzellikleriAciklamali)
+                                    .Include(x => x.Tedarikciler).ToListAsync();
+
+            return Result;
+        }
+
         public async Task<IEnumerable<long>> AdIdList(IEnumerable<long> list, string OzellikList)
         {
             var Result = await Query.GetAll().Where(x => x.Adi.Contains(OzellikList) && list.Contains(x.Id)).Select(x => x.Id).ToListAsync();
